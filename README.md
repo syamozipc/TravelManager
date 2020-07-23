@@ -1,5 +1,4 @@
-# <アプリ名>
-TravelManager
+# TravelManager
 
 ## サイト概要
 ・旅行の写真をアルバムごとに管理できます。
