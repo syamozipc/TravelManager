@@ -8,18 +8,19 @@ Rails.application.routes.draw do
 
   scope module: :public do
   	root 'homes#top'
-    resources :users, only: [:show, :edit, :update]
+    resource :user, only: [:edit, :update]
+    resources :users, only: [:show]
     get 'users/unsubscribe' #退会確認画面
     patch 'users/withdraw'  #退会アクション
     resources :relationships, only: [:create, :destroy]
     resources :albums do
-    	resources :likes, onlly: [:create, :destroy]
+    	resource :like, onlly: [:create, :destroy]
     	resources :comments, only: [:create, :destroy]
     	resources :photos, only: [:create, :destroy]
     	delete 'photos/destroy_all'
     end
     get 'albums/confirm' #album削除確認画面
-    get 'albums/raiking' #いいねランキング
+    get 'albums/ranking' #いいねランキング
   	get 'searches/index'
   end
 

@@ -1,2 +1,16 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="row">
+	<h1>TravelManagerへようこそ!</h1>
+
+	<p>
+		このサイトは、あなたの旅行写真をアルバムに整理することが出来るSNSサイトです。<br>
+		アルバムは公開/非公開を設定でき、公開のアルバムは他のユーザーも閲覧に来ます。<br>
+		コメントやいいねをつける事も可能ですので、<br>
+		気になった方には積極的に交流してみましょう<br>
+		お互い、旅行写真を通じて仲を深められるはずです。<br>
+	</p>
+
+	<%= link_to "新規登録", new_user_registration_path, class: "btn btn-success" %>
+	<%= link_to "ログイン", new_user_session_path, class: "btn btn-info" %>
+	<%= link_to "ゲストユーザー", albums_path, class: "btn btn-warning" %>
+
+</div>
