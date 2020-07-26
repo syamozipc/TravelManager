@@ -1,2 +1,4 @@
-<h1>Public::Users#unsubscribe</h1>
-<p>Find me in app/views/public/users/unsubscribe.html.erb</p>
+<h4>本当に退会しますか？</h4>
+<p>あなたの投稿したアルバムは全て削除されます</p>
+<%= link_to "マイページへ戻る", user_path(current_user), class: "btn btn-info" %>
+<%= link_to "退会する", users_withdraw_path, class: "btn btn-danger", data:{confirm: "本当に退会しますか？"}, method: :patch %>

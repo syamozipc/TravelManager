@@ -8,10 +8,9 @@ Rails.application.routes.draw do
 
   scope module: :public do
   	root 'homes#top'
-    resource :user, only: [:edit, :update]
-    resources :users, only: [:show]
     get 'users/unsubscribe' #退会確認画面
     patch 'users/withdraw'  #退会アクション
+    resources :users, only: [:show, :edit, :update]
     resources :relationships, only: [:create, :destroy]
     resources :albums do
     	resource :like, onlly: [:create, :destroy]

@@ -26,10 +26,24 @@ class Public::SessionsController < Devise::SessionsController
   # end
 
   def after_sign_in_path_for(resource)
-    users_path(resource)
+    user_path(resource)
   end
 
   def after_sign_out_path_for(resource)
     root_path
   end
+
+  protected
+  def reject_user
+    @user = User.find_by(email: params[:user][:email].downcase)
+    if @user
+      if @user.valid_password?(params[:user][:password]) && (@user.active_for_authentication? == false)
+        flash[:error] = "退会済みユーザーです。"
+        redirect_to new_user_session_path
+      end
+    else
+      flash[:error] = "情報をご入力ください"
+    end
+  end
+
 end

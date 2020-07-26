@@ -1,2 +1,15 @@
-<h1>Public::Albums#new</h1>
-<p>Find me in app/views/public/albums/new.html.erb</p>
+<h4>アルバム新規投稿</h4>
+	<%= form_with(model: [@album, @photo], url: albums_path) do |f| %>
+		<table>
+			<tbody>
+				<tr>
+					<td><%= f.text_field :title, placeholder: "タイトル" %></td>
+				</tr>
+				<tr>
+					<td><%= f.text_area :discription, placeholder: "アルバムの説明" %></td>
+				</tr>
+				<tr>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>

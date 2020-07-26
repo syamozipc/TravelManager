@@ -6,6 +6,8 @@ class Public::AlbumsController < ApplicationController
   end
 
   def new
+    @album = Album.new
+    @photo = Photo.new
   end
 
   def create

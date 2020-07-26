@@ -1,6 +1,6 @@
 class Album < ApplicationRecord
 
-	enum range: { private: 0, public: 1 }
+	enum range: { closed: 0, open: 1 }
 
 	has_many :comments, dependent: :destroy
 	has_many :likes, dependent: :destroy

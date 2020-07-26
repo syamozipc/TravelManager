@@ -5,7 +5,7 @@
 			<% if admin_signed_in? %>
 				<li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
 			<% elsif user_signed_in? %>
-				<li><%= link_to "マイページ", user_path %></li>
+				<li><%= link_to "マイページ", user_path(current_user) %></li>
 				<li><%= link_to "アルバム一覧", albums_path %></li>
 				<li><%= link_to "ランキング", albums_ranking_path %></li>
 				<li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>

@@ -1,2 +1,34 @@
-<h1>Public::Users#edit</h1>
-<p>Find me in app/views/public/users/edit.html.erb</p>
+<div class="row">
+	<h4>プロフィール変更</h4>
+	<%= form_with(model: @user, url:user_path) do |f| %>
+		<table>
+			<tbody>
+				<tr>
+					<td><%= f.label :画像 %></td>
+					<td>
+						<%= attachment_image_tag @user, :image, size: "100x100", format: "jpeg", fallback: "no_image.png" %><br>
+						<%= f.attachment_field :image, placeholder: "画像を選択してください" %>
+					</td>
+				</tr>
+				<tr>
+					<td><%= f.label :ユーザー名 %></td>
+					<td><%= f.text_field :name %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :自己紹介 %></td>
+					<td><%= f.text_area :introduction %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :メールアドレス %></td>
+					<td><%= f.text_field :email %></td>
+				</t>
+				<tr>
+					<td><%= f.submit "更新", class: "btn btn-info" %></td>
+				</tr>
+			</tbody>
+		</table>
+	<% end %>
+
+	<%= link_to "パスワードの変更はこちら", edit_user_registration_path, class: "btn btn-success" %>
+	<%= link_to "退会", users_unsubscribe_path, class: "btn btn-danger" %>
+</div>
