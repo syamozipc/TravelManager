@@ -1,5 +1,6 @@
-<h4>アルバム新規投稿</h4>
-	<%= form_with(model: [@album, @photo], url: albums_path) do |f| %>
+</div>
+	<h4>アルバム新規投稿</h4>
+	<%= form_with(model: @album, url: albums_path) do |f| %>
 		<table>
 			<tbody>
 				<tr>
@@ -9,7 +10,23 @@
 					<td><%= f.text_area :discription, placeholder: "アルバムの説明" %></td>
 				</tr>
 				<tr>
-					<td></td>
+					<td><%= f.collection_select(:destination_id, Destination.all, :id, :place) %></td>
+				</tr>
+				<tr>
+					<td>
+						<%= f.fields_for :photos do |i| %>
+							<%= i.attachment_field :image, multiple: true, name: "photos_attributes[0][image][]" %>
+						<% end %>
+					</td>
+				</tr>
+				<tr><!-- enum -->
+					<td><%= f.radio_button :range, :closed %> <%= f.label :range, "非公開" %></td>
+					<td><%= f.radio_button :range, :open %> <%= f.label :range, "公開" %></td>
+				</tr>
+				<tr>
+					<td><%= f.submit "新規投稿" %></td>
 				</tr>
 			</tbody>
 		</table>
+	<% end %>
+<div class="row">

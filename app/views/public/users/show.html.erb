@@ -28,7 +28,7 @@
 
 	<table>
 		<tbody>
-			<h4>アルバム <%= @albums.count %>件</h4>
+			<h4>アルバム <%= @albums.count %>件 <%= link_to "+", new_album_path, class: "new-btn" %></h4>
 			<% @albums.each do |album| %>
 			<tr>
 				<td><%= album.title %></td>

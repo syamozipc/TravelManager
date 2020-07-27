@@ -8,4 +8,25 @@
 Admin.create!(
 	email: 'host@host.com',
 	password: 'hosthost'
-)
+	)
+Destination.create!(
+	place: '国内'
+	)
+Destination.create!(
+	place: 'アジア・中東'
+	)
+Destination.create!(
+	place: 'オセアニア'
+	)
+Destination.create!(
+	place: 'ヨーロッパ'
+	)
+Destination.create!(
+	place: 'アフリカ'
+	)
+Destination.create!(
+	place: '北中米'
+	)
+Destination.create!(
+	place: '南米'
+	)

@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2020_07_23_120840) do
     t.integer "destination_id", null: false
     t.string "title", null: false
     t.text "discription", null: false
-    t.integer "range", default: 0, null: false
+    t.integer "range", default: 0, null: false #enum 0=非公開, 1=公開
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
