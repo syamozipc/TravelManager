@@ -1,2 +1,53 @@
-<h1>Public::Albums#show</h1>
-<p>Find me in app/views/public/albums/show.html.erb</p>
+<div class="row">
+	<div class="col-xs-9">
+		<h4>アルバム詳細 <%= link_to "編集する", edit_album_path(@album), class: "btn btn-success" %></h4>
+		<table class="table">
+			<tr>
+				<td><%= link_to @album.user.name, user_path(@album) %></td>
+				<td>フォロー</td>
+			</tr>
+			<tr>
+				<td>渡航先：</td>
+				<td><%= @album.destination.place %></td>
+			</tr>
+			<tr>
+				<td colspan="2"><%= @album.discription %></td>
+			</tr>
+			<tr>
+				<td>作成日</td>
+				<td><%= @album.created_at.strftime('%y/%m/%d') %></td>
+			</tr>
+			<tr>
+				<td>更新日</td>
+				<td><%= @album.updated_at.strftime('%y/%m/%d') %></td>
+			</tr>
+			<tr>
+				<% @album.photos.each do |photo| %>
+				<td><%= attachment_image_tag photo, :image, size: "100x100", format: "jpeg" %></td>
+				<% end %>
+			</tr>
+		</table>
+	</div>
+
+	<div class="col-xs-3">
+		<table>
+			<%= @album.comments.each do |comment| %>
+			<tr>
+				<td>
+					<%= link_to user_path(comment) do %>
+						<%= attachment_image_tag comment.user, :image, size: "30x30", format: "jpeg" %>
+					<% end %>
+				</td>
+				<td>
+					<%= link_to comment.user.name, user_path(comment) %><br>
+					<%= comment.content %>
+				</td>
+			</tr>
+			<% end %>
+		</table>
+		<%= form_with model: [@album, @comment] do |f| %>
+			<%= f.text_area :content, row:'3', size:"90x3", placeholder: "コメントを入力" %>
+			<%= f.submit "投稿" %>
+		<% end %>
+	</div>
+</div>

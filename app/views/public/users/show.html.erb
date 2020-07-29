@@ -1,48 +1,53 @@
 <div class="row">
-	<table>
-		<tbody>
-			<tr>
-				<td><%= attachment_image_tag @user, :image, size: "100x100", format: "jpeg", fallback: "no_image.png" %></td>
-				<td>
-					<%= @user.name %>
-					<% if @user.is_active == true %>
-						（会員No.<%= @user.id %>）
-					<% else %>
-						退会済み
-					<% end %>
-				</td>
-			</tr>
-			<tr>
-				<td>フォローボタン</td>
-			</tr>
-			<tr>
-				<td><%= @user.introduction %></td>
-			</tr>
-			<% if @user.id == current_user.id %>
-			<tr>
-				<td><%= link_to "編集", edit_user_path(@user), class: "btn btn-success" %></td>
-			</tr>
-			<% end %>
-		</tbody>
-	</table>
+	<div class="col-xs-4">
+		<table class="table">
+			<tbody>
+				<tr>
+					<td><%= attachment_image_tag @user, :image, size: "100x100", format: "jpeg", fallback: "no_image.png" %></td>
+					<td>
+						<%= @user.name %>
+						<% if @user.is_active == true %>
+							（会員No.<%= @user.id %>）
+						<% else %>
+							退会済み
+						<% end %>
+					</td>
+				</tr>
+				<tr>
+					<td>フォローボタン</td>
+				</tr>
+				<tr>
+					<td><%= @user.introduction %></td>
+				</tr>
+				<% if @user.id == current_user.id %>
+				<tr>
+					<td><%= link_to "編集", edit_user_path(@user), class: "btn btn-success" %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
 
-	<table>
-		<tbody>
-			<h4>アルバム <%= @albums.count %>件 <%= link_to "+", new_album_path, class: "new-btn" %></h4>
-			<% @albums.each do |album| %>
-			<tr>
-				<td><%= album.title %></td>
-				<td>
-					<% if album.range == 0 %>
-						非公開
-					<% else %>
-						公開
-					<% end %>
-				</td>
-				<td>コメント：<%= album.comments.count %></td>
-				<td>いいね：<%= album.likes.count %></td>
-			</tr>
-			<% end %>
-		</tbody>
-	</table>
+	<div class="col-xs-8">
+		<table class="table">
+			<tbody>
+				<h4>アルバム <%= @albums.count %>件 <%= link_to "+", new_album_path, class: "new-btn" %></h4>
+				<% @albums.each do |album| %>
+				<tr>
+					<td><%= link_to album.title, album_path(album) %></td>
+					<td>写真：<%= album.photos.count %></td>
+					<td>コメント：<%= album.comments.count %></td>
+					<td>いいね：<%= album.likes.count %></td>
+					<td>
+						<% if album.range == "closed" %>
+							非公開
+						<% else %>
+							公開中
+						<% end %>
+					</td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
 </div>

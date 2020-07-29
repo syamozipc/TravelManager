@@ -1,7 +1,7 @@
-</div>
+<div class="row">
 	<h4>アルバム新規投稿</h4>
 	<%= form_with(model: @album, url: albums_path) do |f| %>
-		<table>
+		<table class="table">
 			<tbody>
 				<tr>
 					<td><%= f.text_field :title, placeholder: "タイトル" %></td>
@@ -10,7 +10,7 @@
 					<td><%= f.text_area :discription, placeholder: "アルバムの説明" %></td>
 				</tr>
 				<tr>
-					<td><%= f.collection_select(:destination_id, Destination.all, :id, :place) %></td>
+					<td><%= f.collection_select(:destination_id, Destination.all, :id, :place, prompt: "渡航地域を選択してください") %></td>
 				</tr>
 				<tr>
 					<td>
@@ -29,4 +29,4 @@
 			</tbody>
 		</table>
 	<% end %>
-<div class="row">
+</div>

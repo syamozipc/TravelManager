@@ -1,2 +1,8 @@
-<h1>Public::Albums#confirm</h1>
-<p>Find me in app/views/public/albums/confirm.html.erb</p>
+<h4>本当にアルバムを削除しますか？</h4>
+<p>
+	アルバムは削除せずに非公開にできます。<br>
+	アルバムを削除した場合は、写真・コメント・いいねも同時に削除されます
+</p>
+
+<%= link_to "アルバム編集画面へ戻る", edit_album_path(@album), class: "btn btn-success" %>
+<%= link_to "アルバムを削除する", album_path(@album), method: :delete, class: "btn btn-danger" %>

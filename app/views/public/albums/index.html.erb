@@ -1,2 +1,50 @@
-<h1>Public::Albums#index</h1>
-<p>Find me in app/views/public/albums/index.html.erb</p>
+<div class="row">
+	<div class="col-xs-3">
+		<p>渡航先</p>
+		<table class="table">
+			<tbody>
+				<tr>
+					<td><%= link_to "一覧", albums_path %></td>
+				</tr>
+				<tr>
+					<td>フォロー</td>
+				</tr>
+				<% @destinations.each do |destination| %>
+				<tr>
+					<td><%= link_to destination.place, albums_path(destination_id: destination.id) %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="col-xs-9">
+		<% if params[:destination_id] %>
+			<h4><%= @destination.place %>の投稿一覧</h4>
+		<% else %>
+			<h4>投稿一覧</h4>
+		<% end %>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>タイトル</th>
+					<th>写真枚数</th>
+					<th>ユーザー名</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @albums.each do |album| %>
+				<tr>
+					<td><%= link_to album.title, album_path(album) %></td>
+					<td><%=	album.photos.count %></td>
+					<td><%= album.user.name %></td>
+					<td><%= album.likes.count %></td>
+					<td><%= album.comments.count %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>

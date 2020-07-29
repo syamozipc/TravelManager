@@ -12,14 +12,14 @@ Rails.application.routes.draw do
     patch 'users/withdraw'  #退会アクション
     resources :users, only: [:show, :edit, :update]
     resources :relationships, only: [:create, :destroy]
+    get 'albums/confirm' #album削除確認画面
+    get 'albums/ranking' #いいねランキング
     resources :albums do
     	resource :like, onlly: [:create, :destroy]
     	resources :comments, only: [:create, :destroy]
+      delete 'photos/destroy_all'
     	resources :photos, only: [:create, :destroy]
-    	delete 'photos/destroy_all'
     end
-    get 'albums/confirm' #album削除確認画面
-    get 'albums/ranking' #いいねランキング
   	get 'searches/index'
   end
 
