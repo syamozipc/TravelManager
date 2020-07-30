@@ -35,9 +35,27 @@
 				<% @albums.each do |album| %>
 				<tr>
 					<td><%= link_to album.title, album_path(album) %></td>
-					<td>写真：<%= album.photos.count %></td>
-					<td>コメント：<%= album.comments.count %></td>
-					<td>いいね：<%= album.likes.count %></td>
+					<td>
+						<i class="far fa-images"></i>
+						<%= album.photos.count %>
+					</td>
+					<td>
+						<i class="far fa-comment-dots"></i>
+						<%= album.comments.count %>
+					</td>
+					<td>
+						<% if album.liked_by?(current_user) %>
+							<%= link_to album_likes_path(album), method: :delete do %>
+							<i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+							<%= album.likes.count %>
+							<% end %>
+						<% else %>
+							<%= link_to album_likes_path(album), method: :post do %>
+							<i class="fa fa-heart-o" aria-hidden="true"></i>
+							<%= album.likes.count %>
+							<% end %>
+						<% end %>
+					</td>
 					<td>
 						<% if album.range == "closed" %>
 							非公開

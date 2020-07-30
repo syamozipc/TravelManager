@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     get 'albums/confirm' #album削除確認画面
     get 'albums/ranking' #いいねランキング
     resources :albums do
-    	resource :like, onlly: [:create, :destroy]
+    	resource :likes, only: [:create, :destroy]
     	resources :comments, only: [:create, :destroy]
       delete 'photos/destroy_all'
     	resources :photos, only: [:create, :destroy]

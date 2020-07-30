@@ -1,6 +1,22 @@
 <div class="row">
 	<div class="col-xs-9">
-		<h4>アルバム詳細 <%= link_to "編集する", edit_album_path(@album), class: "btn btn-success" %></h4>
+		<h4>
+			アルバム詳細
+
+			<% if @album.liked_by?(current_user) %>
+				<%= link_to album_likes_path(@album), method: :delete do %>
+				<i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+				<%= @album.likes.count %>
+				<% end %>
+			<% else %>
+				<%= link_to album_likes_path(@album), method: :post do %>
+				<i class="fa fa-heart-o" aria-hidden="true"></i>
+				<%= @album.likes.count %>
+				<% end %>
+			<% end %>
+
+			<%= link_to "編集する", edit_album_path(@album), class: "btn btn-success" %>
+		</h4>
 		<table class="table">
 			<tr>
 				<td><%= link_to @album.user.name, user_path(@album) %></td>
@@ -31,7 +47,7 @@
 
 	<div class="col-xs-3">
 		<table>
-			<%= @album.comments.each do |comment| %>
+			<% @album.comments.each do |comment| %>
 			<tr>
 				<td>
 					<%= link_to user_path(comment) do %>
@@ -40,13 +56,13 @@
 				</td>
 				<td>
 					<%= link_to comment.user.name, user_path(comment) %><br>
-					<%= comment.content %>
+					<%= comment.content %> <%= link_to "削除", album_comment_path(comment.album_id, comment), method: :delete %>
 				</td>
 			</tr>
 			<% end %>
 		</table>
 		<%= form_with model: [@album, @comment] do |f| %>
-			<%= f.text_area :content, row:'3', size:"90x3", placeholder: "コメントを入力" %>
+			<%= f.text_area :content, row:'3', size:"30x3", placeholder: "コメントを入力" %>
 			<%= f.submit "投稿" %>
 		<% end %>
 	</div>

@@ -8,6 +8,8 @@ class Public::CommentsController < ApplicationController
   end
 
   def destroy
+    Album.find(params[:album_id]).comments.find(params[:id]).destroy
+    redirect_to request.referrer
   end
 
   private

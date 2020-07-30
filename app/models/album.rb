@@ -15,4 +15,8 @@ class Album < ApplicationRecord
 	validates :title, presence: true
 	validates :discription, presence: true, length: {maximum: 1000}
 	validates :range, presence: true
+
+	def liked_by?(user)
+		likes.where(user_id: user.id).exists?
+	end
 end
