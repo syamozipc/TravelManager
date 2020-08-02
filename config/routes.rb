@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     sessions: 'public/sessions',
     registrations: 'public/registrations',
-    passwords: 'public/passwords'
+    passwords: 'public/passwords',
+    omniauth_callbacks: 'public/omniauth_callbacks'
   }
 
   scope module: :public do
