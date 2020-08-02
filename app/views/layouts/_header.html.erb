@@ -16,6 +16,11 @@
 				<li><%= link_to "ランキング", albums_ranking_path %></li>
 			<% end %>
 		</ul>
-		<!-- 検索窓実装予定 -->
+		<div class="search-form">
+			<%= form_tag(searches_path, method: :get) do %>
+				<%= text_field_tag(:word) %>
+				<%= submit_tag '検索' %>
+			<% end %>
+		</div>
 	</nav>
 </header>

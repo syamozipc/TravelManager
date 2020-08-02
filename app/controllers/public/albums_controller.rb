@@ -3,9 +3,12 @@ class Public::AlbumsController < ApplicationController
     @destinations = Destination.all
     if params[:destination_id]
       @destination = @destinations.find(params[:destination_id])
-      @albums = Album.where(range: 1, destination_id: params[:destination_id]) #公開
+      @albums = Album.where(range: "open", destination_id: params[:destination_id]) #公開
+    elsif params[:choice] == "follow"
+      @users = current_user.followings
+    elsif params[:choice] == "like"
     else
-      @albums = Album.where(range: 1)
+      @albums = Album.where(range: "open")
     end
   end
 
@@ -60,6 +63,13 @@ class Public::AlbumsController < ApplicationController
   end
 
   def ranking
+    @destinations = Destination.all
+    if params[:destination_id]
+      @destination = @destinations.find(params[:destination_id])
+      @ranks = @destination.album.find(Like.group(:album_id).order('count(album_id)desc').limit(10).pluck(:album_id))
+    else
+      @ranks = Album.find(Like.group(:album_id).order('count(album_id)desc').limit(10).pluck(:album_id))
+    end
   end
 
   private

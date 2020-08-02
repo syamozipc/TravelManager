@@ -1,2 +1,67 @@
-<h1>Public::Albums#ranking</h1>
-<p>Find me in app/views/public/albums/ranking.html.erb</p>
+<div class="row">
+	<div class="col-xs-3">
+		<p>渡航先</p>
+		<table class="table">
+			<tbody>
+				<tr>
+					<td><%= link_to "ランキング一覧", albums_ranking_path %></td>
+				</tr>
+				<% @destinations.each do |destination| %>
+				<tr>
+					<td><%= link_to destination.place, albums_ranking_path(destination_id: destination.id) %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="col-xs-9">
+		<% if params[:destination_id] %>
+			<h4><%= @destination.place %>のランキング</h4>
+		<% else %>
+			<h4>ランキング</h4>
+		<% end %>
+		<table class="table">
+			<thead>
+				<tr>
+					<th></th>
+					<th>タイトル</th>
+					<th>写真枚数</th>
+					<th>ユーザー名</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @ranks.each.with_index(1) do |rank, i| %>
+				<tr>
+					<td><%= i %>位</td>
+					<td><%= link_to rank.title, album_path(rank) %></td>
+					<td>
+						<i class="far fa-images"></i>
+						<%= rank.photos.count %>
+					</td>
+					<td><%= link_to rank.user.name, user_path(rank) %></td>
+					<td>
+						<% if rank.liked_by?(current_user) %>
+							<%= link_to album_likes_path(rank), method: :delete do %>
+							<i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+							<%= rank.likes.count %>
+							<% end %>
+						<% else %>
+							<%= link_to album_likes_path(rank), method: :post do %>
+							<i class="fa fa-heart-o" aria-hidden="true"></i>
+							<%= rank.likes.count %>
+							<% end %>
+						<% end %>
+					</td>
+					<td>
+						<i class="far fa-comment-dots"></i>
+						<%= rank.comments.count %>
+					</td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>

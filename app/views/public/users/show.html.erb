@@ -3,7 +3,7 @@
 		<table class="table">
 			<tbody>
 				<tr>
-					<td><%= attachment_image_tag @user, :image, size: "100x100", format: "jpeg", fallback: "no_image.png" %></td>
+					<td><%= attachment_image_tag @user, :image, size: "100x100", format: "jpeg" %></td>
 					<td>
 						<%= @user.name %>
 						<% if @user.is_active == true %>
@@ -13,13 +13,27 @@
 						<% end %>
 					</td>
 				</tr>
+				<% if current_user != @user %>
+					<% if @user.followed_by?(current_user) %>
+						<tr>
+							<td><%= link_to "フォロー済み", user_relationships_path(@user), method: :delete %></td>
+						</tr>
+					<% else %>
+						<tr>
+							<td><%= link_to "フォローする", user_relationships_path(@user), method: :post %></td>
+						</tr>
+					<% end %>
+				<% end %>
 				<tr>
-					<td>フォローボタン</td>
+					<td><%= link_to "フォロー", follows_user_path(@user) %></td>
+				</tr>
+				<tr>
+					<td><%= link_to "フォロワー", followers_user_path(@user) %></td>
 				</tr>
 				<tr>
 					<td><%= @user.introduction %></td>
 				</tr>
-				<% if @user.id == current_user.id %>
+				<% if @user == current_user %>
 				<tr>
 					<td><%= link_to "編集", edit_user_path(@user), class: "btn btn-success" %></td>
 				</tr>

@@ -4,4 +4,5 @@ class Like < ApplicationRecord
 
 	validates :user_id, presence: true
 	validates :album_id, presence: true
+	validates_uniqueness_of :album_id, scope: :user_id
 end

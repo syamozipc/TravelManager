@@ -10,7 +10,12 @@ Rails.application.routes.draw do
   	root 'homes#top'
     get 'users/unsubscribe' #退会確認画面
     patch 'users/withdraw'  #退会アクション
-    resources :users, only: [:show, :edit, :update]
+    resources :users, only: [:show, :edit, :update] do
+      resource :relationships, only:[:create, :destroy]
+      member do
+        get :follows, :followers
+      end
+    end
     resources :relationships, only: [:create, :destroy]
     get 'albums/confirm' #album削除確認画面
     get 'albums/ranking' #いいねランキング
@@ -20,7 +25,7 @@ Rails.application.routes.draw do
       delete 'photos/destroy_all'
     	resources :photos, only: [:create, :destroy]
     end
-  	get 'searches/index'
+  	resources :searches, only: [:index]
   end
 
   devise_for :admin, controllers: {
