@@ -3,7 +3,7 @@
 		<table class="table">
 			<tbody>
 				<tr>
-					<td><%= attachment_image_tag @user, :image, size: "100x100", format: "jpeg" %></td>
+					<td><%= attachment_image_tag @user, :image, size: "100x100", format: "jpeg", fallback: "no_image.png" %></td>
 					<td>
 						<%= @user.name %>
 						<% if @user.is_active == true %>

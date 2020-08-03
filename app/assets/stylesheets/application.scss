@@ -16,6 +16,16 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+header{
+	background-color: lightskyblue;
+}
+
 footer{
 	margin-top: 15px;
 	padding: 15px 0;

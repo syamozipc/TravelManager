@@ -35,4 +35,5 @@
   <p><%= link_to "パスワードを忘れた方はこちら", new_user_password_path %></p>
 
 <% end %>
-
+<%= link_to "Sign in with FACEBOOK", user_facebook_omniauth_authorize_path %>
+<%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path %>
