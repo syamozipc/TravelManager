@@ -20,10 +20,162 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	font-family: "ヒラギノ丸ゴ ProN", "sans-serif";
 }
 
 header{
 	background-color: lightskyblue;
+	height: 70px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+.logo{
+	color: white;
+	font-size: 20px;
+}
+
+.header-list{
+	list-style: none;
+	display: inline-block;
+	line-height: 70px;
+	margin-right: 20px;
+}
+
+.blue-button{
+	padding:10px 15px;
+	color: #FFF;
+	text-decoration :none;
+	background: #87b9eb;
+	box-shadow: 0 2px 2px rgba(0,0,0,0.2), 0 -4px 5px -2px #6d95ce inset;
+	border-radius: 5px;
+	transition: .3s;
+}
+
+.search-form{
+	list-style: none;
+	display: inline-block;
+	line-height: 20px;
+	margin-right: 20px;
+}
+
+.new-btn{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: inline-block;
+  text-decoration: none;
+  background: white;
+  color: black;
+  width: 60px;
+  height: 60px;
+  line-height: 50px;
+  border-radius: 50%;
+  text-align: center;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  border-bottom: solid 3px #a9a9a9;
+  border-right:solid 1px #a9a9a9;
+  border-left:solid 1px #a9a9a9;
+  border-top:solid 1px #a9a9a9;
+  font-size: 40px;
+}
+
+.like-btn{
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	font-size: 40px;
+}
+
+.page-title{
+	width: 40%;
+	margin: 20px auto;
+	text-align: center;
+	padding: 0.5em;
+	color: black;
+	background-color: #FFEFC7;
+	border-left: solid 5px #ffaf58;
+}
+
+.flex{
+	display: flex;
+	width: 100%;
+	padding: 0 5%;
+}
+
+.profile-box{
+	width: 20%;
+	margin-right: 5%;
+}
+
+.profile-image{
+	border-radius: 50%;
+	background-size: cover;
+	background-position: center;
+}
+
+.album-box{
+	width: 75%;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 20px;
+	background-color: #d6ebff;
+	box-shadow: 0px 0px 0px 10px #d6ebff;
+	border: dashed 2px white;
+}
+
+.album{
+	background-image: image-url('album.jpg');
+	background-size: 100% 100%;
+	width: 30%;
+	height: 300px;
+	border-radius: 10px;
+	text-align: center;
+	box-shadow: 3px 3px 6px -2px #555, 3px 3px 8px rgba(255,255,255,0.8) inset;
+	border-bottom: solid 3px #a9a9a9;
+	border-right:solid 3px #a9a9a9;
+	border-left:solid 1px #a9a9a9;
+	border-top:solid 1px #a9a9a9;
+	margin: 0 30px 30px 0;
+}
+
+.album-title{
+	margin-top: 70px;
+}
+
+.icons{
+	margin: 20px auto;
+}
+
+.icon{
+	margin: 0 10px;
+	font-size: 20px;
+}
+
+.album-bottom{
+	margin: 0 10px;
+}
+
+.photo{
+	width: 180px;
+	height: 180px;
+	margin: 0 30px 30px 0;
+	box-shadow: 5px 10px 20px rgba(0,0,0,0.25);
+}
+
+.album-form{
+	width: 300px;
+	margin: 0 auto 20px;
+}
+
+.photo-edit{
+	width: 90%;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 20px;
+	margin: 0 auto 20px;
+	background-color: #d6ebff;
+	box-shadow: 0px 0px 0px 10px #d6ebff;
+	border: dashed 2px white;
 }
 
 footer{
@@ -32,4 +184,5 @@ footer{
 	font-size: 15px;
 	text-align: center;
 	background-color:lightskyblue;
+	color: white;
 }

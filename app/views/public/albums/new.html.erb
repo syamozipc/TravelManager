@@ -21,8 +21,10 @@
 						</td>
 					</tr>
 					<tr><!-- enum -->
-						<td><%= f.radio_button :range, :closed %> <%= f.label :range, "非公開" %></td>
-						<td><%= f.radio_button :range, :open %> <%= f.label :range, "公開" %></td>
+						<td>
+							<%= f.radio_button :range, :closed %> <%= f.label :range, "非公開" %>
+							<%= f.radio_button :range, :open %> <%= f.label :range, "公開" %>
+						</td>
 					</tr>
 					<tr>
 						<td><%= f.submit "新規投稿" %></td>

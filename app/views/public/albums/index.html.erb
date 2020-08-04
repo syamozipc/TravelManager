@@ -27,7 +27,7 @@
 		<% else %>
 			<h4>投稿一覧</h4>
 		<% end %>
-		<table class="table">
+		<table>
 			<thead>
 				<tr>
 					<th>タイトル</th>
@@ -41,7 +41,7 @@
 				<% if params[:choice] == "follow" %>
 	        		<% @users.each do |user| %>
 	        			<% user.albums.where(range: "open").each do |album| %>
-			        		<tr>
+			        		<tr class="album">
 								<td><%= link_to album.title, album_path(album.user) %></td>
 								<td>
 									<i class="far fa-images"></i>
@@ -71,7 +71,7 @@
 
 				<% elsif params[:choice] == "like" %>
 	        		<% current_user.liked_albums.where(range: "open").each do |album| %>
-		        		<tr>
+		        		<tr class="album">
 							<td><%= link_to album.title, album_path(album.user) %></td>
 							<td>
 								<i class="far fa-images"></i>
@@ -100,7 +100,7 @@
 
 				<% else %>
 					<% @albums.each do |album| %>
-					<tr>
+					<tr class="album">
 						<td><%= link_to album.title, album_path(album.user) %></td>
 						<td>
 							<i class="far fa-images"></i>

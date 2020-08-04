@@ -1,33 +1,47 @@
-<div class="row">
-	<div class="col-xs-9">
-		<h4>
-			アルバム詳細
+<h2 class="page-title"><%= @album.title %></h2>
 
-			<% if @album.liked_by?(current_user) %>
-				<%= link_to album_likes_path(@album), method: :delete do %>
-				<i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
-				<%= @album.likes.count %>
-				<% end %>
-			<% else %>
-				<%= link_to album_likes_path(@album), method: :post do %>
-				<i class="fa fa-heart-o" aria-hidden="true"></i>
-				<%= @album.likes.count %>
-				<% end %>
-			<% end %>
+<% if current_user != @album.user %>
+	<% if @album.liked_by?(current_user) %>
+		<%= link_to album_likes_path(@album), method: :delete, class: "like-btn" do %>
+			<i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+			<%= @album.likes.count %>
+		<% end %>
+	<% else %>
+		<%= link_to album_likes_path(@album), method: :post, class: "like-btn" do %>
+			<i class="fa fa-heart-o" aria-hidden="true"></i>
+			<%= @album.likes.count %>
+		<% end %>
+	<% end %>
+<% else %>
+	<i class="fas fa-heart like-btn" aria-hidden="true" style="color: red;"><%= @album.likes.count %></i>
+<% end %>
 
-			<%= link_to "編集する", edit_album_path(@album), class: "btn btn-success" %>
-		</h4>
+<div class="flex">
+	<div class="profile-box">
 		<table class="table">
 			<tr>
-				<td><%= link_to @album.user.name, user_path(@album) %></td>
-				<td>フォロー</td>
-			</tr>
-			<tr>
-				<td>渡航先：</td>
-				<td><%= @album.destination.place %></td>
+				<td>
+					<%= link_to user_path(@album.user) do %>
+						<%= attachment_image_tag @album.user, :image, size: "30x30", format: "jpeg", fallback: "no_image.png", class: "profile-image" %>
+						<%= @album.user.name %>
+					<% end %>
+				</td>
+				<td>
+					<% if current_user != @album.user %>
+						<% if @album.user.followed_by?(current_user) %>
+							<%= link_to "フォロー済み", user_relationships_path(@album.user), method: :delete, class: "btn btn-primary" %>
+						<% else %>
+							<%= link_to "フォローする", user_relationships_path(@album.user), method: :post, class: "btn btn-info" %>
+						<% end %>
+					<% end %>
+				</td>
 			</tr>
 			<tr>
 				<td colspan="2"><%= @album.discription %></td>
+			</tr>
+			<tr>
+				<td>渡航先</td>
+				<td><%= @album.destination.place %></td>
 			</tr>
 			<tr>
 				<td>作成日</td>
@@ -38,20 +52,20 @@
 				<td><%= @album.updated_at.strftime('%y/%m/%d') %></td>
 			</tr>
 			<tr>
-				<% @album.photos.each do |photo| %>
-				<td><%= attachment_image_tag photo, :image, size: "100x100", format: "jpeg" %></td>
-				<% end %>
+				<td colspan="2">
+					<% if current_user == @album.user %>
+						<%= link_to "編集", edit_album_path(@album), class: "btn btn-success" %>
+					<% end %>
+				</td>
 			</tr>
 		</table>
-	</div>
 
-	<div class="col-xs-3">
-		<table>
+		<table class="table">
 			<% @album.comments.each do |comment| %>
 			<tr>
 				<td>
 					<%= link_to user_path(comment) do %>
-						<%= attachment_image_tag comment.user, :image, size: "30x30", format: "jpeg" %>
+						<%= attachment_image_tag comment.user, :image, size: "30x30", format: "jpeg", fallback: "no_image.png", class: "profile-image" %>
 					<% end %>
 				</td>
 				<td>
@@ -61,9 +75,21 @@
 			</tr>
 			<% end %>
 		</table>
-		<%= form_with model: [@album, @comment] do |f| %>
-			<%= f.text_area :content, row:'3', size:"30x3", placeholder: "コメントを入力" %>
-			<%= f.submit "投稿" %>
+		<div>
+			<%= form_with model: [@album, @comment] do |f| %>
+				<%= f.text_area :content, row:'3', size:"30x3", placeholder: "コメントを入力" %>
+				<%= f.submit "投稿" %>
+			<% end %>
+		</div>
+	</div>
+
+	<div class="album-box">
+		<% @album.photos.each do |photo| %>
+			<%= attachment_image_tag photo, :image, size: "100x100", format: "jpeg", class: "photo" %>
 		<% end %>
 	</div>
 </div>
+
+
+
+

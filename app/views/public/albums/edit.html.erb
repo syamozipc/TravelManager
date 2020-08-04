@@ -1,44 +1,44 @@
-<div class="row">
-	<div class="col-xs-4">
-		<h4>アルバム詳細変更</h4>
-		<%= form_with model: @album, url: album_path(@album) do |f| %>
-			<table class="table">
-				<tbody>
-					<tr>
-						<td><%= f.text_field :title, placeholder: "タイトル" %></td>
-					</tr>
-					<tr>
-						<td><%= f.text_area :discription, placeholder: "アルバムの説明" %></td>
-					</tr>
-					<tr>
-						<td><%= f.collection_select(:destination_id, Destination.all, :id, :place) %></td>
-					</tr>
-					<tr>
-						<td>
-							<%= f.fields_for :photos do |i| %>
-								<%= i.attachment_field :image, multiple: true, name: "photos_attributes[0][image][]" %>
-							<% end %>
-						</td>
-					</tr>
-					<tr><!-- enum -->
-						<td><%= f.radio_button :range, :closed %> <%= f.label :range, "非公開" %></td>
-						<td><%= f.radio_button :range, :open %> <%= f.label :range, "公開" %></td>
-					</tr>
-					<tr>
-						<td><%= f.submit "編集を保存" %></td>
-					</tr>
-				</tbody>
-			</table>
-		<% end %>
-		<%= link_to "アルバムを削除する", albums_confirm_path(album_id: @album.id) %>
+<h2 class="page-title">アルバム詳細変更</h2>
+	<div class=album-form>
+	<%= form_with(model: @album, url: album_path(@album)) do |f| %>
+		<table class="table">
+			<tbody>
+				<tr>
+					<td><%= f.text_field :title, placeholder: "タイトル" %></td>
+				</tr>
+				<tr>
+					<td><%= f.text_area :discription, placeholder: "アルバムの説明" %></td>
+				</tr>
+				<tr>
+					<td><%= f.collection_select(:destination_id, Destination.all, :id, :place) %></td>
+				</tr>
+				<tr>
+					<td>
+						<%= f.fields_for :photos do |i| %>
+							<%= i.attachment_field :image, multiple: true, name: "photos_attributes[0][image][]" %>
+						<% end %>
+					</td>
+				</tr>
+				<tr><!-- enum -->
+					<td>
+						<%= f.radio_button :range, :closed %> <%= f.label :range, "非公開" %>
+						<%= f.radio_button :range, :open %> <%= f.label :range, "公開" %>
+					</td>
+				</tr>
+				<tr>
+					<td><%= f.submit "更新", class: "btn btn-success" %></td>
+				</tr>
+			</tbody>
+		</table>
+	<% end %>
 	</div>
 
-	<div class="col-xs-8">
+	<div class="photo-edit">
 		<% if @photos.any? %>
 			<%= form_with(url: album_photos_destroy_all_path(@album), method: 'delete') do %>
 				<% @photos.each do |photo| %>
 					<%= check_box_tag "deletes[#{photo.id}", photo.id %>
-					<%= attachment_image_tag photo, :image, format: "jpeg", size: "200x200" %>
+					<%= attachment_image_tag photo, :image, format: "jpeg", size: "200x200", class: "photo" %>
 				<% end %>
 				<%= submit_tag '選択した項目を削除', class: "btn btn-warning" %>
 			<% end %>
@@ -47,4 +47,5 @@
 			<p>写真がありません</p>
 		<% end %>
 	</div>
-</div>
+
+		<%= link_to "アルバムの削除はこちら", albums_confirm_path(album_id: @album.id) %>

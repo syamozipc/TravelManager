@@ -19,7 +19,7 @@ class User < ApplicationRecord
 
   validates :email, presence: true
   validates :name, presence: true
-  validates :introduction, length: { maximum: 500}
+  validates :introduction, length: { maximum: 100}
   validates :is_active, inclusion: {in: [true, false]}
 
   def followed_by?(user) #ログインユーザーにフォローされているかどうかの確認
