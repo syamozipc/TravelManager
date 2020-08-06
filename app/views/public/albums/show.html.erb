@@ -2,18 +2,20 @@
 
 <% if current_user != @album.user %>
 	<% if @album.liked_by?(current_user) %>
-		<%= link_to album_likes_path(@album), method: :delete, class: "like-btn" do %>
-			<i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+		<%= link_to album_likes_path(@album), method: :delete, class: "like-button" do %>
+			<i class="fas fa-heart red-color" aria-hidden="true"></i>
 			<%= @album.likes.count %>
 		<% end %>
 	<% else %>
-		<%= link_to album_likes_path(@album), method: :post, class: "like-btn" do %>
+		<%= link_to album_likes_path(@album), method: :post, class: "like-button" do %>
 			<i class="fa fa-heart-o" aria-hidden="true"></i>
 			<%= @album.likes.count %>
 		<% end %>
 	<% end %>
 <% else %>
-	<i class="fas fa-heart like-btn" aria-hidden="true" style="color: red;"><%= @album.likes.count %></i>
+	<i class="fas fa-heart like-button red-color" aria-hidden="true">
+		<span class="red-text"><%= @album.likes.count %></span>
+	</i>
 <% end %>
 
 <div class="flex">
@@ -22,7 +24,7 @@
 			<tr>
 				<td>
 					<%= link_to user_path(@album.user) do %>
-						<%= attachment_image_tag @album.user, :image, size: "30x30", format: "jpeg", fallback: "no_image.png", class: "profile-image" %>
+						<%= attachment_image_tag @album.user, :image, :fill, 50, 50, format: "jpeg", fallback: "no_image.png", class: "profile-image" %>
 						<%= @album.user.name %>
 					<% end %>
 				</td>
@@ -51,41 +53,28 @@
 				<td>更新日</td>
 				<td><%= @album.updated_at.strftime('%y/%m/%d') %></td>
 			</tr>
+			<% if current_user == @album.user %>
 			<tr>
 				<td colspan="2">
-					<% if current_user == @album.user %>
-						<%= link_to "編集", edit_album_path(@album), class: "btn btn-success" %>
+					<% if @album.range == "open" %>
+						<i class="fas fa-check green-color"></i>公開中
+					<% else %>
+						<i class="fas fa-lock gold-color"></i>非公開
 					<% end %>
 				</td>
 			</tr>
+			<tr>
+				<td colspan="2"><%= link_to "アルバムを編集", edit_album_path(@album), class: "green button" %></td>
+			</tr>
+			<% end %>
 		</table>
 
-		<table class="table">
-			<% @album.comments.each do |comment| %>
-			<tr>
-				<td>
-					<%= link_to user_path(comment) do %>
-						<%= attachment_image_tag comment.user, :image, size: "30x30", format: "jpeg", fallback: "no_image.png", class: "profile-image" %>
-					<% end %>
-				</td>
-				<td>
-					<%= link_to comment.user.name, user_path(comment) %><br>
-					<%= comment.content %> <%= link_to "削除", album_comment_path(comment.album_id, comment), method: :delete %>
-				</td>
-			</tr>
-			<% end %>
-		</table>
-		<div>
-			<%= form_with model: [@album, @comment] do |f| %>
-				<%= f.text_area :content, row:'3', size:"30x3", placeholder: "コメントを入力" %>
-				<%= f.submit "投稿" %>
-			<% end %>
-		</div>
+		<%= render 'public/comments/index', album: @album, comment: @comment %>
 	</div>
 
-	<div class="album-box">
+	<div class="photo-box">
 		<% @album.photos.each do |photo| %>
-			<%= attachment_image_tag photo, :image, size: "100x100", format: "jpeg", class: "photo" %>
+			<%= attachment_image_tag photo, :image, :fill, 200, 200, format: "jpeg", class: "photo" %>
 		<% end %>
 	</div>
 </div>

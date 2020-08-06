@@ -1,100 +1,47 @@
-<%= link_to "+", new_album_path, class: "new-btn" %>
+<%= link_to "+", new_album_path, class: "new-button" %>
 
 <h2 class="page-title"><%= @user.name %>さんのページ</h2>
 
 <div class=flex>
 	<div class="profile-box">
 		<table class="table">
-			<tbody>
-				<tr>
-					<td colspan="2">
-						<%= attachment_image_tag @user, :image, size: "100x100", format: "jpeg", fallback: "no_image.png", class: "profile-image" %>
-					</td>
-				<tr>
-				</tr>
-					<td>
-						<%= @user.name %>
-					</td>
-					<td>
-						<% if @user.is_active != true %>
-							退会済み
-						<% end %>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<%= @user.introduction %>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<%= link_to follows_user_path(@user) do %>
-							フォロー：<%= @user.followings.count %>
-						<% end %>
-					</td>
-					<td>
-						<%= link_to followers_user_path(@user) do %>
-							フォロワー：<%= @user.followers.count %>
-						<% end %>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<% if current_user != @user %>
-							<% if @user.followed_by?(current_user) %>
+	<tbody>
+		<tr>
+			<td colspan="2"><%= attachment_image_tag @user, :image, :fill, 100, 100, format: "jpeg", fallback: "no_image.png", class: "profile-image" %></td>
+		<tr>
+		</tr>
+			<td><%= @user.name %> <% if @user.is_active != true %> 退会済み <% end %></td>
+			<td><i class="fas fa-book"></i> <%= @user.albums.count %>件</td>
+		</tr>
+		<tr>
+			<td colspan="2"><%= @user.introduction %></td>
+		</tr>
+		<tr>
+			<td><%= link_to follows_user_path(@user) do %>フォロー：<%= @user.followings.count %><% end %></td>
+			<td><%= link_to followers_user_path(@user) do %>フォロワー：<%= @user.followers.count %><% end %>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<% if @user != current_user %>
+					<% if @user.followed_by?(current_user) %>
+						<%= link_to "フォロー中", user_relationships_path(@user), method: :delete, class: "blue button" %>
+					<% else %>
+						<%= link_to "フォローする", user_relationships_path(@user), method: :post, class: "gray button" %>
+					<% end %>
 
-								<%= link_to "フォロー済み", user_relationships_path(@user), method: :delete %>
-							<% else %>
-								<%= link_to "フォローする", user_relationships_path(@user), method: :post %>
-							<% end %>
-
-						<% else %>
-							<%= link_to "編集", edit_user_path(@user), class: "btn btn-success" %>
-						<% end %>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+				<% else %>
+					<%= link_to "ユーザー情報を編集", edit_user_path(@user), class: "green button" %>
+				<% end %>
+			</td>
+		</tr>
+	</tbody>
+</table>
 	</div>
 
 	<div class="album-box">
-				<% @albums.each do |album| %>
-				<div class="album">
-					<h4 class="album-title"><%= link_to album.title, album_path(album) %></h4>
-
-					<div class="icons">
-						<span class="icon">
-							<i class="far fa-images"></i>
-							<%= album.photos.count %>
-						</span>
-						<span class="icon">
-							<i class="far fa-comment-dots"></i>
-							<%= album.comments.count %>
-						</span>
-						<span class="icon">
-						<% if album.liked_by?(current_user) %>
-							<%= link_to album_likes_path(album), method: :delete do %>
-							<i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
-							<%= album.likes.count %>
-							<% end %>
-						<% else %>
-							<%= link_to album_likes_path(album), method: :post do %>
-							<i class="fa fa-heart-o" aria-hidden="true"></i>
-							<%= album.likes.count %>
-							<% end %>
-						<% end %>
-						</span>
-					</div>
-
-					<div>
-						<% if album.range == "closed" %>
-							<span class="album-bottom">非公開</span>
-						<% else %>
-							<span class="album-bottom">公開中</span>
-						<% end %>
-						<span class="album-bottom">by<%= link_to album.user.name, user_path(album.user) %></span>
-					</div>
-				</div>
-				<% end %>
+		<% @albums.each do |album| %>
+			<%= render 'public/albums/album', album: album %>
+		<% end %>
 	</div>
 </div>

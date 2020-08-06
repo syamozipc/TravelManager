@@ -1,0 +1,28 @@
+<%= link_to album_path(album), class: "album" do %>
+	<h4 class="album-title"><%= album.title %></h4>
+	<div class="icon-box">
+		<span class="icon">
+			<i class="far fa-images"></i>
+			<%= album.photos.count %>
+		</span>
+		<span class="icon">
+			<i class="far fa-comment-dots"></i>
+			<%= album.comments.count %>
+		</span>
+		<span class="icon">
+			<i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+			<span class="red-text"><%= album.likes.count %></span>
+		</span>
+	</div>
+	<div>
+		<% if album.user == current_user %>
+			<% if album.range == "closed" %>
+				<p class="album-bottom">非公開</p>
+			<% else %>
+				<p class="album-bottom">公開中</span>
+			<% end %>
+		<% else %>
+			<h4>by <%= album.user.name %></h4>
+		<% end %>
+	</div>
+<% end %>

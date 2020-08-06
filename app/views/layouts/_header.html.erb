@@ -3,17 +3,17 @@
 		<%= link_to "TravelManager", root_path, class: "logo" %>
 		<ul class="navbar navbar-right header-menu">
 			<% if admin_signed_in? %>
-				<li class="header-list"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "blue-button" %></li>
+				<li class="header-list"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "blue button" %></li>
 			<% elsif user_signed_in? %>
-				<li class="header-list"><%= link_to "マイページ", user_path(current_user), class: "blue-button" %></li>
-				<li class="header-list"><%= link_to "アルバム一覧", albums_path, class: "blue-button" %></li>
-				<li class="header-list"><%= link_to "ランキング", albums_ranking_path, class: "blue-button" %></li>
-				<li class="header-list"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "blue-button" %></li>
+				<li class="header-list"><%= link_to "マイページ", user_path(current_user), class: "blue button" %></li>
+				<li class="header-list"><%= link_to "アルバム一覧", albums_path, class: "blue button" %></li>
+				<li class="header-list"><%= link_to "ランキング", albums_ranking_path, class: "blue button" %></li>
+				<li class="header-list"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "blue button" %></li>
 			<% else %>
-				<li class="header-list"><%= link_to "新規登録", new_user_registration_path, class: "blue-button" %></li>
-				<li class="header-list"><%= link_to "ログイン", new_user_session_path, class: "blue-button" %></li>
-				<li class="header-list"><%= link_to "アルバム一覧", albums_path, class: "blue-button" %></li>
-				<li class="header-list"><%= link_to "ランキング", albums_ranking_path, class: "blue-button" %></li>
+				<li class="header-list"><%= link_to "新規登録", new_user_registration_path, class: "blue button" %></li>
+				<li class="header-list"><%= link_to "ログイン", new_user_session_path, class: "blue button" %></li>
+				<li class="header-list"><%= link_to "アルバム一覧", albums_path, class: "blue button" %></li>
+				<li class="header-list"><%= link_to "ランキング", albums_ranking_path, class: "blue button" %></li>
 			<% end %>
 				<li class="search-form">
 					<%= form_tag(searches_path, method: :get) do %>

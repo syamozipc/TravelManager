@@ -14,11 +14,7 @@
 						<td><%= f.collection_select(:destination_id, Destination.all, :id, :place, prompt: "渡航地域を選択してください") %></td>
 					</tr>
 					<tr>
-						<td>
-							<%= f.fields_for :photos do |i| %>
-								<%= i.attachment_field :image, multiple: true, name: "photos_attributes[0][image][]" %>
-							<% end %>
-						</td>
+						<td><%= f.attachment_field :photos_images, multiple: true, name: "photos_attributes[0][image][]" %></td>
 					</tr>
 					<tr><!-- enum -->
 						<td>

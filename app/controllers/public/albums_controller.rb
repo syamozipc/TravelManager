@@ -2,13 +2,34 @@ class Public::AlbumsController < ApplicationController
   def index
     @destinations = Destination.all
     if params[:destination_id]
-      @destination = @destinations.find(params[:destination_id])
-      @albums = Album.where(range: "open", destination_id: params[:destination_id]) #公開
+      @title = Destination.find(params[:destination_id]).place + "のアルバム一覧"
+      @albums = Album.where(destination_id: params[:destination_id]).publicly_open.recently_updated
     elsif params[:choice] == "follow"
-      @users = current_user.followings
+      @title = "フォロー中ユーザーのアルバム一覧"
+      @albums = []
+      current_user.followings.each do |user|
+        albums = user.albums.publicly_open
+        @albums.concat(albums)
+      end
+      @albums.sort_by!{|album| album.updated_at}.reverse!
+
     elsif params[:choice] == "like"
+      @title = "いいねしたアルバム一覧"
+      @albums = current_user.liked_albums.publicly_open.recently_updated
     else
-      @albums = Album.where(range: "open")
+      @title = "アルバム一覧"
+      @albums = Album.publicly_open.recently_updated
+    end
+  end
+
+  def ranking
+    @destinations = Destination.all
+    if params[:destination_id]
+      @title = Destination.find(params[:destination_id]).place + "のいいねランキング"
+      @albums = Destination.find(params[:destination_id]).albums.where(id: Like.group(:album_id).order('count(album_id)desc').limit(10).pluck(:album_id))
+    else
+      @title = "いいねランキング"
+      @albums = Album.find(Like.group(:album_id).order('count(album_id)desc').limit(10).pluck(:album_id))
     end
   end
 
@@ -58,18 +79,8 @@ class Public::AlbumsController < ApplicationController
     redirect_to user_path(current_user), notice: "アルバムを削除しました"
   end
 
-  def confirm #アルバム削除確認画面の表示
+  def confirm
     @album = Album.find_by(id: params[:album_id])
-  end
-
-  def ranking
-    @destinations = Destination.all
-    if params[:destination_id]
-      @destination = @destinations.find(params[:destination_id])
-      @ranks = @destination.album.find(Like.group(:album_id).order('count(album_id)desc').limit(10).pluck(:album_id))
-    else
-      @ranks = Album.find(Like.group(:album_id).order('count(album_id)desc').limit(10).pluck(:album_id))
-    end
   end
 
   private

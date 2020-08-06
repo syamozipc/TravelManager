@@ -1,7 +1,11 @@
 class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @albums = @user.albums
+    if @user == current_user
+      @albums = @user.albums
+    else
+      @albums = @user.albums.where(range: "open")
+    end
   end
 
   def edit

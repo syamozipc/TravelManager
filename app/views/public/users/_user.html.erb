@@ -1,0 +1,33 @@
+<% users.each do |user| %>
+	<%= link_to user_path(user), class: "user-search" do %>
+		<table class="table">
+			<tbody>
+				<tr>
+					<td colspan="2"><%= attachment_image_tag user, :image, :fill, 100, 100, format: "jpeg", fallback: "no_image.png", class: "profile-image" %></td>
+				</tr>
+					<td><%= user.name %> <% if user.is_active != true %> 退会済み <% end %></td>
+					<td><i class="fas fa-book"></i> <%= user.albums.count %>件</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<%= user.introduction %>
+						<% if user.introduction.nil? %>自己紹介がありません<% end %>
+					</td>
+				</tr>
+				<tr>
+					<td><%= link_to follows_user_path(user) do %>フォロー：<%= user.followings.count %><% end %></td>
+					<td><%= link_to followers_user_path(user) do %>フォロワー：<%= user.followers.count %><% end %></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<% if current_user != user %>
+							<% if user.followed_by?(current_user) %><span class="blue button">フォロー中</span>
+							<% else %><span class="gray button">未フォロー</span>
+							<% end %>
+						<% end %>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	<% end %>
+<% end %>

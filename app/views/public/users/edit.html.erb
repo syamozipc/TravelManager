@@ -1,4 +1,5 @@
 <div class="row">
+	<div class="col-md-4 col-md-offset-4">
 	<h4>プロフィール変更</h4>
 	<%= form_with(model: @user, url:user_path) do |f| %>
 		<table class="table">
@@ -6,29 +7,30 @@
 				<tr>
 					<td><%= f.label :画像 %></td>
 					<td>
-						<%= attachment_image_tag @user, :image, size: "100x100", format: "jpeg", fallback: "no_image.png" %><br>
-						<%= f.attachment_field :image, placeholder: "画像を選択してください" %>
+						<%= attachment_image_tag @user, :image, :fill, 100, 100, format: "jpeg", fallback: "no_image.png", class: "profile-image" %><br>
+						<%= f.attachment_field :image, placeholder: "画像" %>
 					</td>
 				</tr>
 				<tr>
 					<td><%= f.label :ユーザー名 %></td>
-					<td><%= f.text_field :name %></td>
+					<td><%= f.text_field :name, size: "30" %></td>
 				</tr>
 				<tr>
 					<td><%= f.label :自己紹介 %></td>
-					<td><%= f.text_area :introduction %></td>
+					<td><%= f.text_area :introduction, size: "40x5" %></td>
 				</tr>
 				<tr>
 					<td><%= f.label :メールアドレス %></td>
-					<td><%= f.text_field :email %></td>
+					<td><%= f.text_field :email, size: "30" %></td>
 				</t>
 				<tr>
-					<td><%= f.submit "更新", class: "btn btn-info" %></td>
+					<td><%= f.submit "更新", class: "blue button" %></td>
 				</tr>
 			</tbody>
 		</table>
 	<% end %>
 
-	<%= link_to "パスワードの変更はこちら", edit_user_registration_path, class: "btn btn-success" %>
-	<%= link_to "退会", users_unsubscribe_path, class: "btn btn-danger" %>
+	<%= link_to "パスワードの変更はこちら", edit_user_registration_path, class: "green button" %>
+	<%= link_to "退会はこちら", users_unsubscribe_path, class: "gray button" %>
+	</div>
 </div>

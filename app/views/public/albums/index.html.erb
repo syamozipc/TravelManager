@@ -1,133 +1,24 @@
-<div class="row">
-	<div class="col-xs-3">
-		<p>渡航先</p>
+<h2 class="page-title"><%= @title %></h2>
+
+<div class="flex">
+
+	<div class="profile-box">
 		<table class="table">
 			<tbody>
-				<tr>
-					<td><%= link_to "一覧", albums_path %></td>
-				</tr>
-				<tr>
-					<td><%= link_to "フォロー", albums_path(choice: "follow") %></td>
-				</tr>
-				<tr>
-					<td><%= link_to "いいねしたアルバム", albums_path(choice: "like") %></td>
-				</tr>
+				<tr><td><%= link_to "一覧", albums_path %></td></tr>
+				<tr><td><%= link_to "フォロー", albums_path(choice: "follow") %></td></tr>
+				<tr><td><%= link_to "いいねしたアルバム", albums_path(choice: "like") %></td></tr>
 				<% @destinations.each do |destination| %>
-				<tr>
-					<td><%= link_to destination.place, albums_path(destination_id: destination.id) %></td>
-				</tr>
+				<tr><td><%= link_to destination.place, albums_path(destination_id: destination.id) %></td></tr>
 				<% end %>
 			</tbody>
 		</table>
 	</div>
 
-	<div class="col-xs-9">
-		<% if params[:destination_id] %>
-			<h4><%= @destination.place %>の投稿一覧</h4>
-		<% else %>
-			<h4>投稿一覧</h4>
+	<div class="album-box">
+		<% @albums.each do |album| %>
+			<%= render 'public/albums/album', album: album %>
 		<% end %>
-		<table>
-			<thead>
-				<tr>
-					<th>タイトル</th>
-					<th>写真枚数</th>
-					<th>ユーザー名</th>
-					<th></th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				<% if params[:choice] == "follow" %>
-	        		<% @users.each do |user| %>
-	        			<% user.albums.where(range: "open").each do |album| %>
-			        		<tr class="album">
-								<td><%= link_to album.title, album_path(album.user) %></td>
-								<td>
-									<i class="far fa-images"></i>
-									<%= album.photos.count %>
-								</td>
-								<td><%= link_to album.user.name, user_path(album.user) %></td>
-								<td>
-									<% if album.liked_by?(current_user) %>
-										<%= link_to album_likes_path(album), method: :delete do %>
-										<i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
-										<%= album.likes.count %>
-										<% end %>
-									<% else %>
-										<%= link_to album_likes_path(album), method: :post do %>
-										<i class="fa fa-heart-o" aria-hidden="true"></i>
-										<%= album.likes.count %>
-										<% end %>
-									<% end %>
-								</td>
-								<td>
-									<i class="far fa-comment-dots"></i>
-									<%= album.comments.count %>
-								</td>
-							</tr>
-						<% end %>
-					<% end %>
-
-				<% elsif params[:choice] == "like" %>
-	        		<% current_user.liked_albums.where(range: "open").each do |album| %>
-		        		<tr class="album">
-							<td><%= link_to album.title, album_path(album.user) %></td>
-							<td>
-								<i class="far fa-images"></i>
-								<%= album.photos.count %>
-							</td>
-							<td><%= link_to album.user.name, user_path(album.user) %></td>
-							<td>
-								<% if album.liked_by?(current_user) %>
-									<%= link_to album_likes_path(album), method: :delete do %>
-									<i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
-									<%= album.likes.count %>
-									<% end %>
-								<% else %>
-									<%= link_to album_likes_path(album), method: :post do %>
-									<i class="fa fa-heart-o" aria-hidden="true"></i>
-									<%= album.likes.count %>
-									<% end %>
-								<% end %>
-							</td>
-							<td>
-								<i class="far fa-comment-dots"></i>
-								<%= album.comments.count %>
-							</td>
-						</tr>
-					<% end %>
-
-				<% else %>
-					<% @albums.each do |album| %>
-					<tr class="album">
-						<td><%= link_to album.title, album_path(album.user) %></td>
-						<td>
-							<i class="far fa-images"></i>
-							<%= album.photos.count %>
-						</td>
-						<td><%= link_to album.user.name, user_path(album.user) %></td>
-						<td>
-							<% if album.liked_by?(current_user) %>
-								<%= link_to album_likes_path(album), method: :delete do %>
-								<i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
-								<%= album.likes.count %>
-								<% end %>
-							<% else %>
-								<%= link_to album_likes_path(album), method: :post do %>
-								<i class="fa fa-heart-o" aria-hidden="true"></i>
-								<%= album.likes.count %>
-								<% end %>
-							<% end %>
-						</td>
-						<td>
-							<i class="far fa-comment-dots"></i>
-							<%= album.comments.count %>
-						</td>
-					</tr>
-					<% end %>
-				<% end %>
-			</tbody>
-		</table>
 	</div>
+
 </div>

@@ -1,8 +1,13 @@
-<h4>本当にアルバムを削除しますか？</h4>
-<p>
-	アルバムは削除せずに非公開にできます。<br>
-	アルバムを削除した場合は、写真・コメント・いいねも同時に削除されます
-</p>
-
-<%= link_to "アルバム編集画面へ戻る", edit_album_path(@album), class: "btn btn-success" %>
-<%= link_to "アルバムを削除する", album_path(@album), method: :delete, class: "btn btn-danger" %>
+<div class="row">
+	<div class="col-md-4 col-md-offset-4">
+		<h4>本当にアルバムを削除しますか？</h4>
+		<p>
+			削除せずに非公開する事で、あなた以外の閲覧は出来なくなります。<br>
+			削除した場合は、写真・コメント・いいねも同時に削除されます
+		</p>
+		<div class="delete-box">
+			<%= link_to "アルバム編集画面へ戻る", edit_album_path(@album), class: "orange button" %>
+			<%= link_to "アルバムを削除する", album_path(@album), method: :delete, class: "gray button", data:{confirm: "本当に削除しますか？"} %>
+		</div>
+	</div>
+</div>
