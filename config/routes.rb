@@ -27,6 +27,8 @@ Rails.application.routes.draw do
     	resources :photos, only: [:create, :destroy]
     end
   	resources :searches, only: [:index]
+    resources :messages, :only => [:create]
+    resources :rooms, :only => [:create, :show, :index]
   end
 
   devise_for :admin, controllers: {
