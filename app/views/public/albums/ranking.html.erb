@@ -19,7 +19,7 @@
 
 	<div class="album-box">
 		<% @albums.each.with_index(1) do |album, i| %>
-			<h4><%= i %>位</h4>
+			<h4 class="rank-number"><%= i %>位</h4>
 			<%= render 'public/albums/album', album: album %>
 		<% end %>
 	</div>

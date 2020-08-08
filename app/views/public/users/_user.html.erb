@@ -1,33 +1,52 @@
-<% users.each do |user| %>
-	<%= link_to user_path(user), class: "user-search" do %>
-		<table class="table">
-			<tbody>
-				<tr>
-					<td colspan="2"><%= attachment_image_tag user, :image, :fill, 100, 100, format: "jpeg", fallback: "no_image.png", class: "profile-image" %></td>
-				</tr>
-					<td><%= user.name %> <% if user.is_active != true %> 退会済み <% end %></td>
-					<td><i class="fas fa-book"></i> <%= user.albums.count %>件</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<%= user.introduction %>
-						<% if user.introduction.nil? %>自己紹介がありません<% end %>
-					</td>
-				</tr>
-				<tr>
-					<td><%= link_to follows_user_path(user) do %>フォロー：<%= user.followings.count %><% end %></td>
-					<td><%= link_to followers_user_path(user) do %>フォロワー：<%= user.followers.count %><% end %></td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<% if current_user != user %>
-							<% if user.followed_by?(current_user) %><span class="blue button">フォロー中</span>
-							<% else %><span class="gray button">未フォロー</span>
-							<% end %>
+<div class="profile-box">
+	<table class="table">
+		<tbody>
+			<tr>
+				<td colspan="2">
+					<%= link_to user_path(user) do %>
+						<%= attachment_image_tag user, :image, :fill, 100, 100, format: "jpeg", fallback: "no_image.png", size: "100x100", class: "profile-image" %>
+					<% end %>
+				</td>
+			<tr>
+			</tr>
+				<td colspan="2">
+					<%= link_to user_path(user) do %>
+						<%= user.name %>
+						<% if user.is_active != true %>
+							退会済み
+						<% else %>
+							<i class="fas fa-book"></i> <%= user.albums.count %>件
 						<% end %>
+					<% end %>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<%= user.introduction %>
+					<% if user.introduction.nil? %>
+						自己紹介がありません
+					<% end %>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<%= link_to follows_user_path(user) do %>フォロー：<%= user.followings.count %><% end %>
+				</td>
+				<td>
+					<%= link_to followers_user_path(user) do %>フォロワー：<%= user.followers.count %><% end %>
+				</td>
+			</tr>
+			<tr>
+				<% if user == current_user %>
+					<td colspan="2">
+						<%= link_to "ユーザー情報を編集", edit_user_path(user), class: "green button" %>
 					</td>
-				</tr>
-			</tbody>
-		</table>
-	<% end %>
-<% end %>
+				<% elsif %>
+					<td colspan="2">
+						<%= render 'public/relationships/form', user: user %>
+					</td>
+				<% end %>
+			</tr>
+		</tbody>
+	</table>
+</div>

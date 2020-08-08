@@ -1,4 +1,8 @@
-<h2 class="page-title">あなたをフォローしているユーザー</h2>
+<h2 class="page-title">フォローされているユーザー</h2>
 <div class="flex">
-	<%= render 'public/users/user', users: @users %>
+	<% @users.each do |user| %>
+		<div class="follow_<%= user.id %>">
+			<%= render 'public/users/user', user: user %>
+		</div>
+	<% end %>
 </div>

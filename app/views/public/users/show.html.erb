@@ -3,41 +3,9 @@
 <h2 class="page-title"><%= @user.name %>さんのページ</h2>
 
 <div class=flex>
-	<div class="profile-box">
-		<table class="table">
-	<tbody>
-		<tr>
-			<td colspan="2"><%= attachment_image_tag @user, :image, :fill, 100, 100, format: "jpeg", fallback: "no_image.png", class: "profile-image" %></td>
-		<tr>
-		</tr>
-			<td><%= @user.name %> <% if @user.is_active != true %> 退会済み <% end %></td>
-			<td><i class="fas fa-book"></i> <%= @user.albums.count %>件</td>
-		</tr>
-		<tr>
-			<td colspan="2"><%= @user.introduction %></td>
-		</tr>
-		<tr>
-			<td><%= link_to follows_user_path(@user) do %>フォロー：<%= @user.followings.count %><% end %></td>
-			<td><%= link_to followers_user_path(@user) do %>フォロワー：<%= @user.followers.count %><% end %>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<% if @user != current_user %>
-					<% if @user.followed_by?(current_user) %>
-						<%= link_to "フォロー中", user_relationships_path(@user), method: :delete, class: "blue button" %>
-					<% else %>
-						<%= link_to "フォローする", user_relationships_path(@user), method: :post, class: "gray button" %>
-					<% end %>
-
-				<% else %>
-					<%= link_to "ユーザー情報を編集", edit_user_path(@user), class: "green button" %>
-				<% end %>
-			</td>
-		</tr>
-	</tbody>
-</table>
-	</div>
+	<div class="follow_<%= @user.id %>">
+			<%= render 'public/users/user', user: @user %>
+		</div>
 
 	<div class="album-box">
 		<% @albums.each do |album| %>

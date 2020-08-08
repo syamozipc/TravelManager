@@ -1,21 +1,19 @@
 <table class="table">
-	<% album.comments.each do |comment| %>
+	<p><%= comments.count %>件のコメント</p>
+	<% comments.each do |comment| %>
 	<tr>
 		<td>
-			<%= link_to user_path(comment) do %>
-				<%= attachment_image_tag comment.user, :image, size: "30x30", format: "jpeg", fallback: "no_image.png", class: "profile-image" %>
+			<%= link_to user_path(comment.user) do %>
+				<%= attachment_image_tag comment.user, :image, :fill, 30, 30, format: "jpeg", fallback: "no_image.png", size: "30x30", class: "profile-image" %>
 			<% end %>
 		</td>
 		<td>
-			<%= link_to comment.user.name, user_path(comment) %><br>
-			<%= comment.content %> <%= link_to "削除", album_comment_path(comment.album_id, comment), method: :delete %>
+			<%= link_to comment.user.name, user_path(comment.user) %><br>
+			<%= comment.content %>
+			<% if comment.user == current_user %>
+				<%= link_to "削除", album_comment_path(comment.album_id, comment), method: :delete, remote: true %>
+			<% end %>
 		</td>
 	</tr>
 	<% end %>
 </table>
-<div>
-	<%= form_with model: [album, comment] do |f| %>
-		<%= f.text_area :content, row:'3', size:"30x3", placeholder: "コメントを入力" %>
-		<%= f.submit "投稿" %>
-	<% end %>
-</div>

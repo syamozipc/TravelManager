@@ -1,17 +1,26 @@
-<div class="row">
-	<div class="col-md-4 col-md-offset-4">
-	<h1>TravelManagerへようこそ!</h1>
-
-	<p>
-		このサイトは、あなたの旅行写真をアルバムに整理することが出来るSNSサイトです。<br>
-		アルバムは公開/非公開を設定でき、公開のアルバムは他のユーザーも閲覧に来ます。<br>
-		コメントやいいねをつける事も可能ですので、<br>
-		気になった方には積極的に交流してみましょう<br>
-		お互い、旅行写真を通じて仲を深められるはずです。<br>
-	</p>
-
+<h1 class="page-title">TravelManagerへようこそ!</h1>
+<div class="slider">
+	<div class="slider-item slide-image1">
+		<p class="slider-text1">
+			このサイトでは、あなたの旅行写真をアルバムに整理することが出来ます。<br>
+			あなただけの思い出をアルバムにしましょう！
+		</p>
+	</div>
+	<div class="slider-item slide-image2">
+		<p class="slider-text2">
+			公開されているアルバムは閲覧できます。<br>
+			ランキングやアルバム一覧から見てみましょう！
+		</p>
+		</section>
+	</div><div class="slider-item slide-image3">
+		<p class="slider-text3">
+			SNS機能を利用して他のユーザー交流と交流してみましょう！<br>
+			気になったユーザーはフォローしたり、アルバムにいいねをつけられます。
+		</p>
+	</div>
+</div>
+<div class="top-button">
 	<%= link_to "新規登録", new_user_registration_path, class: "green button" %>
 	<%= link_to "ログイン", new_user_session_path, class: "blue button" %>
 	<%= link_to "ゲストユーザー", albums_path, class: "orange button" %>
-	</div>
 </div>

@@ -1,5 +1,12 @@
 <h2 class="page-title">"<%= @word %>"の検索結果</h2>
 <div class="flex">
-	<%= render 'public/users/user', users: @users %>
-	<%= render 'public/albums/album', albums: @albums %>
+	<% @users.each do |user| %>
+		<div class="follow_<%= user.id %>">
+			<%= render 'public/users/user', user: user %>
+		</div>
+	<% end %>
+
+	<% @albums.each do |album| %>
+		<%= render 'public/albums/album', album: album %>
+	<% end %>
 </div>

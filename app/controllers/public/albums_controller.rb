@@ -35,6 +35,8 @@ class Public::AlbumsController < ApplicationController
 
   def show
     @album = Album.find(params[:id])
+    @user = @album.user
+    @comments = @album.comments.recently_updated
     @comment = Comment.new
   end
 

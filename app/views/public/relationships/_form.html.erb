@@ -1,0 +1,7 @@
+<% if user_signed_in? && user != current_user %>
+	<% if user.followed_by?(current_user) %>
+		<%= link_to "フォロー中", user_relationships_path(user), method: :delete, remote: true, class: "blue button", data:{confirm: "フォローを解除しますか？"}   %>
+	<% else %>
+		<%= link_to "フォローする", user_relationships_path(user), method: :post, remote: true, class: "gray button" %>
+	<% end %>
+<% end %>

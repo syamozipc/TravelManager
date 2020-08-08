@@ -4,12 +4,13 @@ class Public::CommentsController < ApplicationController
   	comment = current_user.comments.new(comment_params)
   	comment.album_id = album.id
   	comment.save
-  	redirect_to request.referrer
+    @comments = album.comments.recently_updated
   end
 
   def destroy
-    Album.find(params[:album_id]).comments.find(params[:id]).destroy
-    redirect_to request.referrer
+    album = Album.find(params[:album_id])
+    @comments = album.comments.recently_updated
+    @comments.find(params[:id]).destroy
   end
 
   private

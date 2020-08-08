@@ -7,7 +7,7 @@
 				<tr>
 					<td><%= f.label :画像 %></td>
 					<td>
-						<%= attachment_image_tag @user, :image, :fill, 100, 100, format: "jpeg", fallback: "no_image.png", class: "profile-image" %><br>
+						<%= attachment_image_tag @user, :image, :fill, 100, 100, format: "jpeg", fallback: "no_image.png", size: "100x100", class: "profile-image" %><br>
 						<%= f.attachment_field :image, placeholder: "画像" %>
 					</td>
 				</tr>
