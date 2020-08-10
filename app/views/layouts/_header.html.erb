@@ -1,30 +1,33 @@
 <header>
 	<nav class="navbar navbar-fixtd-top">
 		<%= link_to "TravelManager", root_path, class: "logo" %>
-		<ul class="navbar navbar-right header-menu">
+		<ul class="navbar navbar-right">
 			<% if admin_signed_in? %>
-				<li class="header-list"><%= link_to "管理者トップ", admin_homes_top_path, class: "blue button" %></li>
-				<li class="header-list"><%= link_to "会員からのお問い合わせ", admin_inquiries_path, class: "blue button" %></li>
-				<li class="header-list"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "blue button" %></li>
+				<li class="header-list"><%= link_to "トップ", admin_homes_top_path, class: "button" %></li>
+				<li class="header-list"><%= link_to "会員からのお問い合わせ", admin_inquiries_path, class: "button" %></li>
+				<li class="header-list"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "button" %></li>
 			<% elsif user_signed_in? %>
-				<li class="header-list"><%= link_to "マイページ", user_path(current_user), class: "blue button" %></li>
-				<li class="header-list"><%= link_to "アルバム一覧", albums_path, class: "blue button" %></li>
-				<li class="header-list"><%= link_to "ランキング", albums_ranking_path, class: "blue button" %></li>
-				<li class="header-list"><%= link_to "チャット", rooms_path, class: "blue button" %></li>
-				<li class="header-list"><%= link_to "お問い合わせ", new_inquiry_path, class: "blue button" %></li>
-				<li class="header-list"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "blue button" %></li>
+				<li class="header-list"><%= link_to "マイページ", user_path(current_user), class: "button" %></li>
+				<li class="header-list"><%= link_to "アルバム一覧", albums_path, class: "button" %></li>
+				<li class="header-list"><%= link_to "ランキング", albums_ranking_path, class: "button" %></li>
+				<li class="header-list"><%= link_to "DM一覧", rooms_path, class: "button" %></li>
+				<li class="header-list"><%= link_to "お問い合わせ", new_inquiry_path, class: "button" %></li>
+				<li class="header-list"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "button" %></li>
 			<% else %>
-				<li class="header-list"><%= link_to "新規登録", new_user_registration_path, class: "blue button" %></li>
-				<li class="header-list"><%= link_to "ログイン", new_user_session_path, class: "blue button" %></li>
-				<li class="header-list"><%= link_to "アルバム一覧", albums_path, class: "blue button" %></li>
-				<li class="header-list"><%= link_to "ランキング", albums_ranking_path, class: "blue button" %></li>
+				<li class="header-list"><%= link_to "新規登録", new_user_registration_path, class: "button" %></li>
+				<li class="header-list"><%= link_to "ログイン", new_user_session_path, class: "button" %></li>
+				<li class="header-list"><%= link_to "アルバム一覧", albums_path, class: "button" %></li>
+				<li class="header-list"><%= link_to "ランキング", albums_ranking_path, class: "button" %></li>
+				<li class="search-form">
 			<% end %>
+			<% unless admin_signed_in? %>
 				<li class="search-form">
 					<%= form_tag(searches_path, method: :get) do %>
 						<%= text_field_tag(:word) %>
 						<%= submit_tag '検索' %>
 					<% end %>
 				</li>
+			<% end %>
 		</ul>
 	</nav>
 </header>

@@ -1,4 +1,4 @@
-/*
+/*/*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
@@ -31,6 +31,14 @@
 	padding: 0 5%;
 }
 
+.centerize{
+	text-align: center;
+}
+
+.right-position{
+	text-align: right;
+}
+
 header{
 	background-color: lightskyblue;
 	height: 70px;
@@ -58,32 +66,32 @@ header{
 .slider-item{
 	width: 100%;
 	height: 400px;
-	background-size: cover;
 	text-align: center;
+	background-size: cover;
 }
 
-.slide-image1{
+.slider-image1{
 	background-image: image-url('beach.png');
 	background-position: center;
 }
 
-.slide-image2{
+.slider-image2{
 	background-image: image-url('album.png');
 	background-position: top;
 }
 
-.slide-image3{
+.slider-image3{
 	background-image: image-url('like.png');
 	background-position: bottom;
 }
 
 .slider-text1{
-	margin-top: 320px;
+	padding-top: 320px;
 	font-size: 18px;
 }
 
 .slider-text2, .slider-text3 {
-	margin-top: 20px;
+	padding-top: 20px;
 	font-size: 18px;
 }
 
@@ -96,11 +104,6 @@ header{
         color: rgb(60, 60, 60) !important;
       }
     }
- }
-
- .top-button{
- 	text-align: center;
- 	margin-top: 60px;
  }
 
  .admin-path{
@@ -173,7 +176,20 @@ header{
 }
 
 .chat-button{
-	margin-left: 8px;
+	margin-left: 60px;
+}
+
+.rank-number{
+  display: inline-block;
+  position: absolute;
+  box-sizing: border-box;
+  padding: 0 12px;
+  margin: 0;
+  line-height: 30px;
+  font-size: 18px;
+  color: white;
+  background: #70c7ff;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.12);
 }
 
 .red-color{
@@ -198,7 +214,7 @@ header{
 	border-left: solid 5px #ffaf58;
 }
 
-.profile-box{
+.left-sidebar{
 	width: 230px;
 	margin-right: 80px;
 }
@@ -207,12 +223,11 @@ header{
 	border-radius: 50%;
 }
 
-.album-box{
+.albums-box{
 	width: 75%;
 	display: flex;
 	flex-wrap: wrap;
 	padding: 20px;
-
 }
 
 .album{
@@ -224,14 +239,7 @@ header{
 	background-color: #d6ebff;
 	box-shadow: 0 0 0 10px #d6ebff;
 	border: dashed 2px white;
-}
-
-.rank-number{
-	width: 30px;
-	height: 30px;
-	line-height: 30px;
-	background: #9DFF6E;
-	border-radius: 50%;
+	position: relative;
 }
 
 .album-title{
@@ -252,7 +260,9 @@ header{
 }
 
 .icon-box{
-	margin: 20px auto;
+	position: absolute;
+	top: 150px;
+	left: 10px;
 }
 
 .icon{
@@ -260,12 +270,10 @@ header{
 	font-size: 20px;
 }
 
-.red-text{
-	color:red;
-}
-
-.album-bottom{
-	margin: 0 10px;
+.range-icon, .album-user{
+	position: absolute;
+	top: 200px;
+	left: 30px;
 }
 
 .photo-box{
@@ -301,17 +309,12 @@ header{
 	box-shadow: 5px 10px 20px rgba(0,0,0,0.25);
 }
 
-.delete-confirm{
-	text-align: center;
-	margin-bottom: 30px;
-}
-
-.delete-box{
-	margin: 30px auto;
-}
-
 input[type=checkbox] {
   transform: scale(2);
+}
+
+.chat-show-button{
+	margin-left: 400px;
 }
 
 footer{

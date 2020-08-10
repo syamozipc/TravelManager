@@ -2,20 +2,28 @@
 
 <div class="flex">
 
-	<div class="profile-box">
-		<table class="table">
+	<div class="left-sidebar">
+		<table class="table centerize">
 			<tbody>
-				<tr><td><%= link_to "一覧", albums_path %></td></tr>
-				<tr><td><%= link_to "フォロー", albums_path(choice: "follow") %></td></tr>
-				<tr><td><%= link_to "いいねしたアルバム", albums_path(choice: "like") %></td></tr>
+				<tr>
+					<td><%= link_to "一覧", albums_path %></td>
+				</tr>
+				<tr>
+					<td><%= link_to "フォロー", albums_path(choice: "follow") %></td>
+				</tr>
+				<tr>
+					<td><%= link_to "いいねしたアルバム", albums_path(choice: "like") %></td>
+				</tr>
 				<% @destinations.each do |destination| %>
-				<tr><td><%= link_to destination.place, albums_path(destination_id: destination.id) %></td></tr>
+					<tr>
+						<td><%= link_to destination.place, albums_path(destination_id: destination.id) %></td>
+					</tr>
 				<% end %>
 			</tbody>
 		</table>
 	</div>
 
-	<div class="album-box">
+	<div class="albums-box">
 		<% @albums.each do |album| %>
 			<%= render 'public/albums/album', album: album %>
 		<% end %>

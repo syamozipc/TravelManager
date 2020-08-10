@@ -13,6 +13,6 @@ class Admin::InquiriesController < ApplicationController
 
   def update
   	Inquiry.find(params[:id]).update(deal: "completed")
-  	redirect_to admin_inquiries_path
+  	redirect_to admin_inquiries_path, notice: "[対応が完了しました]"
   end
 end

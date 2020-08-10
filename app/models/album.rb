@@ -5,7 +5,6 @@ class Album < ApplicationRecord
 	has_many :comments, dependent: :destroy
 	has_many :likes, dependent: :destroy
 	has_many :photos, dependent: :destroy
-	# accepts_nested_attributes_for :photos
 	accepts_attachments_for :photos, attachment: :image
 	belongs_to :user
 	belongs_to :destination

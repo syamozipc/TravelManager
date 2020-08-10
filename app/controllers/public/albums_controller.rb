@@ -55,7 +55,7 @@ class Public::AlbumsController < ApplicationController
           @album.photos.create!(image: image)
         end
     end
-    redirect_to albums_path
+    redirect_to album_path(@album)
   end
 
   def edit

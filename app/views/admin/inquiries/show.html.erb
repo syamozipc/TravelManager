@@ -8,16 +8,20 @@
 					<td><%= @inquiry.title %></td>
 				</tr>
 				<tr>
+					<td>問合せ日時：</td>
+					<td><%= @inquiry.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+				</tr>
+				<tr>
 					<td>内容：</td>
 					<td><%= @inquiry.content %></td>
 				</tr>
 				<tr>
 					<td>対応状況：</td>
-					<td>
+					<td>未対応
 						<% if @inquiry.deal == "completed" %>
 							対応済
 						<% else %>
-							<%= link_to "対応済に変更する", admin_inquiry_path(@inquiry), method: :patch %>
+							<%= link_to "対応済に変更する", admin_inquiry_path(@inquiry), method: :patch, class: "button green", data:{confirm: "対応済にしてよろしいですか？"} %>
 						<% end %>
 					</td>
 				</tr>

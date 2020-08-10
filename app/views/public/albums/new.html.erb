@@ -1,32 +1,6 @@
 <div class="row">
-	<div class="col-xs-4 col-xs-offset-4">
-		<h4>アルバム新規投稿</h4>
-		<%= form_with(model: @album, url: albums_path) do |f| %>
-			<table class="table">
-				<tbody>
-					<tr>
-						<td><%= f.text_field :title, placeholder: "タイトル" %></td>
-					</tr>
-					<tr>
-						<td><%= f.text_area :discription, placeholder: "アルバムの説明" %></td>
-					</tr>
-					<tr>
-						<td><%= f.collection_select(:destination_id, Destination.all, :id, :place, prompt: "渡航地域を選択してください") %></td>
-					</tr>
-					<tr>
-						<td><%= f.attachment_field :photos_images, multiple: true, name: "photos_attributes[0][image][]" %></td>
-					</tr>
-					<tr>
-						<td>
-							<%= f.radio_button :range, :closed %> <%= f.label :range, "非公開" %>
-							<%= f.radio_button :range, :open %> <%= f.label :range, "公開" %>
-						</td>
-					</tr>
-					<tr>
-						<td><%= f.submit "新規投稿" %></td>
-					</tr>
-				</tbody>
-			</table>
-		<% end %>
+	<h2 class="page-title">アルバム新規投稿</h2>
+	<div class="col-md-6 col-md-offset-3">
+		<%= render 'public/albums/form', album: @album %>
 	</div>
 </div>

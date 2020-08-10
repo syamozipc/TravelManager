@@ -1,27 +1,27 @@
 <h1 class="page-title">TravelManagerへようこそ!</h1>
 <div class="slider">
-	<div class="slider-item slide-image1">
+	<div class="slider-item slider-image1">
 		<p class="slider-text1">
 			このサイトでは、あなたの旅行写真をアルバムに整理することが出来ます。<br>
 			あなただけの思い出をアルバムにしましょう！
 		</p>
 	</div>
-	<div class="slider-item slide-image2">
+	<div class="slider-item slider-image2">
 		<p class="slider-text2">
 			公開されているアルバムは閲覧できます。<br>
 			ランキングやアルバム一覧から見てみましょう！<br>
 			もちろんあなたのアルバムを公開しておくことも可能です。
 		</p>
 		</section>
-	</div><div class="slider-item slide-image3">
+	</div><div class="slider-item slider-image3">
 		<p class="slider-text3">
 			SNS機能を利用して他のユーザーと交流してみましょう！<br>
-			気になったユーザーにはフォローやチャット機能、<br>
+			気になったユーザーにはフォローやDM機能、<br>
 			アルバムにはコメントやいいねをつけられます。
 		</p>
 	</div>
-</div>
-<div class="top-button">
+</div><br>
+<div class="centerize">
 	<%= link_to "新規登録", new_user_registration_path, class: "green button" %>
 	<%= link_to "ログイン", new_user_session_path, class: "blue button" %>
 	<%= link_to "ゲストユーザー", albums_path, class: "orange button" %>

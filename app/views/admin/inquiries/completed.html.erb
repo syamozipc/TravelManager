@@ -5,8 +5,9 @@
 			<tbody>
 				<% @inquiries.each do |inquiry| %>
 				<tr>
-					<td><%= inquiry.user.name %>様</td>
+					<td><span class="button gray">対応済</span><%= inquiry.user.name %>様</td>
 					<td><%= inquiry.title %></td>
+					<td><%= inquiry.created_at.strftime("%Y-%m-%d %H:%M") %></td>
 					<td><%= link_to "詳細へ", admin_inquiry_path(inquiry) %></td>
 				</tr>
 				<% end %>

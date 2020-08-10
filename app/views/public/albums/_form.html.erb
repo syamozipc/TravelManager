@@ -1,0 +1,32 @@
+<%= form_with(model: album) do |f| %>
+	<table class="table">
+		<tbody>
+			<tr>
+				<td><%= f.label :タイトル %></td>
+				<td><%= f.text_field :title, size: "70" %></td>
+			</tr>
+			<tr>
+				<td><%= f.label :アルバムの説明 %></td>
+				<td><%= f.text_area :discription, size: "70x10" %></td>
+			</tr>
+			<tr>
+				<td><%= f.label :渡航先 %></td>
+				<td><%= f.collection_select(:destination_id, Destination.all, :id, :place, prompt: "渡航地域を選択してください") %></td>
+			</tr>
+			<tr>
+				<td><%= f.label :写真選択 %></td>
+				<td><%= f.attachment_field :photos_images, multiple: true, name: "photos_attributes[0][image][]" %></td>
+			</tr>
+			<tr>
+				<td><%= f.label :公開範囲 %></td>
+				<td>
+					<%= f.radio_button :range, :closed %> <%= f.label :range, "非公開" %>
+					<%= f.radio_button :range, :open %> <%= f.label :range, "公開" %>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="centerize"><%= f.submit "保存", class: "orange button" %></td>
+			</tr>
+		</tbody>
+	</table>
+<% end %>

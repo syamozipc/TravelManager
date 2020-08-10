@@ -2,8 +2,8 @@
 
 <div class="flex">
 
-	<div class="profile-box">
-		<table class="table">
+	<div class="left-sidebar">
+		<table class="table centerize">
 			<tbody>
 				<tr>
 					<td><%= link_to "全体のランキング", albums_ranking_path %></td>
@@ -17,7 +17,7 @@
 		</table>
 	</div>
 
-	<div class="album-box">
+	<div class="albums-box">
 		<% @albums.each.with_index(1) do |album, i| %>
 			<h4 class="rank-number"><%= i %>位</h4>
 			<%= render 'public/albums/album', album: album %>

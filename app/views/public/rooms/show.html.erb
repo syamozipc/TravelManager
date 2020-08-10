@@ -1,6 +1,6 @@
 <% @entries.each do |e| %>
     <% if current_user != e.user %>
-        <h2 class="page-title"><%= e.user.name %>さんとのチャットルーム</h2>
+        <h2 class="page-title"><%= e.user.name %>さんとのDM</h2>
     <% end %>
 <% end %>
 <div class="row">
@@ -15,7 +15,7 @@
                         <%= attachment_image_tag m.user, :image, :fill, 30, 30, format: "jpeg", fallback: "no_image.png", size: "30x30", class: "profile-image" %>
                         <%= m.content %>
                     </td>
-                    <td><%= m.created_at.strftime("%Y-%m-%d %H:%M")%></td>
+                    <td><%= m.created_at.strftime("%m/%d %H:%M")%></td>
                 </tr>
                  <% end %>
             <% else %>
@@ -30,6 +30,12 @@
         <%= f.hidden_field :room_id, value: @room.id %>
         <br>
         <%= f.submit "投稿する", class: "green button" %>
+        
+        <% @entries.each do |e| %>
+        <% if current_user != e.user %>
+            <%= link_to e.user.name + "さんのページへ", user_path(e.user), class: "blue button chat-show-button" %>
+        <% end %>
+    <% end %>
     <% end %>
     </div>
 </div>
