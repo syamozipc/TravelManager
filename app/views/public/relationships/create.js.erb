@@ -1,2 +1,1 @@
 $(".follow_<%= @user.id %>").html("<%= j(render 'public/users/user',  user: @user ) %>")
-$(".album-show-follow").html("<%= j(render 'public/relationships/form',  user: @user ) %>")

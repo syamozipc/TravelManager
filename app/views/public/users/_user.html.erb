@@ -36,17 +36,19 @@
 					<%= link_to followers_user_path(user) do %>フォロワー：<%= user.followers.count %><% end %>
 				</td>
 			</tr>
-			<tr>
-				<% if user == current_user %>
+			<% if user == current_user %>
+				<tr>
 					<td colspan="2">
 						<%= link_to "ユーザー情報を編集", edit_user_path(user), class: "green button" %>
 					</td>
-				<% elsif %>
+				</tr>
+			<% else %>
+				<tr>
 					<td colspan="2">
 						<%= render 'public/relationships/form', user: user %>
 					</td>
-				<% end %>
-			</tr>
+				</tr>
+			<% end %>
 		</tbody>
 	</table>
 </div>

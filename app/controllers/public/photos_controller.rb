@@ -10,7 +10,7 @@ class Public::PhotosController < ApplicationController
 	  checked_data = params[:deletes].keys
 	  Photo.destroy(checked_data)
 	  redirect_to request.referrer
-	else
+	elsif params[:select] == "all"
 	  Photo.where(album_id: params[:album_id]).destroy_all
 	  redirect_to request.referrer
 	end

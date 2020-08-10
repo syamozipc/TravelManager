@@ -9,8 +9,7 @@ class Public::UsersController < ApplicationController
 
     @currentUserEntry=Entry.where(user_id: current_user.id)
     @userEntry=Entry.where(user_id: @user.id)
-    if @user.id == current_user.id
-    else
+    if @user.id != current_user.id
       @currentUserEntry.each do |cu|
         @userEntry.each do |u|
           if cu.room_id == u.room_id then
@@ -19,13 +18,12 @@ class Public::UsersController < ApplicationController
           end
         end
       end
-      if @isRoom
-      else
+      if @isRoom != true
         @room = Room.new
         @entry = Entry.new
       end
     end
-  end
+    end
 
   def edit
     @user = User.find(params[:id])
@@ -56,7 +54,7 @@ class Public::UsersController < ApplicationController
   def unsubscribe
   end
 
-  def withdraw #論理削除
+  def withdraw
     current_user.update(is_active: false)
     current_user.albums.destroy_all
     reset_session

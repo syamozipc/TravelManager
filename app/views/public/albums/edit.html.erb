@@ -18,7 +18,7 @@
 					<tr>
 						<td colspan="2"><%= f.attachment_field :photos_images, multiple: true, name: "photos_attributes[0][image][]" %></td>
 					</tr>
-					<tr><!-- enum -->
+					<tr>
 						<td colspan="2">
 							<%= f.radio_button :range, :closed %> <%= f.label :range, "非公開" %>
 							<%= f.radio_button :range, :open %> <%= f.label :range, "公開" %>
@@ -37,11 +37,11 @@
 <div class="photo-edit-box">
 	<%= form_with(url: album_photos_destroy_all_path(@album), method: 'delete') do %>
 		<% @photos.each do |photo| %>
-			<%= check_box_tag "deletes[#{photo.id}", photo.id %>
+			<%= check_box_tag "deletes[#{photo.id}]", photo.id %>
 			<%= attachment_image_tag photo, :image, format: "jpeg", size: "200x200", class: "photo-edit" %>
 		<% end %>
 		<p><%= submit_tag '選択した写真を削除', class: "orange button", data:{confirm: "本当に削除しますか？"} %></p>
 	<% end %>
 </div>
-<p class="delete-confirm"><%= link_to "全ての写真を削除", album_photos_destroy_all_path(@album), method: :delete, data:{confirm: "本当に全て削除しますか？"}, class: "gray button" %></p>
+<p class="delete-confirm"><%= link_to "全ての写真を削除", album_photos_destroy_all_path(@album, select: "all"), method: :delete, data:{confirm: "本当に全て削除しますか？"}, class: "gray button" %></p>
 

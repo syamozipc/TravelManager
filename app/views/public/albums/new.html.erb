@@ -16,7 +16,7 @@
 					<tr>
 						<td><%= f.attachment_field :photos_images, multiple: true, name: "photos_attributes[0][image][]" %></td>
 					</tr>
-					<tr><!-- enum -->
+					<tr>
 						<td>
 							<%= f.radio_button :range, :closed %> <%= f.label :range, "非公開" %>
 							<%= f.radio_button :range, :open %> <%= f.label :range, "公開" %>

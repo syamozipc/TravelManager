@@ -68,13 +68,13 @@ header{
 }
 
 .slide-image2{
-	background-image: image-url('like.png');
-	background-position: bottom;
+	background-image: image-url('album.png');
+	background-position: top;
 }
 
 .slide-image3{
-	background-image: image-url('album.png');
-	background-position: top;
+	background-image: image-url('like.png');
+	background-position: bottom;
 }
 
 .slider-text1{
@@ -101,6 +101,11 @@ header{
  .top-button{
  	text-align: center;
  	margin-top: 60px;
+ }
+
+ .admin-path{
+ 	text-align: right;
+ 	margin-right: 20px;
  }
 
 .button{
@@ -140,7 +145,7 @@ header{
 
 .new-button{
   position: fixed;
-  bottom: 20px;
+  top: 100px;
   right: 20px;
   display: inline-block;
   text-decoration: none;
@@ -161,10 +166,14 @@ header{
 
 .like-button{
 	position: fixed;
-	bottom: 20px;
+	top: 100px;
 	right: 20px;
 	font-size: 40px;
 	color: red;
+}
+
+.chat-button{
+	margin-left: 8px;
 }
 
 .red-color{

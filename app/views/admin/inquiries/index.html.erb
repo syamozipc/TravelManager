@@ -1,0 +1,18 @@
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<h4>未対応の問合せ一覧</h4>
+		<table class="table">
+			<tbody>
+				<% @inquiries.each do |inquiry| %>
+				<tr>
+					<td><%= inquiry.user.name %>様</td>
+					<td><%= inquiry.title %></td>
+					<td><%= link_to "詳細へ", admin_inquiry_path(inquiry) %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+
+		<%= link_to "対応済みのお問い合わせ", admin_inquiries_completed_path %>
+	</div>
+</div>

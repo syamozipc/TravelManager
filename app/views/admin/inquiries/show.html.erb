@@ -1,0 +1,27 @@
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<h4>お問い合わせ詳細</h4>
+		<table class="table">
+			<tbody>
+				<tr>
+					<td>件名：</td>
+					<td><%= @inquiry.title %></td>
+				</tr>
+				<tr>
+					<td>内容：</td>
+					<td><%= @inquiry.content %></td>
+				</tr>
+				<tr>
+					<td>対応状況：</td>
+					<td>
+						<% if @inquiry.deal == "completed" %>
+							対応済
+						<% else %>
+							<%= link_to "対応済に変更する", admin_inquiry_path(@inquiry), method: :patch %>
+						<% end %>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

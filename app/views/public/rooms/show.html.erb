@@ -1,26 +1,35 @@
-<h1>DM</h1>
-
-<h4>参加者</h4>
 <% @entries.each do |e| %>
-    <h5><strong><a href="/users/<%= e.user.id %>"><%= e.user.email%>さん</a></strong></h5>
-<% end %>
-
-<hr>
-<% if @messages.present? %>
-    <% @messages.each do |m| %>
-        <strong><%= m.content %></strong>
-        <small>by <strong><a href="/users/<%= m.user_id %>"><%= m.user.email %>さん</a></strong></small>
-        <hr>
+    <% if current_user != e.user %>
+        <h2 class="page-title"><%= e.user.name %>さんとのチャットルーム</h2>
     <% end %>
-<% else %>
-    <h3 class="text-center">メッセージはまだありません</h3>
 <% end %>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
 
-<%= form_for @message do |f| %>
-    <%= f.text_field :content, :placeholder => "メッセージを入力して下さい" , :size => 70 %>
-    <%= f.hidden_field :room_id, :value => @room.id %>
-    <br>
-    <%= f.submit "投稿する" %>
-<% end %>
+    <table class="table">
+        <tbody>
+            <% if @messages.present? %>
+                <% @messages.each do |m| %>
+                <tr>
+                    <td>
+                        <%= attachment_image_tag m.user, :image, :fill, 30, 30, format: "jpeg", fallback: "no_image.png", size: "30x30", class: "profile-image" %>
+                        <%= m.content %>
+                    </td>
+                    <td><%= m.created_at.strftime("%Y-%m-%d %H:%M")%></td>
+                </tr>
+                 <% end %>
+            <% else %>
+                <h4>メッセージはまだありません</h4>
+            <% end %>
+        </tbody>
+    </table>
 
-<%= link_to "マイページへ戻る", user_path(current_user) %>
+
+    <%= form_for @message do |f| %>
+        <%= f.text_field :content, placeholder: "メッセージを入力して下さい" , size: 70 %>
+        <%= f.hidden_field :room_id, value: @room.id %>
+        <br>
+        <%= f.submit "投稿する", class: "green button" %>
+    <% end %>
+    </div>
+</div>

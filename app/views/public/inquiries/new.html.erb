@@ -1,0 +1,20 @@
+<div class="row">
+	<div class="col-xs-4 col-xs-offset-4">
+		<h4>お問い合わせフォーム</h4>
+		<%= form_with(model: @inquiry, local: true, url: inquiries_confirm_path) do |f| %>
+			<table class="table">
+				<tbody>
+					<tr>
+						<td><%= f.text_field :title, placeholder: "件名", size: "40" %></td>
+					</tr>
+					<tr>
+						<td><%= f.text_area :content, placeholder: "お問い合わせ内容をご入力ください", size: "40x5" %></td>
+					</tr>
+					<tr>
+						<td><%= f.submit "確認画面へ", class: "green button" %></td>
+					</tr>
+				</tbody>
+			</table>
+		<% end %>
+	</div>
+</div>
