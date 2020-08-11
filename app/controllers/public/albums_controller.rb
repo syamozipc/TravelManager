@@ -1,9 +1,10 @@
 class Public::AlbumsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :confirm, :destroy]
   def index
     @destinations = Destination.all
     if params[:destination_id]
       @title = Destination.find(params[:destination_id]).place + "のアルバム一覧"
-      @albums = Album.where(destination_id: params[:destination_id]).publicly_open.recently_updated
+      @albums = Album.where(destination_id: params[:destination_id]).publicly_open.recently_updated.page(params[:page]).per(15)
     elsif params[:choice] == "follow"
       @title = "フォロー中ユーザーのアルバム一覧"
       @albums = []
@@ -12,13 +13,14 @@ class Public::AlbumsController < ApplicationController
         @albums.concat(albums)
       end
       @albums.sort_by!{|album| album.updated_at}.reverse!
+      @albums = Kaminari.paginate_array(@albums).page(params[:page]).per(15)
 
     elsif params[:choice] == "like"
       @title = "いいねしたアルバム一覧"
-      @albums = current_user.liked_albums.publicly_open.recently_updated
+      @albums = current_user.liked_albums.publicly_open.recently_updated.page(params[:page]).per(15)
     else
       @title = "アルバム一覧"
-      @albums = Album.publicly_open.recently_updated
+      @albums = Album.publicly_open.recently_updated.page(params[:page]).per(15)
     end
   end
 
@@ -26,17 +28,19 @@ class Public::AlbumsController < ApplicationController
     @destinations = Destination.all
     if params[:destination_id]
       @title = Destination.find(params[:destination_id]).place + "のいいねランキング"
-      @albums = Destination.find(params[:destination_id]).albums.where(id: Like.group(:album_id).order('count(album_id)desc').limit(10).pluck(:album_id))
+      @albums = Destination.find(params[:destination_id]).albums.where(id: Like.group(:album_id).order('count(album_id)desc').limit(5).pluck(:album_id)).publicly_open
     else
       @title = "いいねランキング"
-      @albums = Album.find(Like.group(:album_id).order('count(album_id)desc').limit(10).pluck(:album_id))
+      @albums = Album.where(id: Like.group(:album_id).order('count(album_id)desc').limit(10).pluck(:album_id)).publicly_open
     end
   end
 
   def show
+    flash[:notice] = "ログイン済ユーザーのみアルバムにいいね・コメントできます" unless user_signed_in?
     @album = Album.find(params[:id])
+    @photos = @album.photos.page(params[:page]).per(40)
     @user = @album.user
-    @comments = @album.comments.recently_updated
+    @comments = @album.comments.recently_updated.page(params[:page]).per(10)
     @comment = Comment.new
   end
 
@@ -48,41 +52,51 @@ class Public::AlbumsController < ApplicationController
   def create
     @album = Album.new(album_params)
     @album.user_id = current_user.id
-    @album.save
-    photo = params[:photos_attributes]
-    if photo.present?
-        photo[:"0"][:image].each do |image|
-          @album.photos.create!(image: image)
-        end
+    if @album.save
+      photo = params[:photos_attributes]
+      if photo.present?
+          photo[:"0"][:image].each do |image|
+            @album.photos.create!(image: image)
+          end
+      end
+      redirect_to album_path(@album)
+    else
+      render :new
     end
-    redirect_to album_path(@album)
   end
 
   def edit
     @album = Album.find(params[:id])
+    if @album.user != current_user
+      redirect_to user_path(current_user)
+    end
     @album.photos.build
-    @photos = Photo.where(album_id: params[:id])
+    @photos = Photo.where(album_id: params[:id]).page(params[:page]).per(40)
   end
 
   def update
     @album = Album.find(params[:id])
-    @album.update(album_params)
-    photo = params[:photos_attributes]
-    if photo.present?
-        photo[:"0"][:image].each do |image|
-          @album.photos.create!(image: image)
-        end
+    if @album.update(album_params)
+      photo = params[:photos_attributes]
+      if photo.present?
+          photo[:"0"][:image].each do |image|
+            @album.photos.create!(image: image)
+          end
+      end
+      redirect_to album_path(@album)
+    else
+      @photos = Photo.where(album_id: params[:id])
+      render :edit
     end
-    redirect_to album_path(@album)
+  end
+
+  def confirm
+    @album = Album.find_by(id: params[:album_id])
   end
 
   def destroy
     Album.find(params[:id]).destroy
     redirect_to user_path(current_user), notice: "アルバムを削除しました"
-  end
-
-  def confirm
-    @album = Album.find_by(id: params[:album_id])
   end
 
   private

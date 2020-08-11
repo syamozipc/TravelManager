@@ -1,10 +1,16 @@
 class Public::CommentsController < ApplicationController
+  before_action :authenticate_user!
   def create
-  	album = Album.find(params[:album_id])
-  	comment = current_user.comments.new(comment_params)
-  	comment.album_id = album.id
-  	comment.save
-    @comments = album.comments.recently_updated
+  	@album = Album.find(params[:album_id])
+  	@comment = current_user.comments.new(comment_params)
+  	@comment.album_id = @album.id
+  	if @comment.save
+      @comments = @album.comments.recently_updated
+    else
+      @user = @album.user
+      @comments = @album.comments.recently_updated
+      render 'public/albums/show'
+    end
   end
 
   def destroy

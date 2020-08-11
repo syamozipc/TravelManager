@@ -1,10 +1,11 @@
 <header>
-	<nav class="navbar navbar-fixtd-top">
-		<%= link_to "TravelManager", root_path, class: "logo" %>
-		<ul class="navbar navbar-right">
+	<nav class="nav">
+		<%= link_to "TravelManager", root_path, class: "logo", data: {"turbolinks"=>false} %>
+		<ul header-bar>
 			<% if admin_signed_in? %>
-				<li class="header-list"><%= link_to "トップ", admin_homes_top_path, class: "button" %></li>
+				<li class="header-list"><%= link_to "管理者トップ", admin_homes_top_path, class: "button" %></li>
 				<li class="header-list"><%= link_to "会員からのお問い合わせ", admin_inquiries_path, class: "button" %></li>
+				<li class="header-list"><%= link_to "渡航先編集", admin_destinations_path, class: "button" %></li>
 				<li class="header-list"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "button" %></li>
 			<% elsif user_signed_in? %>
 				<li class="header-list"><%= link_to "マイページ", user_path(current_user), class: "button" %></li>

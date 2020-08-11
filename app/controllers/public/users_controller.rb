@@ -1,28 +1,32 @@
 class Public::UsersController < ApplicationController
+  before_action :authenticate_user!, only: [:edit, :update, :unsubscribe, :withdraw]
   def show
+    flash[:notice] = "ログイン済ユーザーのみフォロー・DMができます" unless user_signed_in?
     @user = User.find(params[:id])
     if @user == current_user
-      @albums = @user.albums.recently_updated
+      @albums = @user.albums.recently_updated.page(params[:page]).per(15)
     else
-      @albums = @user.albums.publicly_open.recently_updated
+      @albums = @user.albums.publicly_open.recently_updated.page(params[:page]).per(15)
     end
 
-    @currentUserEntry=Entry.where(user_id: current_user.id)
-    @userEntry=Entry.where(user_id: @user.id)
-    if @user.id != current_user.id
-      @currentUserEntry.each do |cu|
-        @userEntry.each do |u|
-          if cu.room_id == u.room_id then
-            @isRoom = true
-            @roomId = cu.room_id
+    if user_signed_in?
+      @currentUserEntry = Entry.where(user_id: current_user.id)
+      @userEntry = Entry.where(user_id: @user.id)
+      if @user.id != current_user.id
+        @currentUserEntry.each do |cu|
+          @userEntry.each do |u|
+            if cu.room_id == u.room_id
+              @isRoom = true
+              @roomId = cu.room_id
+            end
           end
         end
+        if @isRoom != true
+          @room = Room.new
+          @entry = Entry.new
+        end
       end
-      if @isRoom != true
-        @room = Room.new
-        @entry = Entry.new
       end
-    end
     end
 
   def edit
@@ -48,7 +52,7 @@ class Public::UsersController < ApplicationController
 
   def followers
     user = User.find(params[:id])
-    @users= user.followers
+    @users = user.followers
   end
 
   def unsubscribe

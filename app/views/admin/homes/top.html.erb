@@ -1,6 +1,4 @@
-<div class="row">
-	<div class="col-md-2 col-md-offset-5">
-		<h4>未対応の問合せ：<%= @inquiries.count %>件</h4>
-		<p><%= link_to "一覧を見る", admin_inquiries_path %></p>
-	</div>
+<div class="centerize">
+	<h2>未対応の問合せ：<%= @inquiries.count %>件</h2><br>
+	<p><%= link_to "一覧を見る", admin_inquiries_path, class: "blue button" %></p><br>
 </div>

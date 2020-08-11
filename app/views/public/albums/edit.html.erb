@@ -1,8 +1,11 @@
 <div class="row">
 	<h2 class="page-title">アルバム詳細変更</h2>
+	<%= render 'layouts/errors', resource: @album %>
 	<div class="col-md-6 col-md-offset-3">
 		<%= render 'public/albums/form', album: @album %>
-		<p class="centerize"><%= link_to "アルバムの削除はこちら", albums_confirm_path(album_id: @album.id), class: "gray button" %></p><br>
+		<p class="centerize">
+			<%= link_to "アルバムの削除はこちら", albums_confirm_path(album_id: @album.id), class: "gray button" %>
+		</p><br>
 	</div>
 </div>
 
@@ -10,7 +13,7 @@
 	<%= form_with(url: album_photos_destroy_all_path(@album), method: 'delete') do %>
 		<% @photos.each do |photo| %>
 			<%= check_box_tag "deletes[#{photo.id}]", photo.id %>
-			<%= link_to(image_tag(attachment_url(photo, :image, :fill, 200, 200, format: "jpeg"), class: "photo"), attachment_url(photo, :image, :fill, 500, 500, format: "jpeg"), data: {lightbox: "example-set", title: photo.album.title}) %>
+			<%= link_to(image_tag(attachment_url(photo, :image, :fill, 200, 200, format: "jpeg"), class: "photo-edit"), attachment_url(photo, :image, :fill, 500, 500, format: "jpeg"), data: {lightbox: "example-set", title: photo.album.title}) %>
 		<% end %>
 		<p  class="centerize">
 			<%= submit_tag '選択した写真を削除', class: "orange button", data:{confirm: "本当に削除しますか？"} %>
@@ -20,4 +23,4 @@
 		</p>
 	<% end %>
 </div>
-
+<div class="centerize"><%= paginate @photos %></div>

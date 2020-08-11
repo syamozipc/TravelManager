@@ -11,7 +11,7 @@
 							<%= attachment_image_tag entry.user, :image, :fill, 30, 30, format: "jpeg", fallback: "no_image.png", size: "30x30", class: "profile-image" %>
 							<%= entry.user.name %>
 						<% end %>
-						<%= entry.room.messages.recently_updated.take.try(:content) %>
+						最新のメッセージ：<%= entry.room.messages.recently_updated.take.try(:content) %>
 					</td>
 				</tr>
 				<% end %>

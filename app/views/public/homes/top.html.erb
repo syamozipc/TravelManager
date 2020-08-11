@@ -12,8 +12,8 @@
 			ランキングやアルバム一覧から見てみましょう！<br>
 			もちろんあなたのアルバムを公開しておくことも可能です。
 		</p>
-		</section>
-	</div><div class="slider-item slider-image3">
+	</div>
+	<div class="slider-item slider-image3">
 		<p class="slider-text3">
 			SNS機能を利用して他のユーザーと交流してみましょう！<br>
 			気になったユーザーにはフォローやDM機能、<br>
@@ -21,9 +21,12 @@
 		</p>
 	</div>
 </div><br>
-<div class="centerize">
-	<%= link_to "新規登録", new_user_registration_path, class: "green button" %>
-	<%= link_to "ログイン", new_user_session_path, class: "blue button" %>
-	<%= link_to "ゲストユーザー", albums_path, class: "orange button" %>
-</div>
-<p class="admin-path"><%= link_to "管理者ログイン", new_admin_session_path %></p>
+
+<% unless user_signed_in? %>
+	<div class="centerize">
+		<%= link_to "新規登録", new_user_registration_path, class: "green button" %>
+		<%= link_to "ログイン", new_user_session_path, class: "blue button" %>
+		<%= link_to "ゲストユーザー", albums_path, class: "orange button" %>
+	</div>
+	<p class="right-position"><%= link_to "管理者ログイン", new_admin_session_path %></p>
+<% end %>

@@ -1,4 +1,6 @@
-<%= link_to "+", new_album_path, class: "new-button" %>
+<% if @user == current_user %>
+	<%= link_to "+", new_album_path, class: "new-button" %>
+<% end %>
 
 <h2 class="page-title"><%= @user.name %>さんのページ</h2>
 
@@ -8,7 +10,7 @@
 			<%= render 'public/users/user', user: @user %>
 		</div>
 		<div class="chat-button">
-			<% if @user != current_user %>
+			<% if @user != current_user && @user.is_active == true && user_signed_in? %>
 				<% if @isRoom == true %>
 					<%= link_to "チャットへ", room_path(@roomId),class: "orange button" %>
 				<% else %>
@@ -25,7 +27,9 @@
 
 	<div class="albums-box">
 		<% @albums.each do |album| %>
-			<%= render 'public/albums/album', album: album %>
+			<%= link_to album_path(album), class: "album" do %>
+				<%= render 'public/albums/album', album: album %>
+			<% end %>
 		<% end %>
 	</div>
 </div>

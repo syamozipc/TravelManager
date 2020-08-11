@@ -1,19 +1,20 @@
 <h2 class="page-title"><%= @title %></h2>
 
 <div class="flex">
-
 	<div class="left-sidebar">
 		<table class="table centerize">
 			<tbody>
 				<tr>
 					<td><%= link_to "一覧", albums_path %></td>
 				</tr>
+				<% if user_signed_in? %>
 				<tr>
 					<td><%= link_to "フォロー", albums_path(choice: "follow") %></td>
 				</tr>
 				<tr>
 					<td><%= link_to "いいねしたアルバム", albums_path(choice: "like") %></td>
 				</tr>
+				<% end %>
 				<% @destinations.each do |destination| %>
 					<tr>
 						<td><%= link_to destination.place, albums_path(destination_id: destination.id) %></td>
@@ -25,8 +26,10 @@
 
 	<div class="albums-box">
 		<% @albums.each do |album| %>
-			<%= render 'public/albums/album', album: album %>
+			<%= link_to album_path(album), class: "album" do %>
+				<%= render 'public/albums/album', album: album %>
+			<% end %>
 		<% end %>
 	</div>
-
 </div>
+<div class="centerize"><%= paginate @albums %></div>

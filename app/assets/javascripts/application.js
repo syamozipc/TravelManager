@@ -18,7 +18,6 @@
 //= require_tree .
 
 $(function() {
-	alert("あああ")
   $('.slider').slick({
       dots: true,
       autoplay: true,

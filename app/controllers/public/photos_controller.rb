@@ -1,10 +1,5 @@
 class Public::PhotosController < ApplicationController
-  def create
-  end
-
-  def destroy
-  end
-
+  before_action :authenticate_user!
   def destroy_all
   	if params[:deletes]
 	  checked_data = params[:deletes].keys

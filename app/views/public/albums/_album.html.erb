@@ -1,28 +1,26 @@
-<%= link_to album_path(album), class: "album" do %>
-	<h4 class="album-title"><%= album.title %></h4>
-	<div class="icon-box">
-		<span class="icon">
-			<i class="far fa-images"></i>
-			<%= album.photos.count %>
-		</span>
-		<span class="icon">
-			<i class="far fa-comment-dots"></i>
-			<%= album.comments.count %>
-		</span>
-		<span class="icon">
-			<i class="fas fa-heart red-color"></i>
-			<span class="red-color"><%= album.likes.count %></span>
-		</span>
-	</div>
-	<div>
-		<% if album.user == current_user %>
-			<% if album.range == "open" %>
-				<p class="range-icon"><i class="fas fa-check green-color"></i>公開中</p>
-			<% else %>
-				<p class="range-icon"><i class="fas fa-lock gold-color"></i>非公開</p>
-			<% end %>
+<h4 class="album-title"><%= album.title %></h4>
+<div class="icon-box">
+	<span class="icon">
+		<i class="far fa-images"></i>
+		<%= album.photos.count %>
+	</span>
+	<span class="icon">
+		<i class="far fa-comment-dots"></i>
+		<%= album.comments.count %>
+	</span>
+	<span class="icon">
+		<i class="fas fa-heart red-color"></i>
+		<span class="red-color"><%= album.likes.count %></span>
+	</span>
+</div>
+<div>
+	<% if album.user == current_user %>
+		<% if album.range == "open" %>
+			<p class="range-icon"><i class="fas fa-check green-color"></i>公開中</p>
 		<% else %>
-			<h4 class="album-user">by <%= album.user.name %></h4>
+			<p class="range-icon"><i class="fas fa-lock gold-color"></i>非公開</p>
 		<% end %>
-	</div>
-<% end %>
+	<% else %>
+		<h4 class="album-user">by <%= album.user.name %></h4>
+	<% end %>
+</div>

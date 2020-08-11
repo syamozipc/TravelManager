@@ -7,12 +7,12 @@ class User < ApplicationRecord
 
   attachment :image
 
-  has_many :albums
-  has_many :comments
-  has_many :likes
+  has_many :albums, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
   has_many :liked_albums, through: :likes, source: :album
-  has_many :inquiries
-  # フォロー機能
+  has_many :inquiries, dependent: :destroy
+
   has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id
   has_many :followings, through: :active_relationships, source: :follower
   has_many :passive_relationships,class_name: "Relationship", foreign_key: :follower_id
@@ -22,8 +22,8 @@ class User < ApplicationRecord
   has_many :entries, dependent: :destroy
   has_many :rooms, through: :entries
 
-  validates :email, presence: true
-  validates :name, presence: true
+  validates :email, presence: true, length: { maximum: 50}
+  validates :name, presence: true, length: { maximum: 20}
   validates :introduction, length: { maximum: 100}
   validates :is_active, inclusion: {in: [true, false]}
 

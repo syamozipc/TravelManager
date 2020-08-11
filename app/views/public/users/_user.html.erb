@@ -30,10 +30,14 @@
 			</tr>
 			<tr>
 				<td>
-					<%= link_to follows_user_path(user) do %>フォロー：<%= user.followings.count %><% end %>
+					<%= link_to follows_user_path(user) do %>
+						フォロー：<%= user.followings.count %>
+					<% end %>
 				</td>
 				<td>
-					<%= link_to followers_user_path(user) do %>フォロワー：<%= user.followers.count %><% end %>
+					<%= link_to followers_user_path(user) do %>
+						フォロワー：<%= user.followers.count %>
+					<% end %>
 				</td>
 			</tr>
 			<% if user == current_user %>

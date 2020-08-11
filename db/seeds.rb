@@ -25,7 +25,7 @@ Destination.create!(
 	place: 'アフリカ'
 	)
 Destination.create!(
-	place: '北中米'
+	place: '北米・中米'
 	)
 Destination.create!(
 	place: '南米'

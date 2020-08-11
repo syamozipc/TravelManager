@@ -1,10 +1,11 @@
 class Admin::InquiriesController < ApplicationController
+  before_action :authenticate_admin!
   def index
-  	@inquiries = Inquiry.where(deal: "backlog")
+  	@inquiries = Inquiry.where(deal: "backlog").page(params[:page]).per(10)
   end
 
   def completed
-  	@inquiries = Inquiry.where(deal: "completed").recently_updated
+  	@inquiries = Inquiry.where(deal: "completed").recently_updated.page(params[:page]).per(10)
   end
 
   def show

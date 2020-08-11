@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="col-xs-4 col-xs-offset-4">
+	<div class="col-xs-4 col-xs-offset-4 centerize">
 		<h4>入力内容確認</h4>
 		<%= form_with(model: @inquiry, local: true, url: inquiries_path) do |f| %>
 		<table class="table">
@@ -20,7 +20,7 @@
 					<td>
 						<%= f.hidden_field :title, value: @inquiry.title %>
 						<%= f.hidden_field :content, value: @inquiry.content %>
-						<%= f.submit "入力画面へ戻る", name: 'back', class: "green button" %>
+						<%= f.submit "入力画面へ戻る", name: 'back', class: "orange button" %>
 					</td>
 				</tr>
 				<tr>

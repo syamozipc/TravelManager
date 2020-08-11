@@ -31,12 +31,20 @@
 	padding: 0 5%;
 }
 
+.flex-search{
+	display: flex;
+	flex-wrap: wrap;
+	width: 80%;
+	margin: 0 auto;
+}
+
 .centerize{
 	text-align: center;
 }
 
 .right-position{
 	text-align: right;
+	margin-right: 20px;
 }
 
 header{
@@ -44,9 +52,18 @@ header{
 	height: 70px;
 }
 
+.nav{
+	display: flex;
+	justify-content: flex-end;
+	margin: 0 40px;
+}
+.nav > :first-child{
+	margin-right: auto;
+}
+
 .logo{
 	color: white;
-	font-size: 20px;
+	font-size: 25px;
 }
 
 .header-list{
@@ -104,11 +121,6 @@ header{
         color: rgb(60, 60, 60) !important;
       }
     }
- }
-
- .admin-path{
- 	text-align: right;
- 	margin-right: 20px;
  }
 
 .button{
@@ -176,19 +188,18 @@ header{
 }
 
 .chat-button{
-	margin-left: 60px;
+	margin-left: 70px;
 }
 
-.rank-number{
-  display: inline-block;
+.rank-icon{
   position: absolute;
-  box-sizing: border-box;
+  top: 0;
+  left: 0;
   padding: 0 12px;
-  margin: 0;
   line-height: 30px;
   font-size: 18px;
   color: white;
-  background: #70c7ff;
+  background: #FD9339;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.12);
 }
 
@@ -216,7 +227,7 @@ header{
 
 .left-sidebar{
 	width: 230px;
-	margin-right: 80px;
+	margin: 0 40px 50px 10px;
 }
 
 .profile-image{
@@ -228,6 +239,8 @@ header{
 	display: flex;
 	flex-wrap: wrap;
 	padding: 20px;
+	position: relative;
+	margin-left: 30px;
 }
 
 .album{
@@ -243,7 +256,7 @@ header{
 }
 
 .album-title{
-	margin-top: 30px;
+	margin-top: 50px;
 	color: #505050;
 	padding: 0.5em;
 	display: inline-block;
@@ -284,6 +297,7 @@ header{
 	background-color: #d6ebff;
 	box-shadow: 0px 0px 0px 10px #d6ebff;
 	border: dashed 2px white;
+	margin-left: 30px;
 }
 
 .photo{
@@ -309,12 +323,12 @@ header{
 	box-shadow: 5px 10px 20px rgba(0,0,0,0.25);
 }
 
-input[type=checkbox] {
-  transform: scale(2);
+.search-box-height{
+	margin-bottom: 50vh;
 }
 
-.chat-show-button{
-	margin-left: 400px;
+input[type=checkbox] {
+  transform: scale(2);
 }
 
 footer{

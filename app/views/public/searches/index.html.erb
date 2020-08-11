@@ -1,12 +1,18 @@
 <h2 class="page-title">"<%= @word %>"の検索結果</h2>
-<div class="flex">
-	<% @users.each do |user| %>
-		<div class="follow_<%= user.id %>">
-			<%= render 'public/users/user', user: user %>
-		</div>
-	<% end %>
+<% if @word == "" %>
+	<h4 class="centerize search-box-height">キーワードを入力しましょう</h4>
+<% else %>
+	<div class="flex-search">
+		<% @users.each do |user| %>
+			<div class="follow_<%= user.id %>">
+				<%= render 'public/users/user', user: user %>
+			</div>
+		<% end %>
 
-	<% @albums.each do |album| %>
-		<%= render 'public/albums/album', album: album %>
-	<% end %>
-</div>
+		<% @albums.each do |album| %>
+			<%= link_to album_path(album), class: "album" do %>
+					<%= render 'public/albums/album', album: album %>
+			<% end %>
+		<% end %>
+	</div>
+<% end %>

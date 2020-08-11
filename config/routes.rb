@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'inquiries/index'
-    get 'inquiries/edit'
-    get 'inquiries/show'
-    get 'inquiries/update'
-  end
   devise_for :users, controllers: {
     sessions: 'public/sessions',
     registrations: 'public/registrations',
@@ -30,7 +24,6 @@ Rails.application.routes.draw do
     	resource :likes, only: [:create, :destroy]
     	resources :comments, only: [:create, :destroy]
       delete 'photos/destroy_all'
-    	resources :photos, only: [:create, :destroy]
     end
   	resources :searches, only: [:index]
     resources :messages, only: [:create]
@@ -45,8 +38,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'homes/top'
+    resources :destinations, only: [:index, :create, :edit, :update, :destroy]
     get 'inquiries/completed'
-    resources :inquiries, only: [:index, :show, :edit, :update]
+    resources :inquiries, only: [:index, :show, :update]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

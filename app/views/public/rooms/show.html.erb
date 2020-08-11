@@ -18,6 +18,7 @@
                     <td><%= m.created_at.strftime("%m/%d %H:%M")%></td>
                 </tr>
                  <% end %>
+                 <div class="centerize"><%= paginate @messages %></div>
             <% else %>
                 <h4>メッセージはまだありません</h4>
             <% end %>
@@ -25,17 +26,16 @@
     </table>
 
 
-    <%= form_for @message do |f| %>
-        <%= f.text_field :content, placeholder: "メッセージを入力して下さい" , size: 70 %>
-        <%= f.hidden_field :room_id, value: @room.id %>
-        <br>
-        <%= f.submit "投稿する", class: "green button" %>
-        
+    <%= form_with(model: @message) do |f| %>
+        <%= f.text_area :content, placeholder: "メッセージを入力して下さい" , size: "70x5" %>
+        <%= f.hidden_field :room_id, value: @room.id %><br>
+        <%= f.submit "送信する", class: "green button" %>
+
         <% @entries.each do |e| %>
-        <% if current_user != e.user %>
-            <%= link_to e.user.name + "さんのページへ", user_path(e.user), class: "blue button chat-show-button" %>
+            <% if current_user != e.user %>
+                <%= link_to e.user.name + "さんのページへ", user_path(e.user), class: "blue button" %>
+            <% end %>
         <% end %>
-    <% end %>
     <% end %>
     </div>
 </div>
