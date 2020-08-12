@@ -13,7 +13,7 @@
 					<%= link_to user_path(user) do %>
 						<%= user.name %>
 						<% if user.is_active != true %>
-							退会済み
+							<span class="gray button">退会済み</span>
 						<% else %>
 							<i class="fas fa-book"></i> <%= user.albums.count %>件
 						<% end %>

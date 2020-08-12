@@ -26,6 +26,9 @@
 	</div>
 
 	<div class="albums-box">
+		<% unless @albums.any? %>
+			<h3 class="centerize">投稿がありません</h3>
+		<% end %>
 		<% @albums.each do |album| %>
 			<%= link_to album_path(album), class: "album" do %>
 				<%= render 'public/albums/album', album: album %>
