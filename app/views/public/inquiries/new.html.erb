@@ -1,6 +1,6 @@
+<h2 class="page-title">お問い合わせフォーム</h2>
 <div class="row">
 	<div class="col-xs-4 col-xs-offset-4 centerize">
-		<h4>お問い合わせフォーム</h4>
 		<%= render 'layouts/errors', resource: @inquiry %>
 		<%= form_with(model: @inquiry, local: true, url: inquiries_confirm_path) do |f| %>
 			<table class="table">

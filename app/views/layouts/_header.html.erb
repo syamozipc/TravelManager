@@ -23,7 +23,7 @@
 			<% end %>
 			<% unless admin_signed_in? %>
 				<li class="search-form">
-					<%= form_tag(searches_path, method: :get) do %>
+					<%= form_with(url: searches_path, local: true, method: :get) do %>
 						<%= text_field_tag(:word) %>
 						<%= submit_tag '検索' %>
 					<% end %>
