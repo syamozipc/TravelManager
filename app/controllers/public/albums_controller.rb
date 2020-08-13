@@ -38,9 +38,9 @@ class Public::AlbumsController < ApplicationController
   def show
     flash[:notice] = "ログイン済ユーザーのみアルバムにいいね・コメントできます" unless user_signed_in?
     @album = Album.find(params[:id])
-    @photos = @album.photos.page(params[:page]).per(40)
+    @photos = @album.photos.page(params[:photos_page]).per(40)
     @user = @album.user
-    @comments = @album.comments.recently_updated.page(params[:page]).per(10)
+    @comments = @album.comments.recently_updated.page(params[:comments_page]).per(10)
     @comment = Comment.new
   end
 

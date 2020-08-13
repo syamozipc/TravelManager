@@ -5,16 +5,6 @@ class Admin::DestinationsController < ApplicationController
     @destination = Destination.new
   end
 
-  def create
-    @destination = Destination.new(destination_params)
-    if @destination.save
-  	  redirect_to request.referrer
-    else
-      @destinations = Destination.all
-      render :index
-    end
-  end
-
   def edit
   	@destination = Destination.find(params[:id])
   end
@@ -22,11 +12,6 @@ class Admin::DestinationsController < ApplicationController
   def update
     @destination = Destination.find(params[:id])
   	@destination.update(destination_params) ? (redirect_to admin_destinations_path) : (render :edit)
-  end
-
-  def destroy
-  	destination = Destination.find(params[:id]).destroy
-  	redirect_to admin_destinations_path
   end
 
   private

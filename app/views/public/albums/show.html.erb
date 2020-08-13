@@ -59,7 +59,7 @@
 		<div class="comment-area">
 			<%= render 'public/comments/index', comments: @comments %>
 		</div>
-		<div class="centerize"><%= paginate @comments %></div>
+		<div class="centerize"><%= paginate @comments, param_name: 'comments_page' %></div>
 
 	</div>
 
@@ -69,7 +69,4 @@
 		<% end %>
 	</div>
 </div>
-<div class="centerize"><%= paginate @photos %></div>
-
-
-
+<div class="centerize"><%= paginate @photos, param_name: 'photos_page' %></div>

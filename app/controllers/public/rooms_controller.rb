@@ -10,7 +10,7 @@ class Public::RoomsController < ApplicationController
   def show
     @room = Room.find(params[:id])
     if Entry.where(user_id: current_user.id, room_id: @room.id).present?
-      @messages = @room.messages.page(params[:page]).per(30)
+      @messages = @room.messages.recently_updated.page(params[:page]).per(15)
       @message = Message.new
       @entries = @room.entries
     else

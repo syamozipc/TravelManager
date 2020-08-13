@@ -1,9 +1,8 @@
 <div class="centerize">
-	<h2>渡航先を編集</h2>
+	<h2>渡航先名称を編集</h2>
 	<%= render 'layouts/errors', resource: @destination %>
 	<%= form_with(model: @destination, local: true, url: admin_destination_path(@destination)) do |f| %>
 		<%= f.text_field :place %>
 		<%= f.submit "登録", class: "green button", data: { confirm: "本当に編集してよろしいですか？"} %>
 	<% end %><br>
-	<%= link_to "削除する", admin_destination_path(@destination), method: :delete, class: "gray button", data: { confirm: "本当に削除しますか？"} %>
 </div>

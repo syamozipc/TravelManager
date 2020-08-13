@@ -13,12 +13,6 @@
 					<% end %>
 				</tbody>
 			</table><br>
-
-			<h4>渡航先を追加</h4>
-			<%= form_with(model: @destination, local: true, url: admin_destinations_path) do |f| %>
-				<%= f.text_field :place %>
-				<%= f.submit "登録", class: "green button", data: { confirm: "本当に登録してよろしいですか？"} %>
-			<% end %>
 		</div>
 	</div>
 </div>

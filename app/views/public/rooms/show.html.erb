@@ -6,28 +6,8 @@
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
 
-    <table class="table">
-        <tbody>
-            <% if @messages.present? %>
-                <% @messages.each do |m| %>
-                <tr>
-                    <td>
-                        <%= attachment_image_tag m.user, :image, :fill, 30, 30, format: "jpeg", fallback: "no_image.png", size: "30x30", class: "profile-image" %>
-                        <%= m.content %>
-                    </td>
-                    <td><%= m.created_at.strftime("%m/%d %H:%M")%></td>
-                </tr>
-                 <% end %>
-                 <div class="centerize"><%= paginate @messages %></div>
-            <% else %>
-                <h4>メッセージはまだありません</h4>
-            <% end %>
-        </tbody>
-    </table>
-
-
-    <%= form_with(model: @message) do |f| %>
-        <%= f.text_area :content, placeholder: "メッセージを入力して下さい" , size: "70x5" %>
+    <%= form_with(model: @message, class: "centerize") do |f| %>
+        <%= f.text_area :content, placeholder: "メッセージを入力して下さい" , size: "50x3" %>
         <%= f.hidden_field :room_id, value: @room.id %><br>
         <%= f.submit "送信する", class: "green button" %>
 
@@ -36,6 +16,12 @@
                 <%= link_to e.user.name + "さんのページへ", user_path(e.user), class: "blue button" %>
             <% end %>
         <% end %>
+
     <% end %>
+    <div class="message-area">
+        <%= render 'public/messages/index', messages: @messages %>
+    </div>
+    <div class="centerize"><%= paginate @messages %></div>
+
     </div>
 </div>

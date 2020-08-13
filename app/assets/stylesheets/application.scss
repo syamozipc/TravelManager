@@ -280,7 +280,7 @@ header{
 
 .icon{
 	margin: 0 10px;
-	font-size: 20px;
+	font-size: 18px;
 }
 
 .range-icon, .album-user{
@@ -321,6 +321,32 @@ header{
 	height: 200px;
 	margin: 0 25px 30px 5px;
 	box-shadow: 5px 10px 20px rgba(0,0,0,0.25);
+}
+
+.current-user-chat-box{
+	flex-direction: row-reverse;
+	width: 400px;
+	margin: 0 0 30px 300px;
+}
+
+.chat-box{
+	width: 400px;
+	margin:0 0 30px 100px;
+}
+
+.chat-text{
+	background-color: orange;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+.current-user-chat-time{
+	font-size: 12px;
+	text-align: right;
+}
+
+.chat-time{
+	font-size: 12px;
 }
 
 .brank-height{

@@ -26,7 +26,7 @@ Rails.application.routes.draw do
       delete 'photos/destroy_all'
     end
   	resources :searches, only: [:index]
-    resources :messages, only: [:create]
+    resources :messages, only: [:create, :destroy]
     resources :rooms, only: [:create, :show, :index]
     post 'inquiries/confirm'
     resources :inquiries, only: [:new, :create, :show]
@@ -38,7 +38,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'homes/top'
-    resources :destinations, only: [:index, :create, :edit, :update, :destroy]
+    resources :destinations, only: [:index, :edit, :update]
     get 'inquiries/completed'
     resources :inquiries, only: [:index, :show, :update]
   end

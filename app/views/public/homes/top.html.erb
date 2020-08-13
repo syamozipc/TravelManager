@@ -22,7 +22,7 @@
 	</div>
 </div><br>
 
-<% unless user_signed_in? %>
+<% if user_signed_in? == false && admin_signed_in? == false %>
 	<div class="centerize">
 		<%= link_to "新規登録", new_user_registration_path, class: "green button" %>
 		<%= link_to "ログイン", new_user_session_path, class: "blue button" %>
