@@ -2,7 +2,7 @@
 <% if @word == "" %>
 	<h4 class="centerize brank-height">キーワードを入力してください。</h4>
 <% elsif %>
-	<% if @users.count == 0 && @albums.count == 0 %>
+	<% if @users.blank? && @albums.blank? %>
 	<h4 class="centerize brank-height">検索条件に合致するデータがありません。キーワードを変えてみましょう。</h4>
 	<% end %>
 <% else %>

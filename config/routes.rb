@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     resources :rooms, only: [:create, :show, :index]
     post 'inquiries/confirm'
     resources :inquiries, only: [:new, :create, :show]
+    resources :notifications, only: [:index]
   end
 
   devise_for :admin, controllers: {

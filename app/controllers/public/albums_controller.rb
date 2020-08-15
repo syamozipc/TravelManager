@@ -4,7 +4,7 @@ class Public::AlbumsController < ApplicationController
     @destinations = Destination.all
     if params[:destination_id]
       @title = Destination.find(params[:destination_id]).place + "のアルバム一覧"
-      @albums = Album.where(destination_id: params[:destination_id]).publicly_open.recently_updated.page(params[:page]).per(15)
+      @albums = Album.where(destination_id: params[:destination_id]).publicly_open.page(params[:page]).per(15)
     elsif params[:choice] == "follow"
       @title = "フォロー中ユーザーのアルバム一覧"
       @albums = []
@@ -17,10 +17,10 @@ class Public::AlbumsController < ApplicationController
 
     elsif params[:choice] == "like"
       @title = "いいねしたアルバム一覧"
-      @albums = current_user.liked_albums.publicly_open.recently_updated.page(params[:page]).per(15)
+      @albums = current_user.liked_albums.publicly_open.page(params[:page]).per(15)
     else
       @title = "アルバム一覧"
-      @albums = Album.publicly_open.recently_updated.page(params[:page]).per(15)
+      @albums = Album.publicly_open.page(params[:page]).per(15)
     end
   end
 
@@ -40,7 +40,7 @@ class Public::AlbumsController < ApplicationController
     @album = Album.find(params[:id])
     @photos = @album.photos.page(params[:photos_page]).per(40)
     @user = @album.user
-    @comments = @album.comments.recently_updated.page(params[:comments_page]).per(10)
+    @comments = @album.comments.page(params[:comments_page]).per(10)
     @comment = Comment.new
   end
 

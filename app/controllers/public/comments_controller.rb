@@ -5,18 +5,19 @@ class Public::CommentsController < ApplicationController
   	@comment = current_user.comments.new(comment_params)
   	@comment.album_id = @album.id
   	if @comment.save
-      @comments = @album.comments.recently_updated.page(params[:comments_page]).per(10)
+      @comments = @album.comments.page(params[:comments_page]).per(10)
+      @album.create_notification_comment!(current_user, @comment.id)
     else
       @photos = @album.photos.page(params[:page]).per(40)
       @user = @album.user
-      @comments = @album.comments.recently_updated.page(params[:comments_page]).per(10)
+      @comments = @album.comments.rpage(params[:comments_page]).per(10)
       render 'public/albums/show'
     end
   end
 
   def destroy
     album = Album.find(params[:album_id])
-    @comments = album.comments.recently_updated.page(params[:comments_page]).per(10)
+    @comments = album.comments.page(params[:comments_page]).per(10)
     @comments.find(params[:id]).destroy
   end
 

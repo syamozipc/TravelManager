@@ -9,10 +9,13 @@
 		</td>
 		<td>
 			<%= link_to comment.user.name, user_path(comment.user) %><br>
-			<%= comment.content %>
-			<% if comment.user == current_user %>
-				<%= link_to "削除", album_comment_path(comment.album_id, comment), method: :delete, remote: true %>
-			<% end %>
+			<%= comment.content %><br>
+			<span class="time-text">
+				<%= time_ago_in_words(comment.created_at) %> ago
+				<% if comment.user == current_user %>
+					<%= link_to "削除", album_comment_path(comment.album_id, comment), method: :delete, remote: true %>
+				<% end %>
+			</span>
 		</td>
 	</tr>
 	<% end %>

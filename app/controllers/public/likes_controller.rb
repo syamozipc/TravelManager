@@ -4,6 +4,7 @@ class Public::LikesController < ApplicationController
   	@album = Album.find(params[:album_id])
   	like = current_user.likes.new(album_id: @album.id)
   	like.save
+    @album.create_notification_like!(current_user)
   end
 
   def destroy

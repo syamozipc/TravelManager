@@ -4,5 +4,5 @@ class Message < ApplicationRecord
 
   validates :content, presence: true, length: {maximum: 300}
 
-  scope :recently_updated, -> { order(updated_at: :desc) }
+  default_scope -> { order(updated_at: :desc) }
 end

@@ -1,0 +1,26 @@
+<% visitor = notification.visitor %>
+<% visited = notification.visited %>
+
+<%= link_to user_path(visitor) do %>
+	<%= attachment_image_tag visitor, :image, :fill, 30, 30, format: "jpeg", fallback: "no_image.png", size: "30x30", class: "profile-image" %>
+	<%= visitor.name %>
+<% end %>
+さんが
+
+<% case notification.action %>
+	<% when 'follow' %>
+		あなたを<i class="fas fa-star yellow-color"></i>フォローしました
+	<% when 'like' %>
+		<%= link_to "あなたのアルバム", album_path(notification.album) %>に<i class="fas fa-heart red-color"></i>いいねしました
+	<% when 'comment' %>
+		<% if notification.album.user_id == visited.id %>
+			<%= link_to "あなたのアルバム", album_path(notification.album) %>
+		<% else %>
+			<%= link_to album_path(notification.album) do %>
+				<%= attachment_image_tag notification.album.user, :image, :fill, 30, 30, format: "jpeg", fallback: "no_image.png", size: "30x30", class: "profile-image" %>
+				<%= notification.album.user.name + "さんのアルバム" %>
+			<% end %>
+		<% end %>
+		に<i class="far fa-comment-dots gray-color"></i>コメントしました
+<% end %><br>
+&emsp;&emsp;&ensp;<span class="time-text"><%= time_ago_in_words(notification.created_at) %> ago</span>

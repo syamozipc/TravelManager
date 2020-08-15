@@ -9,9 +9,10 @@
 				<li class="header-list"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "button" %></li>
 			<% elsif user_signed_in? %>
 				<li class="header-list"><%= link_to "マイページ", user_path(current_user), class: "button" %></li>
-				<li class="header-list"><%= link_to "アルバム一覧", albums_path, class: "button" %></li>
+				<li class="header-list"><%= link_to "アルバム", albums_path, class: "button" %></li>
 				<li class="header-list"><%= link_to "ランキング", albums_ranking_path, class: "button" %></li>
-				<li class="header-list"><%= link_to "DM一覧", rooms_path, class: "button" %></li>
+				<li class="header-list"><%= link_to "DM", rooms_path, class: "button" %></li>
+				<li class="header-list"><%= link_to "通知", notifications_path, class: "button" %></li>
 				<li class="header-list"><%= link_to "お問い合わせ", new_inquiry_path, class: "button" %></li>
 				<li class="header-list"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "button" %></li>
 			<% else %>
