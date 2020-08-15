@@ -29,7 +29,7 @@ class Public::AlbumsController < ApplicationController
     if params[:destination_id]
       destination = Destination.find(params[:destination_id])
       @title = destination.place + "のいいねランキング"
-      albums = Album.find(Like.group(:album_id).order('count(album_id)desc').limit(10).pluck(:album_id))
+      albums = Album.find(Like.group(:album_id).order('count(album_id)desc').limit(5).pluck(:album_id))
       continental_albums = albums.select{|album| album.destination_id == destination.id}
       @ranked_albums = continental_albums.select{|album| album.range == "open"}
     else
