@@ -4,9 +4,9 @@ class Public::UsersController < ApplicationController
     flash[:notice] = "ログイン済ユーザーのみフォロー・DMができます" unless user_signed_in?
     @user = User.find(params[:id])
     if @user == current_user
-      @albums = @user.albums.page(params[:page]).per(15)
+      @albums = @user.albums.recently_updated.page(params[:page]).per(15)
     else
-      @albums = @user.albums.publicly_open.page(params[:page]).per(15)
+      @albums = @user.albums.publicly_open.recently_updated.page(params[:page]).per(15)
     end
 
     if user_signed_in?

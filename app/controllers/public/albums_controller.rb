@@ -4,7 +4,7 @@ class Public::AlbumsController < ApplicationController
     @destinations = Destination.all
     if params[:destination_id]
       @title = Destination.find(params[:destination_id]).place + "のアルバム一覧"
-      @albums = Album.where(destination_id: params[:destination_id]).publicly_open.page(params[:page]).per(15)
+      @albums = Album.where(destination_id: params[:destination_id]).publicly_open.recently_updated.page(params[:page]).per(15)
     elsif params[:choice] == "follow"
       @title = "フォロー中ユーザーのアルバム一覧"
       @albums = []
@@ -17,21 +17,25 @@ class Public::AlbumsController < ApplicationController
 
     elsif params[:choice] == "like"
       @title = "いいねしたアルバム一覧"
-      @albums = current_user.liked_albums.publicly_open.page(params[:page]).per(15)
+      @albums = current_user.liked_albums.publicly_open.recently_updated.page(params[:page]).per(15)
     else
       @title = "アルバム一覧"
-      @albums = Album.publicly_open.page(params[:page]).per(15)
+      @albums = Album.publicly_open.recently_updated.page(params[:page]).per(15)
     end
   end
 
   def ranking
     @destinations = Destination.all
     if params[:destination_id]
-      @title = Destination.find(params[:destination_id]).place + "のいいねランキング"
-      @albums = Destination.find(params[:destination_id]).albums.where(id: Like.group(:album_id).order('count(album_id)desc').limit(5).pluck(:album_id)).publicly_open
+      destination = Destination.find(params[:destination_id])
+      @title = destination.place + "のいいねランキング"
+      albums = Album.find(Like.group(:album_id).order('count(album_id)desc').limit(10).pluck(:album_id))
+      continental_albums = albums.select{|album| album.destination_id == destination.id}
+      @ranked_albums = continental_albums.select{|album| album.range == "open"}
     else
       @title = "いいねランキング"
-      @albums = Album.where(id: Like.group(:album_id).order('count(album_id)desc').limit(10).pluck(:album_id)).publicly_open
+      albums = Album.find(Like.group(:album_id).order('count(album_id)desc').limit(10).pluck(:album_id))
+      @ranked_albums = albums.select{|album| album.range == "open"}
     end
   end
 

@@ -16,7 +16,7 @@ class Album < ApplicationRecord
 	validates :discription, presence: true, length: {maximum: 1000}
 	validates :range, presence: true
 
-	default_scope -> { order(updated_at: :desc) }
+	scope :recently_updated, -> { order(updated_at: :desc) }
 	scope :publicly_open, -> { where(range: "open")}
 
 	def liked_by?(user)

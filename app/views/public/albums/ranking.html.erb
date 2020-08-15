@@ -17,7 +17,7 @@
 	</div>
 
 	<div class="albums-box">
-		<% @albums.each.with_index(1) do |album, i| %>
+		<% @ranked_albums.each.with_index(1) do |album, i| %>
 			<%= link_to album_path(album), class: "album" do %>
 				<%= render 'public/albums/album', album: album %>
 				<span class="rank-icon"><%= i %>位</span>
