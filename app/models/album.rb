@@ -13,7 +13,7 @@ class Album < ApplicationRecord
 	validates :user_id, presence: true
 	validates :destination_id, presence: true
 	validates :title, presence: true, length: {maximum: 30}
-	validates :discription, presence: true, length: {maximum: 1000}
+	validates :discription, length: {maximum: 1000}
 	validates :range, presence: true
 
 	scope :recently_updated, -> { order(updated_at: :desc) }

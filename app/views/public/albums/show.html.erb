@@ -17,7 +17,13 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2"><%= @album.discription %></td>
+				<td colspan="2">
+					<% if @album.discription.present? %>
+						<%= @album.discription %>
+					<% else %>
+						<p>説明がありません</p>
+					<% end %>
+				</td>
 			</tr>
 			<tr>
 				<td>渡航先</td>

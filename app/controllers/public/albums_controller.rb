@@ -89,7 +89,7 @@ class Public::AlbumsController < ApplicationController
       end
       redirect_to album_path(@album)
     else
-      @photos = Photo.where(album_id: params[:id])
+      @photos = Photo.where(album_id: params[:id]).page(params[:page]).per(40)
       render :edit
     end
   end

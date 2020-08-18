@@ -22,8 +22,9 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<%= user.introduction %>
-					<% if user.introduction.nil? %>
+					<% if user.introduction.present? %>
+						<%= user.introduction %>
+					<% else %>
 						自己紹介がありません
 					<% end %>
 				</td>

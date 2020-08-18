@@ -15,7 +15,7 @@
 			</tr>
 			<tr>
 				<td><%= f.label :写真選択 %></td>
-				<td><%= f.attachment_field :photos_images, multiple: true, name: "photos_attributes[0][image][]" %></td>
+				<td><%= f.attachment_field :photos_images, multiple: true, name: "photos_attributes[0][image][]" %>※HEIC形式は未対応です。JPEG/PNG形式でアップロードしてください。</td>
 			</tr>
 			<tr>
 				<td><%= f.label :公開範囲 %></td>
