@@ -57,10 +57,6 @@ header{
 	z-index: 9999;
 }
 
-body{
-	margin-top: 90px;
-}
-
 .nav{
 	display: flex;
 	justify-content: flex-end;
@@ -232,11 +228,16 @@ body{
 	color: #6f6c6c;
 }
 
+.page-box{
+	margin-top: 90px;
+	margin-bottom: 20px;
+}
+
 .page-title{
 	width: 40%;
-	margin: 20px auto;
+	margin: 90px auto 20px auto;
 	text-align: center;
-	padding: 0.5em;
+	padding: 15px;
 	color: black;
 	background-color: #FFEFC7;
 	border-left: solid 5px #ffaf58;
@@ -374,8 +375,37 @@ input[type=checkbox] {
   transform: scale(2);
 }
 
+.about-page-image{
+	background-image: image-url('aboutimage.jpg');
+	background-position: center;
+	background-size: cover;
+	padding-top: 90px;
+}
+
+.about-box{
+	width: 700px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: rgba(0,0,0,0.5);
+	color: white;
+}
+
+.about-text{
+	margin-left: 50px;
+}
+
+.about-page-title{
+	width: 40%;
+	margin: 0 auto 20px auto;
+	text-align: center;
+	padding: 15px;
+	color: black;
+	background-color: #FFEFC7;
+	border-left: solid 5px #ffaf58;
+}
+
 footer{
-	margin-top: 15px;
+	margin-top: 30px;
 	padding: 15px 0;
 	font-size: 15px;
 	text-align: center;
