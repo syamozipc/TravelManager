@@ -1,5 +1,5 @@
 <div class="centerize">
-	<h2>渡航先名称を編集</h2>
+	<h2 class="page-title">渡航先名称を編集</h2>
 	<%= render 'layouts/errors', resource: @destination %>
 	<%= form_with(model: @destination, local: true, url: admin_destination_path(@destination)) do |f| %>
 		<%= f.text_field :place %>
