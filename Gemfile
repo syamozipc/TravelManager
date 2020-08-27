@@ -86,6 +86,8 @@ gem 'kaminari-bootstrap', '~> 3.0.1'
 gem 'rails-i18n'
 gem 'enum_help'
 
+gem "refile-s3"
+
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
