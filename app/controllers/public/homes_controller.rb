@@ -3,6 +3,6 @@ class Public::HomesController < ApplicationController
   end
 
   def about
-  	@user = User.find(3)
+  	@user = User.find(4)
   end
 end
