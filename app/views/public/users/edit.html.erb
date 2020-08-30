@@ -31,8 +31,11 @@
 			</tbody>
 		</table>
 	<% end %>
-
-	<p><%= link_to "パスワードの変更はこちら", edit_user_registration_path, class: "blue button" %></p><br>
-	<p><%= link_to "退会はこちら", users_unsubscribe_path, class: "gray button" %></p>
+	<% if @user.id == 3 %>
+		<p class="gray button">テストユーザーのため、退会・パスワードの変更はできません。</p>
+	<% else %>
+		<p><%= link_to "パスワードの変更はこちら", edit_user_registration_path, class: "blue button" %></p><br>
+		<p><%= link_to "退会はこちら", users_unsubscribe_path, class: "gray button" %></p>
+	<% end %>
 	</div>
 </div>
