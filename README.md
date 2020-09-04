@@ -22,16 +22,18 @@
 また友人や著名人の共有された旅行写真を見れるように。
 
 
-## 使用言語
+## 開発環境
+
+### 使用言語
 Ruby 2.5.7
 Rails 5.2.3
 jQuery
 
-## 開発環境
+### 仮想環境
 Vagrant
 VirtualBox
 
-## インフラ
+### インフラ
 AWS(VPC, ALB, EC2, RDS, S3, CloudWatch, Route53)
 MySQL2
 Nginx
