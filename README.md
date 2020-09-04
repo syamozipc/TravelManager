@@ -26,7 +26,9 @@
 ワイヤーフレーム：https://app.diagrams.net/#G15WaQEKPVDb8IvmGbWJQpM_QE8XPWlFxo<br>
 ER図：https://app.diagrams.net/#G1XaZGDLRCwlSVLWSh2X-ScBNoz0WOfI5j<br>
 テーブル定義書：https://docs.google.com/spreadsheets/d/1uycwkDtNoIt60pRpsL5flr0WV86l2HaCvgWiK9-dgrg/edit#gid=1619846018<br>
-アプリケーション詳細設計：https://docs.google.com/spreadsheets/d/1iiipcScvt2HLLLZwqyZdQtNNcpqmSsUeLSFYtK7hHpY/edit#gid=1750380126
+アプリケーション詳細設計：https://docs.google.com/spreadsheets/d/1iiipcScvt2HLLLZwqyZdQtNNcpqmSsUeLSFYtK7hHpY/edit#gid=1750380126<br>
+AWS構成図：https://www.draw.io/?splash=0&libs=aws4#G1EK2HYssWr96MdARn5d01Da0E7TFrxDxD<br>
+AWSインフラ設計書：https://docs.google.com/spreadsheets/d/16aOvEmaeERY9sJnISVEoCzHMdm-hsqsiSzcdHJ444xg/edit#gid=1423061029
 
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/1tByCzv0Q-mqNUkif13cRmxi3PpKx3aIsgxVRjtGxKeg/edit?usp=sharing
