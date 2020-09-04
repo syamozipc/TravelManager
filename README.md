@@ -25,28 +25,28 @@
 ## 開発環境
 
 ### 使用言語
-Ruby 2.5.7
-Rails 5.2.3
+Ruby 2.5.7<br>
+Rails 5.2.3<br>
 jQuery
 
 ### 仮想環境
-Vagrant
+Vagrant<br>
 VirtualBox
 
 ### インフラ
-AWS(VPC, ALB, EC2, RDS, S3, CloudWatch, Route53)
-MySQL2
-Nginx
+AWS(VPC, ALB, EC2, RDS, S3, CloudWatch, Route53)<br>
+MySQL2<br>
+Nginx<br>
 Capistrano
 
 ## 設計書
 AWS構成図：https://www.draw.io/?splash=0&libs=aws4#G1EK2HYssWr96MdARn5d01Da0E7TFrxDxD<br>
-AWSインフラ設計書：https://docs.google.com/spreadsheets/d/16aOvEmaeERY9sJnISVEoCzHMdm-hsqsiSzcdHJ444xg/edit#gid=1423061029
+AWSインフラ設計書：https://docs.google.com/spreadsheets/d/16aOvEmaeERY9sJnISVEoCzHMdm-hsqsiSzcdHJ444xg/edit#gid=1423061029<br>
 画面遷移図：https://app.diagrams.net/#G1ucycmcjv-dJP1anNiGrAwhetKq85COSF<br>
 ワイヤーフレーム：https://app.diagrams.net/#G15WaQEKPVDb8IvmGbWJQpM_QE8XPWlFxo<br>
 ER図：https://app.diagrams.net/#G1XaZGDLRCwlSVLWSh2X-ScBNoz0WOfI5j<br>
 テーブル定義書：https://docs.google.com/spreadsheets/d/1uycwkDtNoIt60pRpsL5flr0WV86l2HaCvgWiK9-dgrg/edit#gid=1619846018<br>
-アプリケーション詳細設計：https://docs.google.com/spreadsheets/d/1iiipcScvt2HLLLZwqyZdQtNNcpqmSsUeLSFYtK7hHpY/edit#gid=1750380126<br>
+アプリケーション詳細設計：https://docs.google.com/spreadsheets/d/1iiipcScvt2HLLLZwqyZdQtNNcpqmSsUeLSFYtK7hHpY/edit#gid=1750380126
 
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/1tByCzv0Q-mqNUkif13cRmxi3PpKx3aIsgxVRjtGxKeg/edit?usp=sharing
