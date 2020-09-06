@@ -18,7 +18,7 @@ class Public::CommentsController < ApplicationController
   def destroy
     album = Album.find(params[:album_id])
     @comments = album.comments.page(params[:comments_page]).per(10)
-    @comments.find(params[:id]).destroy
+    current_user.comments.find(params[:id]).destroy
   end
 
   private
