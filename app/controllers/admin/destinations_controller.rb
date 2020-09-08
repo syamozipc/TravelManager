@@ -11,7 +11,7 @@ class Admin::DestinationsController < ApplicationController
 
   def update
     @destination = Destination.find(params[:id])
-  	@destination.update(destination_params) ? (redirect_to admin_destinations_path) : (render :edit)
+  	@destination.update(destination_params) ? (redirect_to admin_destinations_path, success: '変更を保存しました') : (render :edit)
   end
 
   private

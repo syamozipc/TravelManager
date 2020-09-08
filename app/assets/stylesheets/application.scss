@@ -51,10 +51,6 @@ header{
 	background-color: lightskyblue;
 	width: 100%;
 	height: 70px;
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 9999;
 }
 
 .nav{
@@ -165,7 +161,7 @@ header{
 
 .new-button{
   position: fixed;
-  top: 100px;
+  top: 125px;
   right: 20px;
   display: inline-block;
   text-decoration: none;
@@ -186,7 +182,7 @@ header{
 
 .like-button{
 	position: fixed;
-	top: 100px;
+	top: 125px;
 	right: 20px;
 	font-size: 40px;
 	color: red;
@@ -234,12 +230,12 @@ header{
 }
 
 .top-brank{
-	margin-top: 90px;
+	margin-top: 20px;
 }
 
 .page-title{
 	width: 40%;
-	margin: 90px auto 20px auto;
+	margin: 20px auto 30px auto;
 	text-align: center;
 	padding: 15px;
 	color: black;

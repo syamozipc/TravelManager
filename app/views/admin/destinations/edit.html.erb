@@ -3,6 +3,6 @@
 	<%= render 'layouts/errors', resource: @destination %>
 	<%= form_with(model: @destination, local: true, url: admin_destination_path(@destination)) do |f| %>
 		<%= f.text_field :place %>
-		<%= f.submit "登録", class: "green button", data: { confirm: "本当に編集してよろしいですか？"} %>
+		<%= f.submit "登録", class: "green button", data: { confirm: "本当に変更してよろしいですか？"} %>
 	<% end %><br>
 </div>

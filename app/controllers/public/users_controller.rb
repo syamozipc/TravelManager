@@ -1,7 +1,7 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update, :unsubscribe, :withdraw]
+  before_action :check_guest, only: [:withdraw, :update]
   def show
-    flash[:notice] = "ログイン済ユーザーのみフォロー・DMができます" unless user_signed_in?
     @user = User.find(params[:id])
     if @user == current_user
       @albums = @user.albums.recently_updated.page(params[:page]).per(15)
@@ -39,7 +39,7 @@ class Public::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to @user
+      redirect_to @user, success: '変更を保存しました'
     else
       render :edit
     end
@@ -62,8 +62,7 @@ class Public::UsersController < ApplicationController
     current_user.update(is_active: false)
     current_user.albums.destroy_all
     reset_session
-    flash[:notice] = "ご愛顧いただき、ありがとうございました"
-    redirect_to root_path
+    redirect_to root_path, success: '退会が完了しました。ご愛顧いただき、ありがとうございました。'
   end
 
   private

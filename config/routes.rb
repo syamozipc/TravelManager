@@ -7,6 +7,10 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'public/omniauth_callbacks'
   }
 
+  devise_scope :user do
+    post 'users/guest', to: 'public/sessions#guest'
+  end
+
   scope module: :public do
   	root 'homes#top'
     get 'homes/about'

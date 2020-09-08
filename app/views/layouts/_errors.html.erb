@@ -1,10 +1,10 @@
-<div class="red-color">
-	<% if resource.errors.any? %>
+<% if resource.errors.any? %>
+	<div class="alert alert-danger">
 		<h4>＜エラー＞下記項目をご確認ください</h4>
 		<ul>
 			<% resource.errors.full_messages.each do |message| %>
 			<li><%= message %></li>
 			<% end %>
 		</ul>
-	<% end %>
-</div>
+	</div>
+<% end %>

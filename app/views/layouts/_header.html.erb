@@ -1,7 +1,7 @@
 <header>
 	<nav class="nav">
 		<%= link_to "TravelManager", root_path, class: "logo", data: {"turbolinks"=>false} %>
-		<ul header-bar>
+		<ul>
 			<% if admin_signed_in? %>
 				<li class="header-list"><%= link_to "管理者トップ", admin_homes_top_path, class: "button" %></li>
 				<li class="header-list"><%= link_to "会員からのお問い合わせ", admin_inquiries_path, class: "button" %></li>

@@ -30,6 +30,12 @@ class User < ApplicationRecord
   validates :introduction, length: { maximum: 100}
   validates :is_active, inclusion: {in: [true, false]}
 
+  def self.guest_login
+    find_or_create_by!(name: '旅行太郎', email: 'test@test') do |user|
+      user.password = 111111
+    end
+  end
+
   def followed_by?(user)
     passive_relationships.find_by(following_id: user.id).present?
   end

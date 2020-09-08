@@ -26,7 +26,7 @@
 	<div class="centerize">
 		<%= link_to "新規登録", new_user_registration_path, class: "green button" %>
 		<%= link_to "ログイン", new_user_session_path, class: "blue button" %>
-		<%= link_to "ゲストユーザー", albums_path, class: "orange button" %>
+		<%= link_to "ゲストログイン", users_guest_path, method: :post, class: "orange button" %>
 	</div>
 	<p class="right-position"><%= link_to "管理者ログイン", new_admin_session_path %></p>
 <% end %>

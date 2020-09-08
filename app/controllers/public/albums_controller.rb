@@ -40,7 +40,6 @@ class Public::AlbumsController < ApplicationController
   end
 
   def show
-    flash[:notice] = "ログイン済ユーザーのみアルバムにいいね・コメントできます" unless user_signed_in?
     @album = Album.find(params[:id])
     @photos = @album.photos.page(params[:photos_page]).per(40)
     @user = @album.user
@@ -63,7 +62,7 @@ class Public::AlbumsController < ApplicationController
             @album.photos.create!(image: image)
           end
       end
-      redirect_to album_path(@album)
+      redirect_to album_path(@album), success: 'アルバムを作成しました'
     else
       render :new
     end
@@ -87,7 +86,7 @@ class Public::AlbumsController < ApplicationController
             @album.photos.create!(image: image)
           end
       end
-      redirect_to album_path(@album)
+      redirect_to album_path(@album), success: '変更を保存しました'
     else
       @photos = Photo.where(album_id: params[:id]).page(params[:page]).per(40)
       render :edit
@@ -100,7 +99,7 @@ class Public::AlbumsController < ApplicationController
 
   def destroy
     Album.find(params[:id]).destroy
-    redirect_to user_path(current_user), notice: "アルバムを削除しました"
+    redirect_to user_path(current_user), success: "アルバムを削除しました"
   end
 
   private

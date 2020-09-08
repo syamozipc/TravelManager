@@ -17,10 +17,13 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <%= notice %>
-    <div class="body">
+    <% flash.each do |name, message| %>
+        <div class="alert alert-<%= name %>">
+            <a class="close" data-dismiss="alert">×</a>
+            <%= message %>
+        </div>
+    <% end %>
     <%= yield %>
-    </div>
     <%= render 'layouts/footer' %>
   </body>
 </html>

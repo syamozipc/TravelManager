@@ -5,7 +5,7 @@ class Public::MessagesController < ApplicationController
       @message = Message.create(message_params.merge(user_id: current_user.id))
       @messages = @message.room.messages.page(params[:page]).per(20)
     else
-      flash[:alert] = "メッセージは1-300字以内でお送りください"
+      flash.now[:danger] = "メッセージは1-300字以内でお送りください"
     end
   end
 

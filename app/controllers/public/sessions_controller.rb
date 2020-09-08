@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
+  before_action :reject_user, only: [:create]
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -33,16 +34,19 @@ class Public::SessionsController < Devise::SessionsController
     root_path
   end
 
+  def guest
+    user = User.guest_login
+    sign_in user
+    redirect_to user_path(user), success: 'ゲストユーザーとしてログインしました。'
+  end
+
   protected
   def reject_user
     @user = User.find_by(email: params[:user][:email].downcase)
     if @user
       if @user.valid_password?(params[:user][:password]) && (@user.active_for_authentication? == false)
-        flash[:error] = "退会済みユーザーです。"
-        redirect_to new_user_session_path
+        redirect_to new_user_session_path, danger: '退会済みユーザーです。別のメールアドレスで新しくご登録ください。'
       end
-    else
-      flash[:error] = "情報をご入力ください"
     end
   end
 
