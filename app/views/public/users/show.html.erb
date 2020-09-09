@@ -2,7 +2,13 @@
 	<%= link_to "+", new_album_path, class: "new-button" %>
 <% end %>
 
-<h2 class="page-title"><%= @user.name %>さんのページ</h2>
+<h2 class="page-title">
+	<% if @user == current_user %>
+		あなたのページ
+	<% else %>
+		<%= @user.name %>さんのページ
+	<% end %>
+</h2>
 
 <div class=flex>
 	<div class="porfile-box">
