@@ -1,35 +1,41 @@
 # TravelManager
 
 ## サイト概要
-・旅行の写真をアルバムごとに管理できます。<br>
-・写真やアルバムは公開範囲を設定でき、自分のみの閲覧もしくは全体に公開と選択可能です。<br>
-・いいね、コメント、DM、フォロー機能を実装しており、SNSとして交流可能です。<br>
-・公開アルバムは、いいね数でのランキング化、フォローユーザーのアルバム一覧や渡航先ごとにソート可能です。
+旅行写真を旅行ごとにアルバムとして整理・保存・公開できる、クラウドストレージ×SNSのサイトです。
 
-### サイトテーマ
-旅行写真をアルバムごとにオンライン上に整理しておけるアプリです。<br>
-同時に他のユーザーの旅行アルバムを閲覧したり、SNS機能で繋がることで旅行の情報交換や今後の旅行計画に活かすことができます。
-
-### テーマを選んだ理由
-旅行好きなので、旅行ごとに旅行写真を管理できるアプリがあったらいいなと思っていました。<br>
-ただの写真保存アプリだとGoogle Photo等への保存で済むので、旅好き同士が集まりコミュニケーションも取れるアプリを目指しました。
-
-### ターゲットユーザ
-旅行好き向け、特に若者向けですが、家族みんなで始めればお互いの旅行記も見れるので、老若男女問わず参加可能です。
+### 制作動機
+①旅行好きなので、旅行ごとに旅行写真を管理できるサイトがあったらいいなと思ったこと。
+②写真の閲覧を中心に、旅行好きが集まりコミュニケーションを楽しめるようしたい。
 
 ### 主な利用シーン
-旅行後、大量に撮影した写真を整理する時に、<br>
-また友人や著名人の共有された旅行写真を見れるように。
+①旅行後、大量に撮影した写真を整理する時に。<br>
+②共有されている写真を閲覧したり、旅行好き同士で交流する際に。
 
 
-## 開発環境
+## 機能一覧
+・認証（devise, FACEBOOK-OAuth, Google-OAuth, 簡単ログイン）
+・論理削除（paranoia不使用）
+・アルバムモデルのCRUD + 渡航先ごとのソート + ランキングの実装）
+・refile
+・Ajaxを用いた非同期通信（アルバムへのいいね ・コメント、フォロー、DM）
+・通知
+・検索（ransack不使用）
+・管理者への問い合わせ
+・スライドショー（slick）
+・ページネーション（kaminari）
+・Bootstrap 3.3.6
+・HTTPS（AMC）
+
+
+## 環境
 
 ### 使用言語
 Ruby 2.5.7<br>
-Rails 5.2.3<br>
+Rails 5.2.4.3<br>
+JavaScript
 jQuery
 
-### 仮想環境
+### 開発環境
 Vagrant<br>
 VirtualBox
 
@@ -37,18 +43,9 @@ VirtualBox
 AWS(VPC, ALB, EC2, RDS, S3, CloudWatch, Route53)<br>
 MySQL2<br>
 Nginx<br>
+Puma<br>
 Capistrano
 
-## 設計書
-AWS構成図：https://www.draw.io/?splash=0&libs=aws4#G1EK2HYssWr96MdARn5d01Da0E7TFrxDxD<br>
-AWSインフラ設計書：https://docs.google.com/spreadsheets/d/16aOvEmaeERY9sJnISVEoCzHMdm-hsqsiSzcdHJ444xg/edit#gid=1423061029<br>
-画面遷移図：https://app.diagrams.net/#G1ucycmcjv-dJP1anNiGrAwhetKq85COSF<br>
-ワイヤーフレーム：https://app.diagrams.net/#G15WaQEKPVDb8IvmGbWJQpM_QE8XPWlFxo<br>
-ER図：https://app.diagrams.net/#G1XaZGDLRCwlSVLWSh2X-ScBNoz0WOfI5j<br>
-テーブル定義書：https://docs.google.com/spreadsheets/d/1uycwkDtNoIt60pRpsL5flr0WV86l2HaCvgWiK9-dgrg/edit#gid=1619846018<br>
-アプリケーション詳細設計：https://docs.google.com/spreadsheets/d/1iiipcScvt2HLLLZwqyZdQtNNcpqmSsUeLSFYtK7hHpY/edit#gid=1750380126
-
-### 機能一覧
-https://docs.google.com/spreadsheets/d/1tByCzv0Q-mqNUkif13cRmxi3PpKx3aIsgxVRjtGxKeg/edit?usp=sharing
+![Screen Shot 2020-09-12 at 17 50 27](https://user-images.githubusercontent.com/65382860/92991808-2b747600-f521-11ea-88a4-c03ca00a0898.png)
 
 

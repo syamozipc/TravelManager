@@ -1,0 +1,16 @@
+<h2 class="page-title">DM一覧</h2>
+<div class="row">
+	<div class="col-md-4 col-md-offset-4">
+		<% @anotherEntries.each do |entry| %>
+			<% if entry.room.messages.exists? %><hr>
+				<%= link_to room_path(entry.room) do %>
+					<%= attachment_image_tag entry.user, :image, :fill, 30, 30, format: "jpeg", fallback: "no_image.png", size: "30x30", class: "profile-image" %>
+					<%= entry.user.name %>
+				<% end %>
+				最新のメッセージ：<%= entry.room.messages.take.try(:content) %><br>
+				&emsp;&emsp;&ensp;<span class="time-text"><%= time_ago_in_words(entry.room.messages.take.created_at) %> ago</span>
+				<% paginate @anotherEntries %>
+			<% end %>
+		<% end %>
+	</div>
+</div>

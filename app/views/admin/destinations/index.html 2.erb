@@ -1,0 +1,18 @@
+<div class="centerize">
+	<div class="row">
+		<h2 class="page-title">渡航先種別一覧</h2>
+		<%= render 'layouts/errors', resource: @destination %>
+		<div class="col-md-4 col-md-offset-4">
+			<table class="table">
+				<tbody>
+					<% @destinations.each do |destination| %>
+					<tr>
+						<td><%= destination.place %></td>
+						<td><%= link_to "編集する", edit_admin_destination_path(destination), class: "orange button" %></td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table><br>
+		</div>
+	</div>
+</div>
