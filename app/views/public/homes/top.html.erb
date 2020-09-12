@@ -24,9 +24,8 @@
 
 <% if user_signed_in? == false && admin_signed_in? == false %>
 	<div class="centerize">
-		<%= link_to "新規登録", new_user_registration_path, class: "green button" %>
-		<%= link_to "ログイン", new_user_session_path, class: "blue button" %>
 		<%= link_to "ゲストログイン", users_guest_path, method: :post, class: "orange button" %>
+		<a href = "https://github.com/syamozipc/TravelManager" target="_blank" class="gray button"><i class="fab fa-github"></i>GitHubはこちら</a>
 	</div>
 	<p class="right-position"><%= link_to "管理者ログイン", new_admin_session_path %></p>
 <% end %>
