@@ -1,9 +1,0 @@
-ja:
-  activerecord:
-    models:
-      album: アルバム
-    attributes:
-      album:
-        title: タイトル
-        destination: 渡航先
-        discription: アルバム説明

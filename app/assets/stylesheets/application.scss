@@ -15,8 +15,8 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "slick-theme";
 @import "slick";
+@import "slick-theme";
 
 *{
 	margin: 0;
@@ -48,7 +48,7 @@
 }
 
 header{
-	background-color: lightskyblue;
+	background-color: blue;
 	width: 100%;
 	height: 70px;
 }
@@ -409,6 +409,6 @@ footer{
 	padding: 15px 0;
 	font-size: 15px;
 	text-align: center;
-	background-color:lightskyblue;
+	background-color: blue;
 	color: white;
 }

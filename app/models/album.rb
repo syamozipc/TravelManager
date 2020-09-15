@@ -11,7 +11,6 @@ class Album < ApplicationRecord
 	belongs_to :destination
 
 	validates :user_id, presence: true
-	validates :destination_id, presence: true
 	validates :title, presence: true, length: {maximum: 30}
 	validates :discription, length: {maximum: 1000}
 	validates :range, presence: true
