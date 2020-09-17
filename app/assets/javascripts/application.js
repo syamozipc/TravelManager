@@ -24,7 +24,6 @@ $(function() {
       autoplay: true,
       autoplaySpeed: 5000,
       speed: 800,
-      arrows: true,
       fade: true
   });
 
