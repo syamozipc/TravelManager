@@ -22,8 +22,10 @@ $(function() {
   $('.slider').slick({
       dots: true,
       autoplay: true,
-      autoplaySpeed: 6000,
-      speed: 800
+      autoplaySpeed: 5000,
+      speed: 800,
+      arrows: true,
+      fade: true
   });
 
   $('.slick-dots li').on('mouseover', function() {
