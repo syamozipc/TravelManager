@@ -11,7 +11,7 @@
 		<% end %>
 	<% end %>
 <% else %>
-	<%= link_to user_session_path, class: "like-button" do %>
+	<%= link_to user_session_path, class: "like-button", data:{confirm: "ログインが必要な機能です。ログイン画面を表示しますか？"}  do%>
 		<i class="fa fa-heart-o"></i>
 		<%= album.likes.count %>
 	<% end %>

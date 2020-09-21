@@ -6,6 +6,6 @@
 			<%= link_to "フォローする", user_relationships_path(user), method: :post, remote: true, class: "gray button" %>
 		<% end %>
 	<% else %>
-		<%= link_to "フォローする", new_user_session_path, class: "gray button" %>
+		<%= link_to "フォローする", new_user_session_path, class: "gray button", data:{confirm: "ログインが必要な機能です。ログイン画面を表示しますか？"} %>
 	<% end %>
 <% end %>

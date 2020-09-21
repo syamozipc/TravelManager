@@ -161,7 +161,7 @@ header{
 
 .new-button{
   position: fixed;
-  top: 125px;
+  bottom: 50px;
   right: 20px;
   display: inline-block;
   text-decoration: none;
@@ -182,7 +182,7 @@ header{
 
 .like-button{
 	position: fixed;
-	top: 125px;
+	bottom: 50px;
 	right: 20px;
 	font-size: 40px;
 	color: red;
@@ -379,7 +379,7 @@ input[type=checkbox] {
 	background-image: image-url('aboutimage.jpg');
 	background-position: center;
 	background-size: cover;
-	padding-top: 20px;
+	padding: 20px 0 20px 0;
 }
 
 .about-box{
@@ -405,7 +405,6 @@ input[type=checkbox] {
 }
 
 footer{
-	margin-top: 30px;
 	padding: 15px 0;
 	font-size: 15px;
 	text-align: center;
