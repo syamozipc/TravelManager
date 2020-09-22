@@ -32,8 +32,7 @@ class Public::AlbumsController < ApplicationController
       @ranked_albums = Album.find(Like.joins(:album).where(albums:{destination_id: params[:destination_id], range: "open"}).group(:album_id).order('count(album_id)desc').limit(5).pluck(:album_id))
     else
       @title = "いいねランキング"
-      albums = Album.find(Like.group(:album_id).order('count(album_id)desc').limit(10).pluck(:album_id))
-      @ranked_albums = albums.select{|album| album.range == "open"}
+      @ranked_albums = Album.find(Like.joins(:album).where(albums:{range: "open"}).group(:album_id).order('count(album_id)desc').limit(10).pluck(:album_id))
     end
   end
 
