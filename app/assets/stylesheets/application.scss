@@ -74,16 +74,34 @@ header{
 	margin-right: 20px;
 }
 
+.homes-top-animation{
+	width: 100%;
+	height: 600px;
+	margin :0 auto;
+	background-color: #000;
+	opacity: 0.9;
+	position: fixed;
+	top: 70px;
+	left: 0;
+	z-index: 10;
+	text-align: center;
+}
+
+.homes-top-title{
+	line-height: 200px;
+	color: #fff;
+}
+
 .slider{
-	width: 50%;
-	height: 400px;
+	width: 100%;
+	height: 600px;
 	margin :0 auto;
 	box-shadow: 0 3px 6px rgba(0,0,0,0.2);
 }
 
 .slider-item{
 	width: 100%;
-	height: 400px;
+	height: 600px;
 	text-align: center;
 	background-size: cover;
 }
@@ -94,23 +112,13 @@ header{
 }
 
 .slider-image2{
-	background-image: image-url('album.png');
-	background-position: top;
+	background-image: image-url('mountain.jpg');
+	background-position: center;
 }
 
 .slider-image3{
-	background-image: image-url('like.png');
-	background-position: bottom;
-}
-
-.slider-text1{
-	padding-top: 320px;
-	font-size: 18px;
-}
-
-.slider-text2, .slider-text3 {
-	padding-top: 20px;
-	font-size: 18px;
+	background-image: image-url('nightview.jpg');
+	background-position: center;
 }
 
 .slick-dots {

@@ -22,12 +22,17 @@ $(function() {
   $('.slider').slick({
       dots: true,
       autoplay: true,
-      autoplaySpeed: 5000,
+      autoplaySpeed: 3000,
       speed: 1000,
-      fade: true
+      fade: true,
+      pauseOnHover: false,
   });
 
   $('.slick-dots li').on('mouseover', function() {
     $('.slider').slick('goTo', $(this).index());
   });
 });
+
+$(function(){
+  $('.homes-top-animation').delay(2000).fadeOut(1000);
+})
