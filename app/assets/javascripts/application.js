@@ -38,11 +38,11 @@ $(function(){
 })
 
 $(function(){
-  const $all_msg = $('.homes-top-title');
-  const $word_list = $('.homes-top-title').html().split("");
+  var $all_msg = $('.homes-top-title');
+  var $word_list = $('.homes-top-title').html().split("");
   $('.homes-top-title').html("");
   $.each($word_list, function(idx, elem){
-    const newEl = $("<span/>").text(elem).css({ opacity: 0 });
+    var newEl = $("<span/>").text(elem).css({ opacity: 0 });
     newEl.appendTo($all_msg);
     newEl.delay(idx * 70);
     newEl.animate({ opacity: 1 }, 1000);
