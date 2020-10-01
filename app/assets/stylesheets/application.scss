@@ -88,8 +88,9 @@ header{
 }
 
 .homes-top-title{
-	line-height: 200px;
+	line-height: 400px;
 	color: #fff;
+	font-size: 50px;
 }
 
 .slider{
@@ -118,6 +119,16 @@ header{
 
 .slider-image3{
 	background-image: image-url('nightview.jpg');
+	background-position: center;
+}
+
+.slider-image4{
+	background-image: image-url('desert.jpg');
+	background-position: center;
+}
+
+.slider-image5{
+	background-image: image-url('safari.jpg');
 	background-position: center;
 }
 
