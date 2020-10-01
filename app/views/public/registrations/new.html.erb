@@ -34,7 +34,7 @@
         </tr>
 
         <tr>
-          <td colspan="2"><%= f.submit "新規登録", class: "green button" %></td>
+          <td colspan="2"><%= f.submit class: "btn btn-success" %></td>
         </tr>
       </tbody>
     </table>
@@ -43,13 +43,13 @@
 </div>
 
 <div class="centerize">
-  <%= link_to user_facebook_omniauth_authorize_path, class: "blue button" do %>
+  <%= link_to user_facebook_omniauth_authorize_path, class: "btn btn-primary" do %>
     <i class="fab fa-facebook"></i>
     <span>FACEBOOKで登録</span>
   <% end %>
-  <%= link_to user_google_oauth2_omniauth_authorize_path, class: "orange button" do %>
+  <%= link_to user_google_oauth2_omniauth_authorize_path, class: "btn btn-danger" do %>
     <i class="fab fa-google"></i>
     <span>Googleで登録</span>
   <% end %>
-  <%= link_to "ゲストログイン", users_guest_path, method: :post, class: "gray button right-position" %>
+  <%= link_to "ゲストログイン", users_guest_path, method: :post, class: "btn btn-warning" %>
 </div>

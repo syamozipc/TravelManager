@@ -11,8 +11,41 @@
 
 <% if user_signed_in? == false && admin_signed_in? == false %>
 	<div class="centerize">
-		<%= link_to "ゲストログイン", users_guest_path, method: :post, class: "orange button" %>
-		<a href = "https://github.com/syamozipc/TravelManager/blob/master/README.md" target="_blank" class="gray button"><i class="fab fa-github"></i>GitHubはこちら</a>
+		<%= link_to "新規登録", new_user_registration_path, class: "btn btn-success" %>
+		<%= link_to "ログイン", new_user_session_path, class: "btn btn-primary" %>
+		<%= link_to "ゲストログイン", users_guest_path, method: :post, class: "btn btn-warning" %>
 	</div>
 	<p class="right-position"><%= link_to "管理者ログイン", new_admin_session_path %></p>
 <% end %>
+
+<div class="homes-about-space"></div>
+<h2 class="page-title">TravelManagerの使い方</h2>
+
+<div class="about-area">
+	<div class="about-box-image about-left"></div>
+	<div class="about-box-text about-right">
+		<p class="how-to-text">マイページではあなたの旅行写真をアルバムとして管理できます。<br>
+			旅行に行ったら是非アルバムを作成しましょう！
+		</p>
+	</div>
+	<div class="about-box-text about-left">
+		<p class="how-to-text">他会員が公開しているアルバムは閲覧可能です。<br>
+			人気ランキング上位のアルバムは要チェック！
+		</p>
+	</div>
+	<div class="about-box-image about-right"></div>
+	<div class="about-box-image about-left"></div>
+	<div class="about-box-text about-right">
+		<p class="how-to-text">
+			アルバムを開いたら、是非コメントやいいねをしましょう。<br>
+			気になった会員はフォローできます。
+		</p>
+	</div>
+	<div class="about-box-text about-left">
+		<p class="how-to-text">他会員にDMを送ることも出来ます。<br>
+			積極的にコミュニケーションを取ってみましょう！<br>
+			いい出会いがあるかもしれません。
+		</p>
+	</div>
+	<div class="about-box-image about-right"></div>
+</div>

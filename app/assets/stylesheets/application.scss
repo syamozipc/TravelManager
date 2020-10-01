@@ -25,6 +25,7 @@
 	font-family: "ヒラギノ丸ゴ ProN", "sans-serif";
 }
 
+
 .flex{
 	display: flex;
 	width: 100%;
@@ -85,12 +86,15 @@ header{
 	left: 0;
 	z-index: 10;
 	text-align: center;
+	padding-top: 200px;
 }
 
 .homes-top-title{
-	line-height: 400px;
 	color: #fff;
 	font-size: 50px;
+	display: inline-block;
+	border-bottom: solid 10px #87b9eb;
+	border-radius: 40%;
 }
 
 .slider{
@@ -105,31 +109,27 @@ header{
 	height: 600px;
 	text-align: center;
 	background-size: cover;
+	background-position: center;
 }
 
-.slider-image1{
+.slider-item:nth-child(1){
 	background-image: image-url('beach.png');
-	background-position: center;
 }
 
-.slider-image2{
+.slider-item:nth-child(2){
 	background-image: image-url('mountain.jpg');
-	background-position: center;
 }
 
-.slider-image3{
+.slider-item:nth-child(3){
 	background-image: image-url('nightview.jpg');
-	background-position: center;
 }
 
-.slider-image4{
+.slider-item:nth-child(4){
 	background-image: image-url('desert.jpg');
-	background-position: center;
 }
 
-.slider-image5{
+.slider-item:nth-child(5){
 	background-image: image-url('safari.jpg');
-	background-position: center;
 }
 
 .slick-dots {
@@ -143,12 +143,85 @@ header{
     }
  }
 
+ .homes-about-space{
+	 height: 80px;
+ }
+
+ .about-area{
+	 display: flex;
+	 flex-wrap: wrap;
+	 width: 1000px;
+	 margin: 0 auto;
+ }
+
+ .about-box-image{
+	 width: 450px;
+	 height: 400px;
+	 margin-top: 80px;
+	 border: solid 2px #9b9898;
+	 border-radius: 5px;
+ }
+
+ .about-box-image:nth-of-type(1){
+	 background-image: image-url('mypage.png');
+	 background-size: 450px 400px;
+	 margin-top: 20px;
+ }
+
+ .about-box-image:nth-of-type(4){
+	background-image: image-url('album-index.png');
+	background-size: 450px 400px;
+}
+
+.about-box-image:nth-of-type(5){
+	background-image: image-url('album-show.png');
+	background-size: 450px 400px;
+}
+
+.about-box-image:nth-of-type(8){
+	background-image: image-url('dm.png');
+	background-size: cover;
+}
+
+ .about-box-text{
+	 width: 450px;
+	 height: 400px;
+	 margin-top: 80px;
+	 font-size: 20px;
+	 padding-top: 100px;
+ }
+
+ .how-to-text{
+	background-color: #c7ebf7;
+	border-radius: 10px;
+	display: inline-block;
+	padding: 20px;
+ }
+
+ .about-left{
+	margin-right: 100px;
+}
+
+#arrow-button{
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	background-color: #000;
+	color: #fff;
+	border-radius: 10px;
+	padding: 10px;
+}
+
 .button{
 	padding:10px 15px;
 	text-decoration :none;
 	border-radius: 5px;
 	color: #FFF;
 	margin: 5px;
+}
+
+.btn{
+	margin: 10px;
 }
 
 .blue{
@@ -229,6 +302,10 @@ header{
 
 .green-color{
 	color: #1CD124;
+}
+
+.white-color{
+	color: #fff;
 }
 
 .gold-color{
@@ -392,35 +469,6 @@ header{
 
 input[type=checkbox] {
   transform: scale(2);
-}
-
-.about-page-image{
-	background-image: image-url('aboutimage.jpg');
-	background-position: center;
-	background-size: cover;
-	padding: 20px 0 20px 0;
-}
-
-.about-box{
-	width: 700px;
-	margin: 0 auto;
-	padding: 20px;
-	background-color: rgba(0,0,0,0.5);
-	color: white;
-}
-
-.about-text{
-	margin-left: 50px;
-}
-
-.about-page-title{
-	width: 40%;
-	margin: 0 auto 20px auto;
-	text-align: center;
-	padding: 15px;
-	color: black;
-	background-color: #FFEFC7;
-	border-left: solid 5px #ffaf58;
 }
 
 footer{

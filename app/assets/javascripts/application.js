@@ -35,16 +35,24 @@ $(function() {
 
 $(function(){
   $('.homes-top-animation').delay(2000).fadeOut(1000);
-})
+});
 
 $(function(){
-  var $all_msg = $('.homes-top-title');
-  var $word_list = $('.homes-top-title').html().split("");
+  var $title = $('.homes-top-title');
+  var $words = $('.homes-top-title').html().split("");
   $('.homes-top-title').html("");
-  $.each($word_list, function(idx, elem){
-    var newEl = $("<span/>").text(elem).css({ opacity: 0 });
-    newEl.appendTo($all_msg);
-    newEl.delay(idx * 70);
+  $.each($words, function(index, element){
+    var newEl = $("<span/>").text(element).css({ opacity: 0 });
+    newEl.appendTo($title);
+    newEl.delay(index * 70);
     newEl.animate({ opacity: 1 }, 1000);
-  })
-})
+  });
+});
+
+$(function(){
+  $('#arrow-button').on('click', function(event){
+    $('body, html').animate({
+      scrollTop:1
+    }, 500);
+  });
+});
