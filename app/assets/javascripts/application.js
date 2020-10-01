@@ -50,9 +50,10 @@ $(function(){
 });
 
 $(function(){
-  $('.arrow-button').on('click', function(event){
+  $('.arrow-button a').on('click', function(event){
     $('body, html').animate({
       scrollTop:0
     }, 500);
+    event.preventDefault();
   });
 });
