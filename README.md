@@ -1,5 +1,6 @@
 # TravelManager
-![Screen Shot 2020-09-12 at 18 00 34](https://user-images.githubusercontent.com/65382860/92991969-1f3ce880-f522-11ea-8f0e-25da45b8f2e8.png)
+サイトURL：https://travelmanager.work/<br>
+![Screen Shot 2020-10-02 at 15 48 18](https://user-images.githubusercontent.com/65382860/94895726-ed86c400-04c6-11eb-9dfb-c52f932a235d.png)
 
 ## サイト概要
 旅行写真を旅行ごとにアルバムとして整理・保存・公開できる、クラウドストレージ×SNSのサイトです。
