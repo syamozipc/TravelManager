@@ -448,8 +448,14 @@ header{
 	margin:0 0 30px 100px;
 }
 
-.chat-text{
+.current-user-chat-text{
 	background-color: orange;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+.chat-text{
+	background-color: rgb(216, 215, 213);
 	padding: 10px;
 	border-radius: 10px;
 }
