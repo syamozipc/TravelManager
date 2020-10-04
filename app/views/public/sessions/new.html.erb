@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-4 col-md-offset-4 centerize">
+  <div class="col-md-4 col-md-offset-4 centerize  col-xs-12">
 
   <h2 class="page-title">ログイン</h2>
 
@@ -40,15 +40,15 @@
 </div>
 
 <div class="centerize">
-  <%= link_to user_facebook_omniauth_authorize_path, class: "btn btn-primary" do %>
+  <%= link_to "ゲストログイン", users_guest_path, method: :post, class: "btn btn-warning to-block" %>
+  <%= link_to user_facebook_omniauth_authorize_path, class: "btn btn-primary to-block" do %>
     <i class="fab fa-facebook"></i>
     <span>FACEBOOKでログイン</span>
   <% end %>
-  <%= link_to user_google_oauth2_omniauth_authorize_path, class: "btn btn-danger" do %>
+  <%= link_to user_google_oauth2_omniauth_authorize_path, class: "btn btn-danger to-block" do %>
     <i class="fab fa-google"></i>
     <span>Googleでログイン</span>
   <% end %>
-  <%= link_to "ゲストログイン", users_guest_path, method: :post, class: "btn btn-warning" %>
 </div>
 
 
