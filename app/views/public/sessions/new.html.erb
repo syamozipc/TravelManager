@@ -40,12 +40,12 @@
 </div>
 
 <div class="centerize">
-  <%= link_to "ゲストログイン", users_guest_path, method: :post, class: "btn btn-warning to-block" %>
-  <%= link_to user_facebook_omniauth_authorize_path, class: "btn btn-primary to-block" do %>
+  <%= link_to "ゲストログイン", users_guest_path, method: :post, class: "btn btn-warning sns-button" %>
+  <%= link_to user_facebook_omniauth_authorize_path, class: "btn btn-primary sns-button" do %>
     <i class="fab fa-facebook"></i>
     <span>FACEBOOKでログイン</span>
   <% end %>
-  <%= link_to user_google_oauth2_omniauth_authorize_path, class: "btn btn-danger to-block" do %>
+  <%= link_to user_google_oauth2_omniauth_authorize_path, class: "btn btn-danger sns-button" do %>
     <i class="fab fa-google"></i>
     <span>Googleでログイン</span>
   <% end %>
