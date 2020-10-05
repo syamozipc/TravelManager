@@ -87,7 +87,7 @@ header{
 	position: fixed;
 	top: 70px;
 	left: 0;
-	z-index: 10;
+	z-index: 11;
 	text-align: center;
 	padding-top: 200px;
 }
@@ -212,6 +212,7 @@ header{
 	padding: 10px;
 }
 
+.header-button,
 .button{
 	padding:10px 15px;
 	text-decoration :none;
@@ -329,6 +330,7 @@ header{
 	margin-top: 20px;
 }
 
+.homes-page-title,
 .page-title{
 	width: 40%;
 	margin: 20px auto 30px auto;
@@ -487,7 +489,95 @@ footer{
 }
 
 @media screen and (max-width: 768px){
+	.hamburger-icon{
+		position: fixed;
+		right: 20px;
+		top: 20px;
+		z-index: 10;
+	}
+	.menu-trigger,
+	.menu-trigger span {
+		display: inline-block;
+		transition: all .4s;
+		box-sizing: border-box;
+	}
+	.menu-trigger {
+		position: relative;
+		width: 50px;
+		height: 44px;
+	}
+	.menu-trigger span {
+		position: absolute;
+		left: 0;
+		width: 100%;
+		height: 4px;
+		background-color: #fff;
+		border-radius: 4px;
+	}
+	.menu-trigger span:nth-of-type(1) {
+		top: 0;
+	}
+	.menu-trigger span:nth-of-type(2) {
+		top: 20px;
+	}
+	.menu-trigger span:nth-of-type(3) {
+		bottom: 0;
+	}
+	.menu-trigger.active span:nth-of-type(1) {
+		-webkit-transform: translateY(20px) rotate(-45deg);
+		transform: translateY(20px) rotate(-45deg);
+		background-color: #fff;
+	}
+	.menu-trigger.active span:nth-of-type(2) {
+		opacity: 0;
+	}
+	.menu-trigger.active span:nth-of-type(3) {
+		-webkit-transform: translateY(-20px) rotate(45deg);
+		transform: translateY(-20px) rotate(45deg);
+		background-color: #fff;
+	}
+
+	.sp-menu {
+		position: fixed;
+		top: 0;
+		left: 0;
+		background: #000;
+		width: 100%;
+		min-height: 100%;
+		display: none;
+		z-index: 9;
+		padding-top: 100px;
+	}
+	.sp-menu li{
+		text-align: center;
+		margin-bottom: 50px;
+	}
+
+	.header-list{
+			list-style: none;
+			display: block;
+			line-height: 0;
+			margin: 0 auto;
+	}
+
+	.search-form{
+		list-style: none;
+		display: block;
+		margin: 0 auto;
+		color: #000;
+	}
+
+	header{
+		position: fixed;
+		z-index: 12;
+	}
+
 	.page-title{
+		width: 300px;
+		margin-top: 100px;
+	}
+
+	.homes-page-title{
 		width: 300px;
 	}
 

@@ -1,35 +1,46 @@
 <header>
-	<nav class="nav">
-		<%= link_to "TravelManager", root_path, class: "logo", data: {"turbolinks"=>false} %>
-		<ul>
-			<% if admin_signed_in? %>
-				<li class="header-list"><%= link_to "管理者トップ", admin_homes_top_path, class: "button" %></li>
-				<li class="header-list"><%= link_to "会員からのお問い合わせ", admin_inquiries_path, class: "button" %></li>
-				<li class="header-list"><%= link_to "渡航先編集", admin_destinations_path, class: "button" %></li>
-				<li class="header-list"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "button" %></li>
-			<% elsif user_signed_in? %>
-				<li class="header-list"><%= link_to "マイページ", user_path(current_user), class: "button" %></li>
-				<li class="header-list"><%= link_to "アルバム", albums_path, class: "button" %></li>
-				<li class="header-list"><%= link_to "ランキング", albums_ranking_path, class: "button" %></li>
-				<li class="header-list"><%= link_to "DM", rooms_path, class: "button" %></li>
-				<li class="header-list"><%= link_to "通知", notifications_path, class: "button" %></li>
-				<li class="header-list"><%= link_to "お問い合わせ", new_inquiry_path, class: "button" %></li>
-				<li class="header-list"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "button" %></li>
-			<% else %>
-				<li class="header-list"><%= link_to "新規登録", new_user_registration_path, class: "button" %></li>
-				<li class="header-list"><%= link_to "ログイン", new_user_session_path, class: "button" %></li>
-				<li class="header-list"><%= link_to "アルバム一覧", albums_path, class: "button" %></li>
-				<li class="header-list"><%= link_to "ランキング", albums_ranking_path, class: "button" %></li>
-				<li class="search-form">
-			<% end %>
-			<% unless admin_signed_in? %>
-				<li class="search-form">
-					<%= form_with(url: searches_path, local: true, method: :get) do %>
-						<%= text_field_tag(:word) %>
-						<%= submit_tag '検索' %>
-					<% end %>
-				</li>
-			<% end %>
-		</ul>
-	</nav>
+		<div>
+			<nav class="nav">
+				<%= link_to "TravelManager", root_path, class: "logo", data: {"turbolinks"=>false} %>
+				<div class="sp-menu">
+					<ul>
+						<% if admin_signed_in? %>
+							<li class="header-list"><%= link_to "管理者トップ", admin_homes_top_path, class: "header-button" %></li>
+							<li class="header-list"><%= link_to "会員からのお問い合わせ", admin_inquiries_path, class: "header-header-button" %></li>
+							<li class="header-list"><%= link_to "渡航先編集", admin_destinations_path, class: "header-button" %></li>
+							<li class="header-list"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "header-button" %></li>
+						<% elsif user_signed_in? %>
+							<li class="header-list"><%= link_to "マイページ", user_path(current_user), class: "header-button" %></li>
+							<li class="header-list"><%= link_to "アルバム", albums_path, class: "header-button" %></li>
+							<li class="header-list"><%= link_to "ランキング", albums_ranking_path, class: "header-button" %></li>
+							<li class="header-list"><%= link_to "DM", rooms_path, class: "header-button" %></li>
+							<li class="header-list"><%= link_to "通知", notifications_path, class: "header-button" %></li>
+							<li class="header-list"><%= link_to "お問い合わせ", new_inquiry_path, class: "header-button" %></li>
+							<li class="header-list"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header-button" %></li>
+						<% else %>
+							<li class="header-list"><%= link_to "新規登録", new_user_registration_path, class: "header-button" %></li>
+							<li class="header-list"><%= link_to "ログイン", new_user_session_path, class: "header-button" %></li>
+							<li class="header-list"><%= link_to "アルバム一覧", albums_path, class: "header-button" %></li>
+							<li class="header-list"><%= link_to "ランキング", albums_ranking_path, class: "header-button" %></li>
+							<li class="search-form">
+						<% end %>
+						<% unless admin_signed_in? %>
+							<li class="search-form">
+								<%= form_with(url: searches_path, local: true, method: :get) do %>
+									<%= text_field_tag(:word) %>
+									<%= submit_tag '検索' %>
+								<% end %>
+							</li>
+						<% end %>
+					</ul>
+				</div>
+				<div class="hamburger-icon">
+					<a class="menu-trigger" href="#">
+						<span></span>
+						<span></span>
+						<span></span>
+					</a>
+				</div>
+			</nav>
+		</div>
 </header>
