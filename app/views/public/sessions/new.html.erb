@@ -1,54 +1,56 @@
-<div class="row">
-  <div class="col-md-4 col-md-offset-4 centerize  col-xs-12">
+<div class="container-fruid">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4 centerize  col-xs-12">
 
-  <h2 class="page-title">ログイン</h2>
+    <h2 class="page-title">ログイン</h2>
 
-  <%= flash[:error] %>
+    <%= flash[:error] %>
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-    <table class="table">
-      <tbody>
+      <table class="table">
+        <tbody>
 
-        <tr>
-          <td><%= f.label :メールアドレス %></td>
-          <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
-        </tr>
+          <tr>
+            <td><%= f.label :メールアドレス %></td>
+            <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+          </tr>
 
-        <tr>
-          <td>
-              <%= f.label :パスワード %>
-          </td>
-          <td><%= f.password_field :password, autocomplete: "current-password" %></td>
-        </tr>
+          <tr>
+            <td>
+                <%= f.label :パスワード %>
+            </td>
+            <td><%= f.password_field :password, autocomplete: "current-password" %></td>
+          </tr>
 
-        <tr>
-          <td colspan="2"><%= f.submit "ログイン", class: "btn btn-primary" %></td>
-        </tr>
-      </tbody>
-    </table>
+          <tr>
+            <td colspan="2"><%= f.submit "ログイン", class: "btn btn-default" %></td>
+          </tr>
+        </tbody>
+      </table>
 
-    <% if devise_mapping.rememberable? %>
-      <div class="field">
-        <%= f.check_box :remember_me %>
-        <%= f.label :情報を保存する %>
-      </div><br>
+      <% if devise_mapping.rememberable? %>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <%= f.label :情報を保存する %>
+        </div><br>
+      <% end %>
+
     <% end %>
-
-  <% end %>
+    </div>
   </div>
-</div>
 
-<div class="centerize">
-  <%= link_to "ゲストログイン", users_guest_path, method: :post, class: "btn btn-warning sns-button" %>
-  <%= link_to user_facebook_omniauth_authorize_path, class: "btn btn-primary sns-button" do %>
-    <i class="fab fa-facebook"></i>
-    <span>FACEBOOKでログイン</span>
-  <% end %>
-  <%= link_to user_google_oauth2_omniauth_authorize_path, class: "btn btn-danger sns-button" do %>
-    <i class="fab fa-google"></i>
-    <span>Googleでログイン</span>
-  <% end %>
+  <div class="centerize">
+    <%= link_to "ゲストログイン", users_guest_path, method: :post, class: "btn btn-warning sns-button" %>
+    <%= link_to user_facebook_omniauth_authorize_path, class: "btn btn-primary sns-button" do %>
+      <i class="fab fa-facebook"></i>
+      <span>FACEBOOKでログイン</span>
+    <% end %>
+    <%= link_to user_google_oauth2_omniauth_authorize_path, class: "btn btn-danger sns-button" do %>
+      <i class="fab fa-google"></i>
+      <span>Googleでログイン</span>
+    <% end %>
+  </div>
 </div>
 
 

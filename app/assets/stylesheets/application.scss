@@ -202,14 +202,15 @@ header{
 	margin-right: 100px;
 }
 
-.arrow-button{
+#arrow-button{
 	position: fixed;
 	bottom: 20px;
 	right: 20px;
-	background-color: #000;
-	color: #fff;
-	border-radius: 10px;
-	padding: 10px;
+}
+
+#arrow-button img{
+	width: 50px;
+	border-radius: 50%;
 }
 
 .header-button,
@@ -330,7 +331,6 @@ header{
 	margin-top: 20px;
 }
 
-.homes-page-title,
 .page-title{
 	width: 40%;
 	margin: 20px auto 30px auto;
@@ -346,6 +346,11 @@ header{
 	margin: 30px 40px 20px 10px;
 }
 
+.gradation-destination{
+	background: linear-gradient(to right, #28a4d4, #7acfeb, );
+	border-radius: 10px;
+}
+
 .profile-image{
 	border-radius: 50%;
 }
@@ -355,8 +360,8 @@ header{
 	display: flex;
 	flex-wrap: wrap;
 	padding: 20px;
-	position: relative;
 	margin-left: 30px;
+	// position: relative;
 }
 
 .album{
@@ -365,9 +370,8 @@ header{
 	border-radius: 10px;
 	text-align: center;
 	margin: 30px 40px 20px 10px;
-	background-color: #d6ebff;
-	box-shadow: 0 0 0 10px #d6ebff;
-	border: dashed 2px white;
+	background: linear-gradient(to bottom right, #fff, #d8d6d4);
+	border: solid 1px #302e2e;
 	position: relative;
 }
 
@@ -568,16 +572,11 @@ footer{
 	}
 
 	header{
-		position: fixed;
+		position: absolute;
 		z-index: 12;
 	}
 
 	.page-title{
-		width: 300px;
-		margin-top: 100px;
-	}
-
-	.homes-page-title{
 		width: 300px;
 	}
 

@@ -2,22 +2,22 @@
 
 <div class="flex">
 	<div class="left-sidebar">
-		<table class="table centerize">
+		<table class="table centerize gradation-destination">
 			<tbody>
 				<tr>
-					<td><%= link_to "一覧", albums_path %></td>
+					<td><%= link_to "一覧", albums_path, class: "white-color" %></td>
 				</tr>
 				<% if user_signed_in? %>
 				<tr>
-					<td><%= link_to "フォロー", albums_path(choice: "follow") %></td>
+					<td><%= link_to "フォロー", albums_path(choice: "follow"), class: "white-color" %></td>
 				</tr>
 				<tr>
-					<td><%= link_to "いいねしたアルバム", albums_path(choice: "like") %></td>
+					<td><%= link_to "いいねしたアルバム", albums_path(choice: "like"), class: "white-color" %></td>
 				</tr>
 				<% end %>
 				<% @destinations.each do |destination| %>
 					<tr>
-						<td><%= link_to destination.place, albums_path(destination_id: destination.id) %></td>
+						<td><%= link_to destination.place, albums_path(destination_id: destination.id), class: "white-color" %></td>
 					</tr>
 				<% end %>
 			</tbody>
@@ -32,7 +32,4 @@
 		<% end %>
 	</div>
 </div>
-<span class="arrow-button">
-	<a href="#" class="white-color">TOPへ</a>
-</span>
 <div class="centerize"><%= paginate @albums %></div>

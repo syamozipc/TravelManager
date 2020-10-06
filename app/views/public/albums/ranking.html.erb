@@ -2,14 +2,14 @@
 
 <div class="flex">
 	<div class="left-sidebar">
-		<table class="table centerize">
+		<table class="table centerize gradation-destination">
 			<tbody>
 				<tr>
-					<td><%= link_to "全体のランキング", albums_ranking_path %></td>
+					<td><%= link_to "全体のランキング", albums_ranking_path, class: "white-color" %></td>
 				</tr>
 				<% @destinations.each do |destination| %>
 				<tr>
-					<td><%= link_to destination.place, albums_ranking_path(destination_id: destination.id) %></td>
+					<td><%= link_to destination.place, albums_ranking_path(destination_id: destination.id), class: "white-color" %></td>
 				</tr>
 				<% end %>
 			</tbody>
