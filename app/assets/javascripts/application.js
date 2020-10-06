@@ -49,11 +49,11 @@ $(function(){
   });
 });
 
-$(function(){
-  $('.arrow-button a').on('click', function(event){
+$(function() {
+  $('#arrow-button a').on('click',function(event){
     $('body, html').animate({
       scrollTop:0
-    }, 500);
+    }, 800);
     event.preventDefault();
   });
 });
