@@ -20,11 +20,11 @@
 					<td>
 						<%= f.hidden_field :title, value: @inquiry.title %>
 						<%= f.hidden_field :content, value: @inquiry.content %>
-						<%= f.submit "入力画面へ戻る", name: 'back', class: "orange button" %>
+						<%= f.submit "入力画面へ戻る", name: 'back', class: "btn btn-warning" %>
 					</td>
 				</tr>
 				<tr>
-					<td><%= f.submit "送信する", class: "green button" %></td>
+					<td><%= f.submit "送信する", class: "btn btn-success" %></td>
 				</tr>
 			</tbody>
 		</table>

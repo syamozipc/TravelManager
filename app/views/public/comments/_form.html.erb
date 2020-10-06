@@ -1,6 +1,6 @@
 <div>
 	<%= form_with model: [album, comment] do |f| %>
 		<%= f.text_area :content, row:'3', size:"30x3", placeholder: "コメントを入力" %>
-		<%= f.submit "投稿", class: "green button" %>
+		<%= f.submit "投稿", class: "btn btn-success" %>
 	<% end %>
 </div>

@@ -4,7 +4,7 @@
 	<div class="col-md-6 col-md-offset-3">
 		<%= render 'public/albums/form', album: @album %>
 		<p class="centerize">
-			<%= link_to "アルバムの削除はこちら", albums_confirm_path(album_id: @album.id), class: "gray button" %>
+			<%= link_to "アルバムの削除はこちら", albums_confirm_path(album_id: @album.id), class: "btn btn-default" %>
 		</p><br>
 	</div>
 </div>
@@ -16,10 +16,10 @@
 			<%= link_to(image_tag(attachment_url(photo, :image, :fill, 200, 200, format: "jpeg"), class: "photo-edit"), attachment_url(photo, :image, :fill, 500, 500, format: "jpeg"), data: {lightbox: "example-set", title: photo.album.title}) %>
 		<% end %>
 		<p  class="centerize">
-			<%= submit_tag '選択した写真を削除', class: "orange button", data:{confirm: "本当に削除しますか？"} %>
+			<%= submit_tag '選択した写真を削除', class: "btn btn-warning", data:{confirm: "本当に削除しますか？"} %>
 		</p>
 		<p class="right-position">
-			<%= link_to "全ての写真を削除", album_photos_destroy_all_path(@album, select: "all"), method: :delete, data:{confirm: "本当に全て削除しますか？"}, class: "gray button" %>
+			<%= link_to "全ての写真を削除", album_photos_destroy_all_path(@album, select: "all"), method: :delete, data:{confirm: "本当に全て削除しますか？"}, class: "btn btn-default" %>
 		</p>
 	<% end %>
 </div>

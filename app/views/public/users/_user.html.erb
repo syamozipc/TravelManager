@@ -13,7 +13,7 @@
 					<%= link_to user_path(user) do %>
 						<%= user.name %>
 						<% if user.is_active != true %>
-							<span class="gray button">退会済み</span>
+							<span class="btn btn-default">退会済み</span>
 						<% else %>
 							&nbsp;<i class="fas fa-book"></i><%= user.albums.count %>件
 						<% end %>
@@ -44,7 +44,7 @@
 			<% if user == current_user %>
 				<tr>
 					<td colspan="2">
-						<%= link_to "ユーザー情報を編集", edit_user_path(user), class: "green button" %>
+						<%= link_to "ユーザー情報を編集", edit_user_path(user), class: "btn btn-success" %>
 					</td>
 				</tr>
 			<% else %>

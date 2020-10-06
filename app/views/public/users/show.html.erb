@@ -18,13 +18,13 @@
 		<div class="chat-button">
 			<% if @user != current_user && @user.is_active == true && user_signed_in? %>
 				<% if @isRoom == true %>
-					<%= link_to "チャットへ", room_path(@roomId),class: "orange button" %>
+					<%= link_to "チャットへ", room_path(@roomId),class: "btn btn-warning" %>
 				<% else %>
 					<%= form_for @room do |f| %>
 						<%= fields_for @entry do |e| %>
 					 		<%= e.hidden_field :user_id, value: @user.id %>
 					 	<% end %>
-					 	<%= f.submit "チャットへ", class: "orange button" %>
+					 	<%= f.submit "チャットへ", class: "btn btn-warning" %>
 					<% end %>
 				<% end %>
 			<% end %>

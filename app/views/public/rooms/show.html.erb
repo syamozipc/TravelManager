@@ -9,11 +9,11 @@
     <%= form_with(model: @message, class: "centerize") do |f| %>
         <%= f.text_area :content, placeholder: "メッセージを入力して下さい" , size: "50x3" %>
         <%= f.hidden_field :room_id, value: @room.id %><br>
-        <%= f.submit "送信する", class: "green button" %>
+        <%= f.submit "送信する", class: "btn btn-success" %>
 
         <% @entries.each do |e| %>
             <% if current_user != e.user %>
-                <%= link_to e.user.name + "さんのページへ", user_path(e.user), class: "blue button" %>
+                <%= link_to e.user.name + "さんのページへ", user_path(e.user), class: "btn btn-primary" %>
             <% end %>
         <% end %>
 

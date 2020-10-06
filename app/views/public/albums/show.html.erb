@@ -48,11 +48,11 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2"><%= link_to "アルバムを編集", edit_album_path(@album), class: "green button" %></td>
+					<td colspan="2"><%= link_to "アルバムを編集", edit_album_path(@album), class: "btn btn-success" %></td>
 				</tr>
 			<% else %>
 				<tr>
-					<td colspan="2"><%= link_to @user.name + "さんのページへ", user_path(@user), class: "blue button" %></td>
+					<td colspan="2"><%= link_to @user.name + "さんのページへ", user_path(@user), class: "btn btn-primary" %></td>
 				</tr>
 			<% end %>
 		</table>

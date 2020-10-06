@@ -26,12 +26,12 @@
 					<td><%= f.text_field :email, size: "30" %></td>
 				</t>
 				<tr>
-					<td colspan="2"><%= f.submit "更新", class: "green button centerize" %></td>
+					<td colspan="2"><%= f.submit "更新", class: "btn btn-success centerize" %></td>
 				</tr>
 			</tbody>
 		</table>
 	<% end %>
-	<p><%= link_to "パスワードの変更はこちら", edit_user_registration_path, class: "blue button" %></p><br>
-	<p><%= link_to "退会はこちら", users_unsubscribe_path, class: "gray button" %></p>
+	<p><%= link_to "パスワードの変更はこちら", edit_user_registration_path, class: "btn btn-primary" %></p><br>
+	<p><%= link_to "退会はこちら", users_unsubscribe_path, class: "btn btn-default" %></p>
 	</div>
 </div>
