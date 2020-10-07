@@ -50,10 +50,19 @@ $(function(){
 });
 
 $(function() {
-  $('#arrow-button a').on('click',function(event){
+  var topBtn = $('#arrow-button a');
+  topBtn.hide();
+  $(window).scroll(function(){
+    if($(this).scrollTop() > 300){
+      topBtn.fadeIn();
+    }else{
+      topBtn.fadeOut();
+    }
+  });
+  topBtn.on('click',function(event){
     $('body, html').animate({
       scrollTop:0
-    }, 800);
+    }, 500);
     event.preventDefault();
   });
 });
