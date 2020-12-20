@@ -20,16 +20,11 @@
 ・アルバムモデルのCRUD + 渡航先ごとのソート + ランキングの実装）<br>
 ・refile<br>
 ・非同期通信（アルバムへのいいね ・コメント、フォロー、DM）<br>
-・通知<br>
+・通知機能<br>
 ・検索（ransack不使用）<br>
 ・管理者への問い合わせ<br>
-・スライドショー（slick）<br>
 ・ページネーション（kaminari）<br>
-・Bootstrap 3.3.6<br>
 ・HTTPS（AMC）
-
-
-## 環境
 
 ### 使用言語
 Ruby 2.5.7<br>
@@ -37,17 +32,12 @@ Rails 5.2.4.3<br>
 JavaScript<br>
 jQuery
 
-### 開発環境
-Vagrant<br>
-VirtualBox
-
 ### インフラ
-AWS(VPC, ALB, EC2, RDS, S3, CloudWatch, Route53)<br>
+Docker/Docker Compose（開発環境のみ）
+AWS(VPC, ALB, EC2, RDS, S3, CloudWatch, Route53, AMC)<br>
 MySQL2<br>
 Nginx<br>
 Puma<br>
 Capistrano
 
 ![Screen Shot 2020-09-12 at 17 50 27](https://user-images.githubusercontent.com/65382860/92991808-2b747600-f521-11ea-88a4-c03ca00a0898.png)
-
-
