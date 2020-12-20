@@ -33,7 +33,7 @@ JavaScript<br>
 jQuery
 
 ### インフラ
-Docker/Docker Compose（開発環境のみ）
+Docker/Docker Compose（開発環境のみ）<br>
 AWS(VPC, ALB, EC2, RDS, S3, CloudWatch, Route53, AMC)<br>
 MySQL2<br>
 Nginx<br>
