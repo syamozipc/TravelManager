@@ -1,5 +1,10 @@
 # TravelManager
-サイトURL：https://travelmanager.work/<br>
+
+こちらは私が未経験からエンジニア転職を目指す際に作成したポートフォリオです。
+制作期間：2020年7月〜9月
+
+サイトURL：https://travelmanager.work/
+
 ![Screen Shot 2020-10-02 at 15 48 18](https://user-images.githubusercontent.com/65382860/94895726-ed86c400-04c6-11eb-9dfb-c52f932a235d.png)
 
 ## サイト概要
